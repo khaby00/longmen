@@ -1,226 +1,97 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>🐉 The Leap of Longmen · 龙门一跃</title>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800&family=Poppins:wght@400;600&family=Noto+Sans+SC:wght@600;900&display=swap" rel="stylesheet">
+  <title>The Leap of Longmen</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;900&family=Cinzel:wght@500;700&display=swap" rel="stylesheet">
   <style>
     body {
       margin: 0;
-      background: #0a0a0a;
-      color: #f5f5f5;
-      font-family: 'Poppins', sans-serif;
-      line-height: 1.6;
+      padding: 0;
+      font-family: 'Cinzel', serif;
+      background: linear-gradient(180deg, #000000 0%, #1a0f0f 50%, #4a0000 100%);
+      color: #e0e0e0;
+      text-align: center;
     }
-
-    /* Header */
     header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1rem 2rem;
-      background: rgba(0,0,0,0.7);
-    }
-    header h1 {
-      font-size: 1.5rem;
+      padding: 40px 20px 10px;
       font-family: 'Orbitron', sans-serif;
-      color: gold;
+      font-size: 2.8rem;
+      font-weight: 900;
+      background: linear-gradient(90deg, #ffcc00, #ff3300);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 0 20px rgba(255, 128, 0, 0.7);
     }
-
-    /* Buttons */
+    .subtitle {
+      font-size: 1.3rem;
+      color: #ffcc00;
+      text-shadow: 0 0 15px rgba(255, 51, 0, 0.8);
+      margin-bottom: 20px;
+      font-family: 'Orbitron', sans-serif;
+    }
     .cta {
-      margin-top: 2rem;
-      display: flex;
-      gap: 1rem;
-      justify-content: center;
-      flex-wrap: wrap;
+      display: inline-block;
+      margin: 15px 10px;
+      padding: 14px 28px;
+      border-radius: 40px;
+      font-size: 1.2rem;
+      font-family: 'Orbitron', sans-serif;
+      text-transform: uppercase;
+      font-weight: 700;
+      color: #fff;
+      background: linear-gradient(90deg, #00e5ff, #0077ff);
+      text-decoration: none;
+      box-shadow: 0 0 20px rgba(0, 200, 255, 0.8);
+      transition: transform 0.2s, box-shadow 0.2s;
     }
-    .cta a {
-      background: gold;
-      color: #000;
-      padding: 1rem 2rem;
-      border-radius: 50px;
+    .cta:hover {
+      transform: scale(1.08);
+      box-shadow: 0 0 30px rgba(0, 200, 255, 1);
+    }
+    .story {
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 30px;
+      border: 2px solid rgba(255, 204, 0, 0.7);
+      border-radius: 20px;
+      background: rgba(0, 0, 0, 0.6);
+      box-shadow: 0 0 25px rgba(255, 102, 0, 0.6);
+      font-size: 1.1rem;
+      line-height: 1.7;
+      text-align: justify;
+      color: #f5f5f5;
+    }
+    .footer {
+      margin: 50px 0 30px;
+      font-size: 1rem;
+      color: #bbb;
+      font-family: 'Orbitron', sans-serif;
+    }
+    .footer a {
+      color: #00e5ff;
       text-decoration: none;
       font-weight: bold;
-      font-size: 1.1rem;
-      box-shadow: 0 0 15px rgba(255, 215, 0, 0.6);
-      transition: all 0.3s ease;
-      font-family: 'Orbitron', sans-serif;
+      text-shadow: 0 0 10px rgba(0, 229, 255, 0.9);
     }
-    .cta a:hover {
-      background: #ffdf32;
-      box-shadow: 0 0 35px rgba(255, 215, 0, 1);
-    }
-
-    /* Hero */
-    .hero {
-      background: url('assets/koi-dragon-bg.jpg') center/cover no-repeat;
-      text-align: center;
-      padding: 7rem 2rem 5rem;
-      position: relative;
-    }
-    .hero::after {
-      content: "";
-      position: absolute;
-      top:0; left:0; right:0; bottom:0;
-      background: rgba(0,0,0,0.55);
-    }
-    .hero .inner {
-      position: relative;
-      z-index: 2;
-      max-width: 800px;
-      margin: auto;
-    }
-    .hero h2 {
-      font-size: 3rem;
-      font-family: 'Orbitron', sans-serif;
-      color: gold;
-      margin: 0;
-      text-shadow: 0 0 20px rgba(255,215,0,0.8);
-    }
-    .hero p.en {
-      margin-top: 1rem;
-      font-size: 1.2rem;
-      color: #f5f5f5;
-    }
-    .hero p.zh {
-      margin-top: 0.5rem;
-      font-size: 1rem;
-      font-family: 'Noto Sans SC', sans-serif;
-      font-weight: 700;
-      background: linear-gradient(90deg, #ff3333, gold, #ff3333);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-size: 300% 100%;
-      animation: shimmer 6s infinite linear;
-    }
-
-    @keyframes shimmer {
-      0% { background-position: 0% 50%; }
-      100% { background-position: 100% 50%; }
-    }
-
-    /* Sections */
-    section {
-      padding: 3rem 2rem;
-      max-width: 900px;
-      margin: auto;
-      border-bottom: 1px solid rgba(255,215,0,0.2);
-    }
-    section:nth-child(even) {
-      background: linear-gradient(160deg, #111 0%, #1a1a2e 100%);
-    }
-    section:nth-child(odd) {
-      background: linear-gradient(160deg, #111 0%, #2a0a0a 100%);
-    }
-    section h3 {
-      color: gold;
-      font-size: 1.8rem;
-      text-align: center;
-      margin-bottom: 1rem;
-      font-family: 'Orbitron', sans-serif;
-      position: relative;
-    }
-    section h3::after {
-      content: "";
-      display: block;
-      width: 60px;
-      height: 3px;
-      margin: 0.5rem auto 0;
-      background: gold;
-      border-radius: 2px;
-    }
-    section p.en {
-      margin: 1rem 0;
-      color: #eaeaea;
-      font-size: 1.05rem;
-    }
-    section p.zh {
-      margin: 0.3rem 0 1.2rem;
-      font-family: 'Noto Sans SC', sans-serif;
-      font-weight: 700;
-      background: linear-gradient(90deg, #ff3333, gold, #ff3333);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-size: 300% 100%;
-      animation: shimmer 8s infinite linear;
-    }
-
-    /* Footer */
-    footer {
-      text-align: center;
-      padding: 1.5rem;
-      background: rgba(0,0,0,0.8);
-      color: #999;
-      font-size: 0.9rem;
-    }
-
-    @media(max-width: 768px) {
-      .hero h2 { font-size: 2.2rem; }
-      .hero p.en { font-size: 1rem; }
-      .hero p.zh { font-size: 0.9rem; }
-      section { padding: 2rem 1.2rem; }
+    .footer a:hover {
+      color: #fff;
     }
   </style>
 </head>
 <body>
+  <header>The Leap of Longmen</header>
+  <div class="subtitle">From Carp to Dragon — A Legend Reborn in Chain</div><a href="https://pump.fun" target="_blank" class="cta">Buy on Pump.fun</a> <a href="https://x.com/LongmenX" target="_blank" class="cta">Follow us on X</a>
 
-  <header>
-    <h1>Longmen Coin</h1>
-  </header>
+  <div class="story">
+    <p>In the ancient land of China, where mountains kissed the clouds and rivers whispered to the earth, there flowed the mighty Yellow River. Within its restless waters swam countless carps, their golden scales shimmering like fragments of sunlight. For generations, these carps dreamed of a single destiny — the Leap of Longmen.</p><p>At the gates of Longmen, a towering waterfall roared. Legends told that any carp brave enough to leap its thundering waters would be transformed by the heavens into a soaring dragon — a creature of boundless power, wisdom, and majesty. Many tried. Many failed. Yet still they leapt, driven by hope, by hunger, by the fire of transformation.</p>
 
-  <div class="hero">
-    <div class="inner">
-      <h2>The Leap of Longmen 🐉</h2>
-      <p class="en">From carp to dragon — a legend reborn on chain.</p>
-      <p class="zh">从鲤鱼到龙 —— 链上重塑传说。</p>
-      <div class="cta">
-        <a href="#">🚀 Buy on Pump.fun</a>
-        <a href="https://x.com/LongmenX" target="_blank">🐦 Follow us on X</a>
-      </div>
-    </div>
+<p>Today, the legend stirs once more. Longmen rises not in stone, but on the chain. From carp to dragon, from dream to destiny, we bring rebirth in the digital age. A story ancient as rivers, yet as new as tomorrow.</p>
+
+<p><strong>You stand at the gates of Longmen. Will you leap?</strong></p>
+
+  </div>  <div class="footer">
+    <p>Join the legend. <a href="https://pump.fun" target="_blank">Buy on Pump.fun</a> | <a href="https://x.com/LongmenX" target="_blank">Follow us on X</a></p>
   </div>
-
-  <!-- STORY SECTIONS -->
-
-  <section>
-    <h3>🐉 The Leap of Longmen – 龙门一跃</h3>
-    <p class="en">Long ago, in the rushing Yellow River, carp gathered every spring... Yet those who leapt, those who dared… transformed.</p>
-    <p class="zh">很久以前，在奔腾的黄河里，鲤鱼们每到春天都会聚集... 但那些敢于一跃的，化身为腾飞的巨龙。</p>
-    <p class="en">This story has been told for a thousand years. Every child in China grows up hearing it... Perseverance. Transformation. Destiny.</p>
-    <p class="zh">这个故事流传千年。每一个中国孩子都听过... 毅力。蜕变。命运。</p>
-  </section>
-
-  <section>
-    <h3>⚡ Why Longmen Coin</h3>
-    <p class="en">Doge was a joke. Shiba was a shadow. Pepe was absurd. But Longmen? It is not a meme born yesterday...</p>
-    <p class="zh">狗狗币是个笑话。柴犬是影子。佩佩是荒诞。但龙门？它不是昨天诞生的梗...</p>
-  </section>
-
-  <section>
-    <h3>📊 The Power in Numbers</h3>
-    <p class="en">🌏 1.4 billion people in China know this story... And for the first time in history, that story lives on the blockchain.</p>
-    <p class="zh">🌏 十四亿中国人熟知这个故事... 而现在，历史上第一次，这个传说活在了区块链上。</p>
-  </section>
-
-  <section>
-    <h3>🚀 The Leap Is Now</h3>
-    <p class="en">This is not just another token. The koi are gathering. The Dragon Gate awaits. 👉 Will you leap with us?</p>
-    <p class="zh">这不仅仅是另一个代币。鲤鱼已聚，龙门在前。👉 你会与我们一跃吗？</p>
-  </section>
-
-  <section>
-    <h3>🎯 How to Join the Legend</h3>
-    <div class="cta">
-      <a href="#">🚀 Buy on Pump.fun</a>
-      <a href="https://x.com/LongmenX" target="_blank">🐦 Follow us on X</a>
-    </div>
-  </section>
-
-  <footer>
-    <p>© 2025 Longmen Coin · 龙门币 | From carp to dragon, from dream to destiny.</p>
-  </footer>
-
 </body>
 </html>

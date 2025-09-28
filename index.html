@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>🐉 The Leap of Longmen · 龙门一跃</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Noto+Sans+SC:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800&family=Poppins:wght@400;600&family=Noto+Sans+SC:wght@600;900&display=swap" rel="stylesheet">
   <style>
     body {
       margin: 0;
@@ -24,6 +24,7 @@
     }
     header h1 {
       font-size: 1.5rem;
+      font-family: 'Orbitron', sans-serif;
       color: gold;
     }
 
@@ -45,6 +46,7 @@
       font-size: 1.1rem;
       box-shadow: 0 0 15px rgba(255, 215, 0, 0.6);
       transition: all 0.3s ease;
+      font-family: 'Orbitron', sans-serif;
     }
     .cta a:hover {
       background: #ffdf32;
@@ -72,6 +74,7 @@
     }
     .hero h2 {
       font-size: 3rem;
+      font-family: 'Orbitron', sans-serif;
       color: gold;
       margin: 0;
       text-shadow: 0 0 20px rgba(255,215,0,0.8);
@@ -85,10 +88,17 @@
       margin-top: 0.5rem;
       font-size: 1rem;
       font-family: 'Noto Sans SC', sans-serif;
-      background: linear-gradient(90deg, #ff3333, gold);
+      font-weight: 700;
+      background: linear-gradient(90deg, #ff3333, gold, #ff3333);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      font-weight: 600;
+      background-size: 300% 100%;
+      animation: shimmer 6s infinite linear;
+    }
+
+    @keyframes shimmer {
+      0% { background-position: 0% 50%; }
+      100% { background-position: 100% 50%; }
     }
 
     /* Sections */
@@ -109,6 +119,7 @@
       font-size: 1.8rem;
       text-align: center;
       margin-bottom: 1rem;
+      font-family: 'Orbitron', sans-serif;
       position: relative;
     }
     section h3::after {
@@ -123,14 +134,17 @@
     section p.en {
       margin: 1rem 0;
       color: #eaeaea;
+      font-size: 1.05rem;
     }
     section p.zh {
       margin: 0.3rem 0 1.2rem;
-      background: linear-gradient(90deg, #ff3333, gold);
+      font-family: 'Noto Sans SC', sans-serif;
+      font-weight: 700;
+      background: linear-gradient(90deg, #ff3333, gold, #ff3333);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      font-weight: 600;
-      font-family: 'Noto Sans SC', sans-serif;
+      background-size: 300% 100%;
+      animation: shimmer 8s infinite linear;
     }
 
     /* Footer */
@@ -168,7 +182,41 @@
     </div>
   </div>
 
-  <!-- story sections stay same but now styled with gradients -->
+  <!-- STORY SECTIONS -->
+
+  <section>
+    <h3>🐉 The Leap of Longmen – 龙门一跃</h3>
+    <p class="en">Long ago, in the rushing Yellow River, carp gathered every spring... Yet those who leapt, those who dared… transformed.</p>
+    <p class="zh">很久以前，在奔腾的黄河里，鲤鱼们每到春天都会聚集... 但那些敢于一跃的，化身为腾飞的巨龙。</p>
+    <p class="en">This story has been told for a thousand years. Every child in China grows up hearing it... Perseverance. Transformation. Destiny.</p>
+    <p class="zh">这个故事流传千年。每一个中国孩子都听过... 毅力。蜕变。命运。</p>
+  </section>
+
+  <section>
+    <h3>⚡ Why Longmen Coin</h3>
+    <p class="en">Doge was a joke. Shiba was a shadow. Pepe was absurd. But Longmen? It is not a meme born yesterday...</p>
+    <p class="zh">狗狗币是个笑话。柴犬是影子。佩佩是荒诞。但龙门？它不是昨天诞生的梗...</p>
+  </section>
+
+  <section>
+    <h3>📊 The Power in Numbers</h3>
+    <p class="en">🌏 1.4 billion people in China know this story... And for the first time in history, that story lives on the blockchain.</p>
+    <p class="zh">🌏 十四亿中国人熟知这个故事... 而现在，历史上第一次，这个传说活在了区块链上。</p>
+  </section>
+
+  <section>
+    <h3>🚀 The Leap Is Now</h3>
+    <p class="en">This is not just another token. The koi are gathering. The Dragon Gate awaits. 👉 Will you leap with us?</p>
+    <p class="zh">这不仅仅是另一个代币。鲤鱼已聚，龙门在前。👉 你会与我们一跃吗？</p>
+  </section>
+
+  <section>
+    <h3>🎯 How to Join the Legend</h3>
+    <div class="cta">
+      <a href="#">🚀 Buy on Pump.fun</a>
+      <a href="https://x.com/LongmenX" target="_blank">🐦 Follow us on X</a>
+    </div>
+  </section>
 
   <footer>
     <p>© 2025 Longmen Coin · 龙门币 | From carp to dragon, from dream to destiny.</p>

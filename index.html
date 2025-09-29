@@ -6,27 +6,37 @@
   <title>The Leap of Longmen</title>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;900&family=Cinzel:wght@500;700&display=swap" rel="stylesheet">
   <style>
-    body {
+    /* --- RESET --- */
+    * {
       margin: 0;
       padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
       font-family: 'Cinzel', serif;
       background: #000;
       color: #e0e0e0;
+      line-height: 1.6;
       text-align: center;
     }
 
-    /* --- HERO SECTION --- */
+    a {
+      text-decoration: none;
+    }
+
+    /* --- HERO --- */
     .hero {
       position: relative;
       width: 100%;
       height: 100vh;
       display: flex;
-      flex-direction: column;
       justify-content: center;
       align-items: center;
       text-align: center;
       overflow: hidden;
     }
+
     .hero-img {
       position: absolute;
       top: 0; left: 0;
@@ -35,18 +45,22 @@
       object-fit: cover;
       z-index: -1;
     }
+
     .hero::before {
       content: "";
       position: absolute;
       top: 0; left: 0; right: 0; bottom: 0;
-      background: rgba(0, 0, 0, 0.65); /* dark overlay */
+      background: rgba(0, 0, 0, 0.65);
       z-index: 0;
     }
+
     .hero-content {
       position: relative;
       z-index: 1;
-      color: #fff;
+      padding: 20px;
+      max-width: 800px;
     }
+
     .hero h1 {
       font-family: 'Orbitron', sans-serif;
       font-size: 3.5rem;
@@ -54,68 +68,93 @@
       background: linear-gradient(90deg, #ffcc00, #ff3300);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      text-shadow: 0 0 20px rgba(255, 128, 0, 0.8);
-      margin: 0 0 15px;
+      text-shadow: 0 0 25px rgba(255, 128, 0, 0.8);
+      margin-bottom: 15px;
     }
-    .hero .subtitle {
-      font-size: 1.5rem;
+
+    .subtitle {
+      font-size: 1.4rem;
+      font-family: 'Orbitron', sans-serif;
       color: #ffcc00;
       text-shadow: 0 0 15px rgba(255, 51, 0, 0.8);
       margin-bottom: 25px;
-      font-family: 'Orbitron', sans-serif;
     }
 
-    /* --- BUTTONS --- */
     .cta {
       display: inline-block;
-      margin: 12px 10px;
+      margin: 10px;
       padding: 14px 28px;
       border-radius: 40px;
-      font-size: 1.2rem;
+      font-size: 1.1rem;
       font-family: 'Orbitron', sans-serif;
       text-transform: uppercase;
       font-weight: 700;
       color: #fff;
       background: linear-gradient(90deg, #00e5ff, #0077ff);
-      text-decoration: none;
       box-shadow: 0 0 20px rgba(0, 200, 255, 0.8);
       transition: transform 0.2s, box-shadow 0.2s;
     }
+
     .cta:hover {
       transform: scale(1.08);
       box-shadow: 0 0 30px rgba(0, 200, 255, 1);
     }
 
-    /* --- STORY BOX --- */
+    /* --- STORY SECTION --- */
     .story {
       max-width: 900px;
       margin: 60px auto;
       padding: 30px;
-      border: 2px solid rgba(255, 204, 0, 0.7);
       border-radius: 20px;
-      background: rgba(0, 0, 0, 0.7);
+      background: rgba(0, 0, 0, 0.75);
+      border: 2px solid rgba(255, 204, 0, 0.6);
       box-shadow: 0 0 25px rgba(255, 102, 0, 0.6);
       font-size: 1.1rem;
-      line-height: 1.7;
       text-align: justify;
-      color: #f5f5f5;
+    }
+
+    .story strong {
+      display: block;
+      margin-top: 20px;
+      font-size: 1.2rem;
+      color: #ffcc00;
+      text-align: center;
     }
 
     /* --- FOOTER --- */
-    .footer {
+    footer {
       margin: 60px 0 30px;
-      font-size: 1rem;
+      font-size: 0.9rem;
       color: #bbb;
       font-family: 'Orbitron', sans-serif;
     }
-    .footer a {
+
+    footer a {
       color: #00e5ff;
-      text-decoration: none;
       font-weight: bold;
       text-shadow: 0 0 10px rgba(0, 229, 255, 0.9);
     }
-    .footer a:hover {
+
+    footer a:hover {
       color: #fff;
+    }
+
+    /* --- RESPONSIVE --- */
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 2.5rem;
+      }
+      .subtitle {
+        font-size: 1.1rem;
+      }
+      .cta {
+        font-size: 1rem;
+        padding: 12px 22px;
+      }
+      .story {
+        margin: 30px 15px;
+        padding: 20px;
+      }
     }
   </style>
 </head>
@@ -123,8 +162,7 @@
 
   <!-- HERO -->
   <section class="hero">
-    <img src="hero.jpg" alt="The Leap of Longmen background" class="hero-img">
-    
+    <img src="hero.jpg" alt="The Leap of Longmen" class="hero-img">
     <div class="hero-content">
       <h1>The Leap of Longmen</h1>
       <div class="subtitle">From Carp to Dragon — A Legend Reborn in Chain</div>
@@ -134,17 +172,20 @@
   </section>
 
   <!-- STORY -->
-  <div class="story">
+  <section class="story">
     <p>In the ancient land of China, where mountains kissed the clouds and rivers whispered to the earth, there flowed the mighty Yellow River. Within its restless waters swam countless carps, their golden scales shimmering like fragments of sunlight. For generations, these carps dreamed of a single destiny — the Leap of Longmen.</p>
     <p>At the gates of Longmen, a towering waterfall roared. Legends told that any carp brave enough to leap its thundering waters would be transformed by the heavens into a soaring dragon — a creature of boundless power, wisdom, and majesty. Many tried. Many failed. Yet still they leapt, driven by hope, by hunger, by the fire of transformation.</p>
     <p>Today, the legend stirs once more. Longmen rises not in stone, but on the chain. From carp to dragon, from dream to destiny, we bring rebirth in the digital age. A story ancient as rivers, yet as new as tomorrow.</p>
-    <p><strong>You stand at the gates of Longmen. Will you leap?</strong></p>
-  </div>
+    <strong>You stand at the gates of Longmen. Will you leap?</strong>
+  </section>
 
   <!-- FOOTER -->
-  <div class="footer">
-    <p>Join the legend. <a href="https://pump.fun" target="_blank">Buy on Pump.fun</a> | <a href="https://x.com/LongmenX" target="_blank">Follow us on X</a></p>
-  </div>
+  <footer>
+    <p>Join the legend. 
+      <a href="https://pump.fun" target="_blank">Buy on Pump.fun</a> | 
+      <a href="https://x.com/LongmenX" target="_blank">Follow us on X</a>
+    </p>
+  </footer>
 
 </body>
 </html>

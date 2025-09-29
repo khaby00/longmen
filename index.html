@@ -3,10 +3,173 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>$LONGMEN Token</title>
+  <title>The Leap of Longmen</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;900&family=Cinzel:wght@500;700&family=Noto+Serif+SC:wght@600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Cinzel', serif;
+      background: #000;
+      color: #e0e0e0;
+      text-align: center;
+    }
+
+    /* --- HERO SECTION --- */
+    .hero {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      background: url("https://i.postimg.cc/rm6H3TWf/carp-upscaled.jpg") no-repeat center center/cover;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+    .hero::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0, 0, 0, 0.7);
+    }
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      color: #fff;
+    }
+    .hero h1 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 3.8rem;
+      font-weight: 900;
+      background: linear-gradient(90deg, #FFD700, #FF4500);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 0 25px rgba(255, 215, 0, 0.8);
+      margin-bottom: 10px;
+    }
+    .hero h2 {
+      font-family: 'Noto Serif SC', serif;
+      font-size: 2.2rem;
+      font-weight: 600;
+      color: #00ff9d;
+      text-shadow: 0 0 15px rgba(0, 255, 128, 0.8);
+      margin-bottom: 25px;
+    }
+
+    /* --- BUTTONS --- */
+    .cta {
+      display: inline-block;
+      margin: 12px 10px;
+      padding: 14px 32px;
+      border-radius: 40px;
+      font-size: 1.2rem;
+      font-family: 'Orbitron', sans-serif;
+      text-transform: uppercase;
+      font-weight: 700;
+      color: #fff;
+      background: linear-gradient(90deg, #FFD700, #FF6347);
+      text-decoration: none;
+      box-shadow: 0 0 20px rgba(255, 215, 0, 0.9);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .cta:hover {
+      transform: scale(1.08);
+      box-shadow: 0 0 35px rgba(255, 215, 0, 1);
+    }
+
+    /* --- CONTENT SECTIONS --- */
+    section {
+      max-width: 900px;
+      margin: 60px auto;
+      padding: 30px;
+      border-radius: 20px;
+      background: rgba(0, 0, 0, 0.7);
+      box-shadow: 0 0 25px rgba(255, 215, 0, 0.2);
+      font-size: 1.1rem;
+      line-height: 1.7;
+      text-align: justify;
+    }
+    section h2 {
+      text-align: center;
+      font-size: 2rem;
+      margin-bottom: 20px;
+      background: linear-gradient(90deg, #FFD700, #FF4500);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    section p {
+      margin-bottom: 18px;
+    }
+    section .cn {
+      font-family: 'Noto Serif SC', serif;
+      font-size: 1.05rem;
+      color: #00ff9d;
+      text-align: justify;
+      margin-bottom: 20px;
+    }
+
+    /* --- FOOTER --- */
+    .footer {
+      margin: 60px 0 30px;
+      font-size: 1rem;
+      color: #bbb;
+      font-family: 'Orbitron', sans-serif;
+    }
+    .footer a {
+      color: #FFD700;
+      text-decoration: none;
+      font-weight: bold;
+      text-shadow: 0 0 10px rgba(255, 215, 0, 0.9);
+    }
+    .footer a:hover {
+      color: #fff;
+    }
+  </style>
 </head>
 <body>
-  <h1>Welcome to $LONGMEN</h1>
-  <p>The official homepage of the $LONGMEN token.</p>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>The Leap of Longmen</h1>
+      <h2>鲤鱼跃龙门 — 区块链上的传奇</h2>
+      <a href="https://pump.fun" target="_blank" class="cta">Buy on Pump.fun</a>
+      <a href="https://x.com/LongmenX" target="_blank" class="cta">Follow us on X</a>
+    </div>
+  </section>
+
+  <!-- LEGEND -->
+  <section>
+    <h2>The Legend · 传奇</h2>
+    <p>In ancient China, the Yellow River flowed with countless golden carps. Legends told that any carp bold enough to leap the roaring waterfall at Longmen would be transformed into a mighty dragon — a symbol of power, destiny, and greatness.</p>
+    <p class="cn">在古代中国，黄河里游着无数金色的鲤鱼。传说，任何一条敢于跃过龙门瀑布的鲤鱼，都会化身为强大的龙 —— 权力、命运与伟大的象征。</p>
+  </section>
+
+  <!-- MEME GAP -->
+  <section>
+    <h2>The Untapped Meme · 未被点燃的传奇</h2>
+    <p>Dogecoin peaked at <strong>$88 billion</strong>. Shiba Inu and Pepe created overnight millionaires. Memes drive culture and markets alike.</p>
+    <p class="cn">狗狗币的市值曾高达<strong>880亿美元</strong>。柴犬币与佩佩币造就了一夜暴富的奇迹。梗既驱动文化，也驱动市场。</p>
+    <p>Yet among China’s <strong>1.4 billion people</strong>, the Carp’s Leap — one of the nation’s greatest legends — has no meme coin. None. The opportunity is untouched.</p>
+    <p class="cn">然而在<strong>14亿中国人</strong>之间，鲤鱼跃龙门 —— 这一古老而伟大的传说 —— 至今没有属于它的梗币。机会仍未被点燃。</p>
+  </section>
+
+  <!-- NUMBERS -->
+  <section>
+    <h2>The Numbers · 数据</h2>
+    <p>1 in 3 internet users worldwide recognize Doge. Almost nobody outside China knows the Carp’s Leap. This is an asymmetric opportunity: a global story waiting to be unleashed.</p>
+    <p class="cn">全球每三位网民中就有一人认识狗狗币。而中国之外，几乎无人知晓鲤鱼跃龙门。这是一次极不对称的机会：一个等待被释放的全球传奇。</p>
+    <p><strong>This is China’s Doge moment. This is the Leap of Longmen.</strong></p>
+    <p class="cn"><strong>这是中国的狗狗币时刻。这是龙门之跃。</strong></p>
+  </section>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <p>Join the legend · 加入传奇 <br>
+    <a href="https://pump.fun" target="_blank">Buy on Pump.fun</a> | 
+    <a href="https://x.com/LongmenX" target="_blank">Follow us on X</a></p>
+  </div>
+
 </body>
 </html>

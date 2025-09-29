@@ -20,7 +20,6 @@
       position: relative;
       width: 100%;
       height: 100vh;
-      background: url("hero.jpg") no-repeat center center/cover;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -28,19 +27,20 @@
       text-align: center;
       overflow: hidden;
     }
-    .hero::before {
-      content: "";
-      position: absolute;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: rgba(0, 0, 0, 0.65); /* dark overlay */
-    }
-    .hero img {
+    .hero-img {
       position: absolute;
       top: 0; left: 0;
       width: 100%;
       height: 100%;
       object-fit: cover;
-      z-index: -2;
+      z-index: -1;
+    }
+    .hero::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0, 0, 0, 0.65); /* dark overlay */
+      z-index: 0;
     }
     .hero-content {
       position: relative;
@@ -123,8 +123,7 @@
 
   <!-- HERO -->
   <section class="hero">
-    <!-- fallback image -->
-    <img src="hero.jpg" alt="The Leap of Longmen background">
+    <img src="hero.jpg" alt="The Leap of Longmen background" class="hero-img">
     
     <div class="hero-content">
       <h1>The Leap of Longmen</h1>

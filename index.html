@@ -6,14 +6,10 @@
   <title>The Leap of Longmen</title>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;900&family=Cinzel+Decorative:wght@700&display=swap" rel="stylesheet">
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
-      background: #000;
-      color: #fff;
+      background: #2c1a0f; /* dark bronze */
+      color: #f5f5f5;
       font-family: 'Cinzel Decorative', cursive;
       overflow-x: hidden;
     }
@@ -27,10 +23,9 @@
       justify-content: center;
       align-items: center;
       text-align: center;
-      background: linear-gradient(180deg, #000 0%, #0a0a23 100%);
+      background: linear-gradient(180deg, #2c1a0f 0%, #3b2a20 100%);
       overflow: hidden;
     }
-
     .hero video, .hero img {
       position: absolute;
       top: 0; left: 0;
@@ -39,42 +34,37 @@
       object-fit: cover;
       z-index: -2;
     }
-
     .hero::before {
       content: "";
       position: absolute;
       top: 0; left: 0; right: 0; bottom: 0;
-      background: rgba(0,0,0,0.6);
+      background: rgba(44, 26, 15, 0.7);
       z-index: -1;
     }
-
     .hero h1 {
       font-size: 4rem;
       font-family: 'Orbitron', sans-serif;
-      background: linear-gradient(90deg, #ffcc00, #ff3300, #00e5ff);
+      background: linear-gradient(90deg, #ffd700, #ff3300, #b22222);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       animation: glow 3s infinite alternate;
     }
-
     @keyframes glow {
-      from { text-shadow: 0 0 10px #ff9900; }
-      to { text-shadow: 0 0 30px #00e5ff; }
+      from { text-shadow: 0 0 15px #ff3300; }
+      to { text-shadow: 0 0 35px #ffd700; }
     }
-
     .hero p {
       margin-top: 15px;
       font-size: 1.4rem;
-      color: #ddd;
+      color: #ffd700;
       max-width: 600px;
     }
-
     .cta {
       margin-top: 30px;
       padding: 15px 35px;
       border-radius: 50px;
-      background: linear-gradient(90deg, #ffcc00, #ff3300);
-      color: #000;
+      background: linear-gradient(90deg, #ffd700, #ff3300);
+      color: #2c1a0f;
       font-weight: bold;
       font-size: 1.2rem;
       text-transform: uppercase;
@@ -82,76 +72,86 @@
     }
     .cta:hover {
       transform: scale(1.1);
-      box-shadow: 0 0 25px #ff6600;
+      box-shadow: 0 0 25px #ff4500;
     }
 
-    /* --- ABOUT --- */
-    .about {
-      padding: 80px 20px;
-      background: #0a0a23;
+    /* --- LEGEND STORY --- */
+    .story {
+      padding: 100px 20px;
+      background: #3b2a20;
       text-align: center;
     }
-    .about h2 {
-      font-size: 2.5rem;
-      margin-bottom: 20px;
-      color: #ffcc00;
+    .story h2 {
+      font-size: 2.8rem;
+      margin-bottom: 25px;
+      color: #ffd700;
     }
-    .about p {
-      max-width: 800px;
-      margin: auto;
-      font-size: 1.2rem;
-      line-height: 1.7;
+    .story p {
+      max-width: 900px;
+      margin: 15px auto;
+      font-size: 1.3rem;
+      line-height: 1.8;
+      color: #f5f5f5;
     }
 
-    /* --- VISION --- */
-    .vision {
-      padding: 80px 20px;
-      background: linear-gradient(180deg, #000 0%, #111 100%);
+    /* --- FUTURISTIC STATS --- */
+    .stats {
+      padding: 100px 20px;
+      background: linear-gradient(180deg, #2c1a0f 0%, #3b2a20 100%);
       text-align: center;
     }
-    .vision h2 {
+    .stats h2 {
       font-size: 2.5rem;
-      margin-bottom: 40px;
-      background: linear-gradient(90deg, #00e5ff, #0077ff);
+      margin-bottom: 50px;
+      background: linear-gradient(90deg, #ffd700, #ff3300);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
-    .cards {
+    .stat-grid {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      gap: 30px;
+      gap: 40px;
     }
-    .card {
+    .stat {
       flex: 1 1 250px;
-      max-width: 300px;
-      background: rgba(255,255,255,0.05);
-      padding: 30px;
+      max-width: 280px;
+      background: rgba(178, 34, 34, 0.15);
+      border: 1px solid rgba(255, 215, 0, 0.3);
+      padding: 40px;
       border-radius: 20px;
-      box-shadow: 0 0 20px rgba(0,229,255,0.3);
+      box-shadow: 0 0 15px rgba(255, 69, 0, 0.3);
       transition: transform 0.3s, box-shadow 0.3s;
     }
-    .card:hover {
+    .stat:hover {
       transform: translateY(-10px);
-      box-shadow: 0 0 40px rgba(0,229,255,0.7);
+      box-shadow: 0 0 40px rgba(255, 51, 0, 0.6);
     }
-    .card h3 {
+    .stat h3 {
+      font-size: 2.5rem;
+      color: #ffd700;
       margin-bottom: 15px;
-      font-size: 1.4rem;
-      color: #00e5ff;
+      font-family: 'Orbitron', sans-serif;
+    }
+    .stat p {
+      font-size: 1.1rem;
+      color: #ddd;
     }
 
     /* --- FOOTER --- */
     footer {
       padding: 40px 20px;
-      background: #0a0a23;
+      background: #3b2a20;
       font-size: 0.9rem;
       color: #aaa;
     }
     footer a {
-      color: #ffcc00;
+      color: #ffd700;
       text-decoration: none;
       font-weight: bold;
+    }
+    footer a:hover {
+      color: #ff3300;
     }
   </style>
 </head>
@@ -159,38 +159,42 @@
 
   <!-- HERO -->
   <section class="hero">
-    <!-- Replace with looping video for more impact -->
     <video autoplay muted loop playsinline>
       <source src="longmen.mp4" type="video/mp4">
       <img src="hero.jpg" alt="The Leap of Longmen">
     </video>
-
     <h1>The Leap of Longmen</h1>
-    <p>From Carp to Dragon — A legend reborn in the digital age.</p>
+    <p>From Carp to Dragon — The fire of transformation awaits.</p>
     <a href="https://pump.fun" target="_blank" class="cta">Join the Leap</a>
   </section>
 
-  <!-- ABOUT -->
-  <section class="about">
-    <h2>The Legend</h2>
-    <p>In ancient China, carps swam upstream, seeking the gate of Longmen. Few dared the leap. Fewer still succeeded. Those who did became dragons — eternal, powerful, free. Today, the chain is our river, and Longmen rises once more. Will you leap?</p>
+  <!-- LEGEND STORY -->
+  <section class="story">
+    <h2>The Ancient Trial</h2>
+    <p>In the rivers of old China, carps swam against impossible currents. At Longmen’s roaring gates, they faced the final trial: a waterfall as high as heaven itself. Most failed. Some tried again. A rare few leapt — and became dragons.</p>
+    <p>This was more than a tale. It was a code of transformation. From small to great, from ordinary to eternal. The Leap was a symbol of courage, persistence, and destiny.</p>
+    <p>Today, in the age of chain and meme, the gates rise once more. Not in stone, but in code. Not only for carps, but for all who dare to leap.</p>
   </section>
 
-  <!-- VISION -->
-  <section class="vision">
-    <h2>Our Path</h2>
-    <div class="cards">
-      <div class="card">
-        <h3>Community First</h3>
-        <p>A movement powered by dreamers, builders, and believers.</p>
+  <!-- FUTURISTIC STATS -->
+  <section class="stats">
+    <h2>The Numbers Behind the Myth</h2>
+    <div class="stat-grid">
+      <div class="stat">
+        <h3>1.4B+</h3>
+        <p>People in China who know the legend of the carp and the dragon.</p>
       </div>
-      <div class="card">
-        <h3>Myth Meets Future</h3>
-        <p>An ancient story reborn through digital culture and chain technology.</p>
+      <div class="stat">
+        <h3>0</h3>
+        <p>Global memes based on this myth. No Carp. No Dragon. Yet.</p>
       </div>
-      <div class="card">
-        <h3>The Leap</h3>
-        <p>More than a token — it is transformation, risk, and reward.</p>
+      <div class="stat">
+        <h3>2</h3>
+        <p>The world’s most famous memes: Doge 🐕 and Pepe 🐸. Both Western.</p>
+      </div>
+      <div class="stat">
+        <h3>∞</h3>
+        <p>The potential of a meme born from China’s greatest legend, standing shoulder to shoulder with Doge and Pepe.</p>
       </div>
     </div>
   </section>

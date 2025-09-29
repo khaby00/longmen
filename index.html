@@ -15,100 +15,81 @@
       text-align: center;
     }
 
-    /* --- HERO --- */
+    /* --- HERO SECTION --- */
     .hero {
       position: relative;
       width: 100%;
       height: 100vh;
+      background: url("https://i.postimg.cc/PqXK0qFh/carp.jpg") no-repeat center center/cover;
       display: flex;
+      flex-direction: column;
       justify-content: center;
       align-items: center;
-      flex-direction: column;
       text-align: center;
-      background: black;
-      overflow: hidden;
+    }
+    .hero::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0, 0, 0, 0.7); /* overlay so text is readable */
+    }
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      color: #fff;
     }
     .hero h1 {
       font-family: 'Orbitron', sans-serif;
-      font-size: 4rem;
+      font-size: 3.8rem;
       font-weight: 900;
-      background: linear-gradient(90deg, #00ff99, #ffd700);
+      background: linear-gradient(90deg, #00ff88, #00e5ff);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      text-shadow: 0 0 30px rgba(0, 255, 128, 0.7);
-      margin-bottom: 15px;
+      text-shadow: 0 0 25px rgba(0, 255, 150, 0.9);
+      margin: 0 0 15px;
     }
     .hero .subtitle {
-      font-size: 1.5rem;
-      color: #00ff99;
-      text-shadow: 0 0 15px rgba(0, 255, 128, 0.7);
-      margin-bottom: 30px;
+      font-size: 1.6rem;
+      color: #00ffcc;
+      text-shadow: 0 0 15px rgba(0, 229, 255, 0.9);
+      margin-bottom: 25px;
       font-family: 'Orbitron', sans-serif;
     }
+
+    /* --- BUTTONS --- */
     .cta {
       display: inline-block;
-      margin: 10px;
-      padding: 14px 32px;
+      margin: 12px 10px;
+      padding: 14px 28px;
       border-radius: 40px;
       font-size: 1.2rem;
       font-family: 'Orbitron', sans-serif;
       text-transform: uppercase;
       font-weight: 700;
       color: #fff;
-      background: linear-gradient(90deg, #00ff99, #ffd700);
+      background: linear-gradient(90deg, #00ff88, #00e5ff);
       text-decoration: none;
-      box-shadow: 0 0 20px rgba(0, 255, 128, 0.8);
+      box-shadow: 0 0 20px rgba(0, 229, 255, 0.8);
       transition: transform 0.2s, box-shadow 0.2s;
     }
     .cta:hover {
-      transform: scale(1.1);
-      box-shadow: 0 0 35px rgba(255, 215, 0, 1);
+      transform: scale(1.08);
+      box-shadow: 0 0 35px rgba(0, 229, 255, 1);
     }
 
     /* --- STORY --- */
     .story {
       max-width: 900px;
       margin: 60px auto;
-      padding: 40px;
-      border: 1px solid rgba(0, 255, 128, 0.6);
+      padding: 30px;
+      border: 2px solid rgba(0, 229, 255, 0.7);
       border-radius: 20px;
-      background: rgba(20, 20, 20, 0.85);
-      box-shadow: 0 0 25px rgba(0, 255, 128, 0.5);
-      font-size: 1.2rem;
-      line-height: 1.8;
+      background: rgba(0, 0, 0, 0.75);
+      box-shadow: 0 0 25px rgba(0, 229, 255, 0.6);
+      font-size: 1.1rem;
+      line-height: 1.7;
       text-align: justify;
       color: #f5f5f5;
-    }
-    .story strong {
-      color: #00ff99;
-    }
-
-    /* --- NUMBERS SECTION --- */
-    .numbers {
-      max-width: 1000px;
-      margin: 80px auto;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 30px;
-      text-align: center;
-    }
-    .number-box {
-      background: rgba(0, 0, 0, 0.7);
-      border: 1px solid rgba(0, 255, 128, 0.6);
-      border-radius: 20px;
-      padding: 30px;
-      box-shadow: 0 0 20px rgba(0, 255, 128, 0.5);
-    }
-    .number-box h2 {
-      font-size: 3rem;
-      font-family: 'Orbitron', sans-serif;
-      background: linear-gradient(90deg, #00ff99, #ffd700);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      margin-bottom: 15px;
-    }
-    .number-box p {
-      font-size: 1.1rem;
     }
 
     /* --- FOOTER --- */
@@ -119,10 +100,10 @@
       font-family: 'Orbitron', sans-serif;
     }
     .footer a {
-      color: #00ff99;
+      color: #00ffcc;
       text-decoration: none;
       font-weight: bold;
-      text-shadow: 0 0 10px rgba(0, 255, 128, 0.8);
+      text-shadow: 0 0 10px rgba(0, 255, 200, 0.9);
     }
     .footer a:hover {
       color: #fff;
@@ -133,38 +114,25 @@
 
   <!-- HERO -->
   <section class="hero">
-    <h1>The Leap of Longmen</h1>
-    <div class="subtitle">From Carp to Dragon — The Meme Awakens</div>
-    <a href="https://pump.fun" target="_blank" class="cta">Buy on Pump.fun</a>
-    <a href="https://x.com/LongmenX" target="_blank" class="cta">Follow on X</a>
+    <div class="hero-content">
+      <h1>The Leap of Longmen</h1>
+      <div class="subtitle">From Carp to Dragon — A Legend Reborn on Chain</div>
+      <a href="https://pump.fun" target="_blank" class="cta">Buy on Pump.fun</a>
+      <a href="https://x.com/LongmenX" target="_blank" class="cta">Follow us on X</a>
+    </div>
   </section>
 
   <!-- STORY -->
   <div class="story">
-    <p>In the ancient rivers of China, carps swam tirelessly, dreaming of a single destiny: <strong>the Leap of Longmen</strong>. To leap the roaring waterfall was to transcend — to become a dragon, a creature of power, majesty, and eternity.</p>
-    <p>For centuries, the myth inspired emperors, poets, and dreamers. Yet in crypto, where every culture births memes of fortune, one truth remains: <strong>China has no great meme coin</strong>. Doge belongs to the West. Pepe belongs to the West. But the dragon — the dragon is ours to awaken.</p>
-    <p><strong>Longmen is the first true cultural meme coin born of China’s legend, built for the world. A story as old as rivers, now reborn on-chain.</strong></p>
+    <p>In the ancient rivers of China, countless carps swam against the current, chasing the impossible. At Longmen, the roaring waterfall challenged them. Few dared to leap. Fewer still made it to the top. But those who succeeded were transformed — carps no more, but dragons, rulers of the skies.</p>
+    <p>Today, that leap is not through water, but through chain. The digital age demands its own myth — and Longmen rises to answer. There are over <strong>1.4 billion people in China</strong>, yet no great meme coin born from their culture has ever reached the heights of Doge or Pepe. The carp leaps — and with it, a new chapter begins.</p>
+    <p><strong>1 in 3 people worldwide have heard of Doge. 0 in 3 know the carp’s leap. That changes now.</strong></p>
+    <p>Longmen is more than a meme. It’s a story, a movement, a transformation. From East to West, from carp to dragon — this is the leap you’ve been waiting for.</p>
   </div>
-
-  <!-- NUMBERS -->
-  <section class="numbers">
-    <div class="number-box">
-      <h2>1.4B+</h2>
-      <p>People in China know the legend of the carp and the dragon. This is not niche. This is cultural inevitability.</p>
-    </div>
-    <div class="number-box">
-      <h2>0</h2>
-      <p>No global meme coin has captured this myth. Doge and Pepe had their time. Now it’s Longmen’s turn.</p>
-    </div>
-    <div class="number-box">
-      <h2>∞</h2>
-      <p>The potential of a meme backed by thousands of years of legend. This is more than hype — it’s destiny.</p>
-    </div>
-  </section>
 
   <!-- FOOTER -->
   <div class="footer">
-    <p>Leap with us: <a href="https://pump.fun" target="_blank">Buy on Pump.fun</a> | <a href="https://x.com/LongmenX" target="_blank">Follow on X</a></p>
+    <p>Be part of the legend. <a href="https://pump.fun" target="_blank">Buy on Pump.fun</a> | <a href="https://x.com/LongmenX" target="_blank">Follow us on X</a></p>
   </div>
 
 </body>

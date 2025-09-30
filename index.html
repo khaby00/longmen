@@ -1,259 +1,225 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>The Leap of Longmen</title>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;900&family=Cinzel:wght@500;700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Longmen - The Carp Becomes the Dragon</title>
   <style>
     body {
       margin: 0;
-      padding: 0;
-      font-family: 'Cinzel', serif;
-      background: #000;
+      font-family: "Poppins", sans-serif;
+      background: black;
       color: #f5f5f5;
-      text-align: center;
       overflow-x: hidden;
     }
 
-    /* HERO */
+    /* Background Hero */
     .hero {
-      position: relative;
-      width: 100%;
       height: 100vh;
       background: url("https://i.postimg.cc/rm6H3TWf/carp-upscaled.jpg") no-repeat center center/cover;
       display: flex;
       justify-content: center;
       align-items: center;
       text-align: center;
+      color: gold;
+      position: relative;
     }
-    .hero::before {
+
+    .hero::after {
       content: "";
       position: absolute;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: rgba(0, 0, 0, 0.65);
+      inset: 0;
+      background: rgba(0, 0, 0, 0.5);
     }
+
     .hero-content {
       position: relative;
-      z-index: 1;
-      color: #fff;
-      animation: fadeInUp 2s ease;
-    }
-    .hero h1 {
-      font-family: 'Orbitron', sans-serif;
-      font-size: 4rem;
-      font-weight: 900;
-      background: linear-gradient(90deg, #ffd700, #ff4500);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      text-shadow: 0 0 25px rgba(255, 215, 0, 0.9);
-      margin: 0 0 15px;
-    }
-    .hero .subtitle {
-      font-size: 1.5rem;
-      color: #ffd700;
-      text-shadow: 0 0 15px rgba(255, 215, 0, 0.8);
-      margin-bottom: 25px;
-      font-family: 'Orbitron', sans-serif;
+      z-index: 2;
     }
 
-    /* BUTTONS */
-    .cta {
-      display: inline-block;
-      margin: 12px 10px;
-      padding: 14px 28px;
-      border-radius: 40px;
-      font-size: 1.2rem;
-      font-family: 'Orbitron', sans-serif;
-      text-transform: uppercase;
-      font-weight: 700;
-      color: #fff;
-      background: linear-gradient(90deg, #32cd32, #006400);
-      text-decoration: none;
-      box-shadow: 0 0 20px rgba(50, 205, 50, 0.8);
-      transition: transform 0.2s, box-shadow 0.2s;
-    }
-    .cta:hover {
-      transform: scale(1.08);
-      box-shadow: 0 0 30px rgba(50, 205, 50, 1);
+    h1 {
+      font-size: 3.5rem;
+      margin: 0;
+      color: gold;
     }
 
-    /* SECTIONS */
-    section {
-      max-width: 1000px;
-      margin: 80px auto;
-      padding: 30px;
-      border: 1px solid rgba(255, 215, 0, 0.5);
-      border-radius: 20px;
-      background: rgba(0, 0, 0, 0.7);
-      box-shadow: 0 0 25px rgba(255, 215, 0, 0.5);
-      font-size: 1.2rem;
-      line-height: 1.7;
-      text-align: justify;
+    h2 {
+      color: #00ff99;
+    }
+
+    .section {
+      max-width: 900px;
+      margin: 4rem auto;
+      padding: 0 1rem;
       opacity: 0;
-      transform: translateY(30px);
-      transition: all 1s ease;
+      transform: translateY(50px);
+      transition: all 1s ease-out;
     }
-    section.visible {
+
+    .section.visible {
       opacity: 1;
       transform: translateY(0);
     }
-    h2 {
-      font-family: 'Orbitron', sans-serif;
-      font-size: 2rem;
-      margin-bottom: 20px;
-      color: #ffd700;
-      text-align: center;
-    }
 
-    /* STATS */
     .stats {
       display: flex;
       justify-content: space-around;
       flex-wrap: wrap;
-      margin-top: 20px;
+      margin-top: 2rem;
     }
+
     .stat {
       font-size: 2rem;
-      font-weight: bold;
-      margin: 20px;
-      color: #32cd32;
-      text-shadow: 0 0 15px rgba(50, 205, 50, 0.8);
+      color: #00ff99;
     }
 
-    /* FOOTER */
-    .footer {
-      margin: 60px 0 30px;
-      font-size: 1rem;
-      color: #bbb;
-      font-family: 'Orbitron', sans-serif;
+    .roadmap {
+      margin-top: 2rem;
     }
-    .footer a {
-      color: #32cd32;
+
+    .roadmap p {
+      margin: 0.5rem 0;
+    }
+
+    .cta {
+      text-align: center;
+      margin: 4rem 0;
+    }
+
+    .cta a {
+      display: inline-block;
+      margin: 0.5rem;
+      padding: 0.75rem 1.5rem;
+      background: gold;
+      color: black;
       text-decoration: none;
       font-weight: bold;
-      text-shadow: 0 0 10px rgba(50, 205, 50, 0.9);
-    }
-    .footer a:hover {
-      color: #fff;
+      border-radius: 8px;
+      transition: 0.3s;
     }
 
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(40px); }
-      to { opacity: 1; transform: translateY(0); }
+    .cta a:hover {
+      background: #00ff99;
+      color: black;
+    }
+
+    /* Language Toggle */
+    .lang-toggle {
+      position: fixed;
+      top: 1rem;
+      right: 1rem;
+      background: rgba(255, 215, 0, 0.8);
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+      z-index: 1000;
     }
   </style>
 </head>
 <body>
+  <div class="lang-toggle" onclick="toggleLang()">中文</div>
 
-  <!-- HERO -->
   <section class="hero">
     <div class="hero-content">
-      <h1>The Leap of Longmen</h1>
-      <div class="subtitle">From Carp to Dragon — The First Great Meme of China</div>
-      <a href="https://pump.fun" target="_blank" class="cta">Buy on Pump.fun</a>
-      <a href="https://x.com/LongmenX" target="_blank" class="cta">Follow us on X</a>
+      <h1 data-en="Longmen" data-zh="龙门">Longmen</h1>
+      <p data-en="The Carp Becomes the Dragon" data-zh="鲤鱼跃龙门">The Carp Becomes the Dragon</p>
     </div>
   </section>
 
-  <!-- STORY -->
-  <section class="reveal">
-    <h2>The Legend</h2>
-    <p>In ancient China, carps swam against the mighty Yellow River, striving to leap the thundering gates of Longmen. Legend promised that any carp who succeeded would transform into a dragon — a creature of boundless power, wisdom, and majesty. Few made the leap, but those who did became eternal.</p>
-    <p>Today, the legend is reborn. Longmen rises not in stone, but on the chain. From carp to dragon, from dream to destiny — this is the meme that will stand beside Doge and Pepe, yet rooted in the power of Chinese culture.</p>
+  <section class="section">
+    <h2 data-en="The Legend" data-zh="传说">The Legend</h2>
+    <p data-en="In Chinese mythology, the carp that dares to leap the waterfall transforms into a dragon. Longmen is more than a token—it is destiny, ambition, and transformation." 
+       data-zh="在中国神话中，勇敢跃过龙门的鲤鱼会化身为龙。Longmen 不仅仅是一个代币——它象征着命运、雄心和蜕变。">
+       In Chinese mythology, the carp that dares to leap the waterfall transforms into a dragon. Longmen is more than a token—it is destiny, ambition, and transformation.
+    </p>
   </section>
 
-  <!-- STATS -->
-  <section class="reveal">
-    <h2>The Numbers</h2>
+  <section class="section">
+    <h2 data-en="Numbers That Impress" data-zh="令人震撼的数字">Numbers That Impress</h2>
     <div class="stats">
-      <div class="stat" data-target="50000000000">$0</div>
-      <div class="stat" data-target="1400000000">0 People</div>
-      <div class="stat" data-target="0">0 Memes</div>
+      <div class="stat" data-target="888888888">0</div>
+      <div class="stat" data-target="1400000000">0</div>
+      <div class="stat" data-target="50000000000">0</div>
     </div>
-    <p><strong>$50 Billion+</strong> market size of top meme coins. <br>
-       <strong>1.4 Billion+</strong> Chinese people, waiting for their own meme. <br>
-       <strong>Zero</strong> carp memes. Until now.</p>
+    <p data-en="888,888,888 Supply. 1.4 Billion Chinese. A $50B+ Meme Market. The leap is inevitable." 
+       data-zh="888,888,888 总供应量。14 亿中国人。500 亿美元以上的 Meme 市场。跃龙门已是必然。">
+       888,888,888 Supply. 1.4 Billion Chinese. A $50B+ Meme Market. The leap is inevitable.
+    </p>
   </section>
 
-  <!-- TOKENOMICS -->
-  <section class="reveal">
-    <h2>Tokenomics</h2>
-    <p><strong>Total Supply:</strong> 888,888,888 — the number of fortune and prosperity in Chinese culture.</p>
-    <p>Fair launch on Pump.fun. 100% community powered. No presale, no VCs. Only the leap matters.</p>
+  <section class="section">
+    <h2 data-en="Roadmap" data-zh="路线图">Roadmap</h2>
+    <div class="roadmap">
+      <p data-en="Phase 1: Birth of the Carp – Launch and community formation." data-zh="阶段一：鲤鱼诞生 – 上线与社区形成。"></p>
+      <p data-en="Phase 2: The Leap – Growth, listings, influencer attention." data-zh="阶段二：鲤鱼跃龙门 – 增长、上所、获得关注。"></p>
+      <p data-en="Phase 3: The Dragon Awakens – Viral memes, Chinese & global adoption." data-zh="阶段三：龙之觉醒 – 病毒式传播，中国与全球采用。"></p>
+      <p data-en="Phase 4: Meme Empire – Standing with Doge, Pepe, Shiba." data-zh="阶段四：Meme 帝国 – 与 Doge、Pepe、Shiba 并肩。"></p>
+    </div>
   </section>
 
-  <!-- ROADMAP -->
-  <section class="reveal">
-    <h2>Roadmap</h2>
-    <p><strong>Phase 1 — Birth of the Carp:</strong> The token launches, the community gathers, and the current begins to flow.</p>
-    <p><strong>Phase 2 — The Leap:</strong> Growth, listings, and viral attention. The carp struggles upstream, leaping against the waterfall.</p>
-    <p><strong>Phase 3 — The Dragon Awakens:</strong> Transformation. Explosive adoption, Chinese and global recognition. Memes spread like wildfire.</p>
-    <p><strong>Phase 4 — Meme Empire:</strong> Longmen rises to stand beside Doge, Pepe, and Shiba. A global cultural icon is born.</p>
+  <section class="section">
+    <h2 data-en="Why Now?" data-zh="为何是现在？">Why Now?</h2>
+    <p data-en="Doge = Dog 🐶. Shiba = Dog 🐕. Pepe = Frog 🐸. But China has no great meme coin. Longmen is the first cultural meme coin of China—destined to rise." 
+       data-zh="Doge = 狗 🐶。Shiba = 狗 🐕。Pepe = 青蛙 🐸。但是中国还没有伟大的 Meme 币。Longmen 是中国第一个文化 Meme 币——注定崛起。">
+       Doge = Dog 🐶. Shiba = Dog 🐕. Pepe = Frog 🐸. But China has no great meme coin. Longmen is the first cultural meme coin of China—destined to rise.
+    </p>
   </section>
 
-  <!-- WHY NOW -->
-  <section class="reveal">
-    <h2>Why Now?</h2>
-    <p>Doge = 🐶 Dog. <br>
-       Shiba = 🐕 Dog. <br>
-       Pepe = 🐸 Frog. <br>
-       But China? Still waiting for its meme king. 🐉</p>
-    <p>Longmen is the first great cultural meme coin of China. A legend reborn for the digital age, with 1.4 billion people ready to make the leap.</p>
+  <section class="cta section">
+    <h2 data-en="Join the Leap" data-zh="加入跃龙门">Join the Leap</h2>
+    <p data-en="The leap cannot happen without you. Together, we are the carp—and together, we become the dragon." 
+       data-zh="没有你，跃龙门无法实现。我们共同是鲤鱼——一起化身为龙。">
+       The leap cannot happen without you. Together, we are the carp—and together, we become the dragon.
+    </p>
+    <a href="https://pump.fun" target="_blank">Buy on Pump.fun</a>
+    <a href="https://x.com" target="_blank">Follow on X</a>
   </section>
-
-  <!-- COMMUNITY -->
-  <section class="reveal">
-    <h2>Join the Legend</h2>
-    <p><em>"The Leap cannot happen without you. Together, we are the carp — and together, we become the dragon."</em></p>
-    <a href="https://pump.fun" target="_blank" class="cta">Buy on Pump.fun</a>
-    <a href="https://x.com/LongmenX" target="_blank" class="cta">Follow on X</a>
-  </section>
-
-  <!-- FOOTER -->
-  <div class="footer">
-    <p>Join the legend. <a href="https://pump.fun" target="_blank">Buy on Pump.fun</a> | <a href="https://x.com/LongmenX" target="_blank">Follow us on X</a></p>
-  </div>
 
   <script>
-    // Scroll reveal
-    const reveals = document.querySelectorAll(".reveal");
+    // Fade-in effect
+    const sections = document.querySelectorAll('.section');
     const observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("visible");
-        }
+        if (entry.isIntersecting) entry.target.classList.add('visible');
       });
     }, { threshold: 0.2 });
-    reveals.forEach(r => observer.observe(r));
+    sections.forEach(section => observer.observe(section));
 
-    // Animated counters
-    const counters = document.querySelectorAll(".stat");
-    const speed = 100; // lower = faster
-    const counterObserver = new IntersectionObserver(entries => {
+    // Number counters
+    const stats = document.querySelectorAll('.stat');
+    const statObserver = new IntersectionObserver(entries => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          const updateCount = (counter) => {
-            const target = +counter.getAttribute("data-target");
-            const count = +counter.innerText.replace(/\D/g, "");
-            const inc = Math.ceil(target / speed);
+          const stat = entry.target;
+          const target = +stat.getAttribute('data-target');
+          let count = 0;
+          const increment = target / 200;
+          const update = () => {
+            count += increment;
             if (count < target) {
-              counter.innerText = counter.getAttribute("data-target").includes("People")
-                ? (count + inc) + " People"
-                : "$" + (count + inc).toLocaleString();
-              setTimeout(() => updateCount(counter), 20);
+              stat.textContent = Math.floor(count).toLocaleString();
+              requestAnimationFrame(update);
             } else {
-              counter.innerText = counter.getAttribute("data-target").includes("People")
-                ? target.toLocaleString() + " People"
-                : "$" + target.toLocaleString();
+              stat.textContent = target.toLocaleString();
             }
           };
-          counters.forEach(c => updateCount(c));
-          counterObserver.disconnect();
+          update();
+          statObserver.unobserve(stat);
         }
       });
-    }, { threshold: 0.5 });
-    counters.forEach(c => counterObserver.observe(c));
+    }, { threshold: 0.6 });
+    stats.forEach(stat => statObserver.observe(stat));
+
+    // Language toggle
+    let currentLang = "en";
+    function toggleLang() {
+      currentLang = currentLang === "en" ? "zh" : "en";
+      document.querySelectorAll("[data-en]").forEach(el => {
+        el.textContent = el.getAttribute(`data-${currentLang}`);
+      });
+      document.querySelector(".lang-toggle").textContent = currentLang === "en" ? "中文" : "EN";
+    }
   </script>
 </body>
 </html>

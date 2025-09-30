@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>The Leap of Longmen</title>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;900&family=Cinzel:wght@500;700&family=Noto+Serif+SC:wght@600&display=swap" rel="stylesheet">
+  <title>Longmen — The Leap</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;900&family=Cinzel:wght@500;700&display=swap" rel="stylesheet">
   <style>
     body {
       margin: 0;
@@ -13,9 +13,21 @@
       background: #000;
       color: #e0e0e0;
       text-align: center;
+      overflow-x: hidden;
     }
 
-    /* --- HERO SECTION --- */
+    /* Fade-in animation */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 1s ease, transform 1s ease;
+    }
+    .fade-in.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Hero Section */
     .hero {
       position: relative;
       width: 100%;
@@ -25,13 +37,13 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      text-align: center;
+      background-attachment: fixed; /* basic parallax */
     }
     .hero::before {
       content: "";
       position: absolute;
       top: 0; left: 0; right: 0; bottom: 0;
-      background: rgba(0, 0, 0, 0.7);
+      background: rgba(0, 0, 0, 0.65);
     }
     .hero-content {
       position: relative;
@@ -42,74 +54,101 @@
       font-family: 'Orbitron', sans-serif;
       font-size: 3.8rem;
       font-weight: 900;
-      background: linear-gradient(90deg, #FFD700, #FF4500);
+      background: linear-gradient(90deg, #FFD700, #ff4500);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       text-shadow: 0 0 25px rgba(255, 215, 0, 0.8);
-      margin-bottom: 10px;
+      margin: 0 0 15px;
     }
-    .hero h2 {
-      font-family: 'Noto Serif SC', serif;
-      font-size: 2.2rem;
-      font-weight: 600;
-      color: #00ff9d;
-      text-shadow: 0 0 15px rgba(0, 255, 128, 0.8);
+    .subtitle {
+      font-size: 1.4rem;
+      color: #90ee90;
+      text-shadow: 0 0 15px rgba(144, 238, 144, 0.8);
       margin-bottom: 25px;
+      font-family: 'Orbitron', sans-serif;
     }
-
-    /* --- BUTTONS --- */
     .cta {
       display: inline-block;
       margin: 12px 10px;
-      padding: 14px 32px;
+      padding: 14px 28px;
       border-radius: 40px;
       font-size: 1.2rem;
       font-family: 'Orbitron', sans-serif;
       text-transform: uppercase;
       font-weight: 700;
       color: #fff;
-      background: linear-gradient(90deg, #FFD700, #FF6347);
+      background: linear-gradient(90deg, #32CD32, #228B22);
       text-decoration: none;
-      box-shadow: 0 0 20px rgba(255, 215, 0, 0.9);
+      box-shadow: 0 0 20px rgba(50, 205, 50, 0.8);
       transition: transform 0.2s, box-shadow 0.2s;
     }
     .cta:hover {
       transform: scale(1.08);
-      box-shadow: 0 0 35px rgba(255, 215, 0, 1);
+      box-shadow: 0 0 30px rgba(50, 205, 50, 1);
     }
 
-    /* --- CONTENT SECTIONS --- */
-    section {
+    /* Story Section */
+    .story {
       max-width: 900px;
-      margin: 60px auto;
+      margin: 80px auto;
       padding: 30px;
+      border: 2px solid rgba(255, 215, 0, 0.7);
       border-radius: 20px;
       background: rgba(0, 0, 0, 0.7);
-      box-shadow: 0 0 25px rgba(255, 215, 0, 0.2);
-      font-size: 1.1rem;
+      box-shadow: 0 0 25px rgba(255, 215, 0, 0.6);
+      font-size: 1.2rem;
       line-height: 1.7;
       text-align: justify;
+      color: #f5f5f5;
     }
-    section h2 {
-      text-align: center;
-      font-size: 2rem;
-      margin-bottom: 20px;
-      background: linear-gradient(90deg, #FFD700, #FF4500);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-    section p {
-      margin-bottom: 18px;
-    }
-    section .cn {
-      font-family: 'Noto Serif SC', serif;
-      font-size: 1.05rem;
-      color: #00ff9d;
-      text-align: justify;
-      margin-bottom: 20px;
+    .story strong {
+      color: #FFD700;
+      text-shadow: 0 0 10px rgba(255, 215, 0, 0.9);
     }
 
-    /* --- FOOTER --- */
+    /* Stats Section */
+    .stats {
+      background: #111;
+      padding: 60px 20px;
+    }
+    .stats h2 {
+      font-size: 2.2rem;
+      font-family: 'Orbitron', sans-serif;
+      color: #FFD700;
+      margin-bottom: 30px;
+      text-shadow: 0 0 15px rgba(255, 215, 0, 0.7);
+    }
+    .stat-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 25px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    .stat-box {
+      background: rgba(0, 0, 0, 0.8);
+      border: 1px solid #444;
+      border-radius: 16px;
+      padding: 25px;
+      color: #fff;
+      font-size: 1.3rem;
+      font-family: 'Orbitron', sans-serif;
+      box-shadow: 0 0 20px rgba(0, 255, 127, 0.5);
+      transition: transform 0.2s ease;
+    }
+    .stat-box:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 0 25px rgba(144, 238, 144, 0.9);
+    }
+    .stat-number {
+      font-size: 2rem;
+      font-weight: bold;
+      color: #90ee90;
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    /* Footer */
     .footer {
       margin: 60px 0 30px;
       font-size: 1rem;
@@ -117,13 +156,22 @@
       font-family: 'Orbitron', sans-serif;
     }
     .footer a {
-      color: #FFD700;
+      color: #32CD32;
       text-decoration: none;
       font-weight: bold;
-      text-shadow: 0 0 10px rgba(255, 215, 0, 0.9);
+      text-shadow: 0 0 10px rgba(50, 205, 50, 0.9);
     }
     .footer a:hover {
       color: #fff;
+    }
+
+    /* Chinese Section */
+    .chinese {
+      margin-top: 40px;
+      font-size: 1.1rem;
+      line-height: 1.7;
+      color: #f0f0f0;
+      font-family: 'Cinzel', serif;
     }
   </style>
 </head>
@@ -131,45 +179,99 @@
 
   <!-- HERO -->
   <section class="hero">
-    <div class="hero-content">
-      <h1>The Leap of Longmen</h1>
-      <h2>鲤鱼跃龙门 — 区块链上的传奇</h2>
+    <div class="hero-content fade-in">
+      <h1>Longmen — The Leap</h1>
+      <div class="subtitle">From Carp to Dragon · The Meme Awakens</div>
       <a href="https://pump.fun" target="_blank" class="cta">Buy on Pump.fun</a>
-      <a href="https://x.com/LongmenX" target="_blank" class="cta">Follow us on X</a>
+      <a href="https://x.com/LongmenX" target="_blank" class="cta">Follow on X</a>
     </div>
   </section>
 
-  <!-- LEGEND -->
-  <section>
-    <h2>The Legend · 传奇</h2>
-    <p>In ancient China, the Yellow River flowed with countless golden carps. Legends told that any carp bold enough to leap the roaring waterfall at Longmen would be transformed into a mighty dragon — a symbol of power, destiny, and greatness.</p>
-    <p class="cn">在古代中国，黄河里游着无数金色的鲤鱼。传说，任何一条敢于跃过龙门瀑布的鲤鱼，都会化身为强大的龙 —— 权力、命运与伟大的象征。</p>
-  </section>
-
-  <!-- MEME GAP -->
-  <section>
-    <h2>The Untapped Meme · 未被点燃的传奇</h2>
-    <p>Dogecoin peaked at <strong>$88 billion</strong>. Shiba Inu and Pepe created overnight millionaires. Memes drive culture and markets alike.</p>
-    <p class="cn">狗狗币的市值曾高达<strong>880亿美元</strong>。柴犬币与佩佩币造就了一夜暴富的奇迹。梗既驱动文化，也驱动市场。</p>
-    <p>Yet among China’s <strong>1.4 billion people</strong>, the Carp’s Leap — one of the nation’s greatest legends — has no meme coin. None. The opportunity is untouched.</p>
-    <p class="cn">然而在<strong>14亿中国人</strong>之间，鲤鱼跃龙门 —— 这一古老而伟大的传说 —— 至今没有属于它的梗币。机会仍未被点燃。</p>
-  </section>
-
-  <!-- NUMBERS -->
-  <section>
-    <h2>The Numbers · 数据</h2>
-    <p>1 in 3 internet users worldwide recognize Doge. Almost nobody outside China knows the Carp’s Leap. This is an asymmetric opportunity: a global story waiting to be unleashed.</p>
-    <p class="cn">全球每三位网民中就有一人认识狗狗币。而中国之外，几乎无人知晓鲤鱼跃龙门。这是一次极不对称的机会：一个等待被释放的全球传奇。</p>
-    <p><strong>This is China’s Doge moment. This is the Leap of Longmen.</strong></p>
-    <p class="cn"><strong>这是中国的狗狗币时刻。这是龙门之跃。</strong></p>
-  </section>
-
-  <!-- FOOTER -->
-  <div class="footer">
-    <p>Join the legend · 加入传奇 <br>
-    <a href="https://pump.fun" target="_blank">Buy on Pump.fun</a> | 
-    <a href="https://x.com/LongmenX" target="_blank">Follow us on X</a></p>
+  <!-- STORY -->
+  <div class="story fade-in">
+    <p>For a thousand years, the rivers of China have whispered of a legend. The carp that dares to leap the gates of Longmen does not return as a fish — it is reborn as a dragon. Power. Transformation. Destiny.</p>
+    <p>Today, that leap comes to the blockchain. Not in stone, but in code. The spirit of Longmen awakens, carrying the fire of myth into the digital age. This is not just another meme. This is culture. This is history. This is <strong>the moment</strong>.</p>
+    <p><strong>You stand at the gates of Longmen. Will you leap?</strong></p>
   </div>
 
+  <!-- STATS -->
+  <div class="stats fade-in">
+    <h2>Why Longmen? The Numbers Speak.</h2>
+    <div class="stat-grid">
+      <div class="stat-box">
+        <span class="stat-number" data-target="1400000000">0</span>
+        🌊 People in China  
+        <br><small>And yet no native meme coin.</small>
+      </div>
+      <div class="stat-box">
+        <span class="stat-number" data-target="2000">0</span>
+        🐉 Years of Myth  
+        <br><small>The carp and dragon story is eternal.</small>
+      </div>
+      <div class="stat-box">
+        <span class="stat-number" data-target="50">0</span>B+
+        💸 Market Size  
+        <br><small>Doge and Pepe proved memes = power.</small>
+      </div>
+      <div class="stat-box">
+        🚀 First of Its Kind  
+        <br><small>No carp-to-dragon meme coin exists... until now.</small>
+      </div>
+    </div>
+  </div>
+
+  <!-- CHINESE -->
+  <div class="story chinese fade-in">
+    <h2>鲤鱼跃龙门 — 区块链上的传奇</h2>
+    <p>千百年来，中国的江河流传着一个传说：鲤鱼若敢跃过龙门，便化身为龙。力量、蜕变、命运。</p>
+    <p>今天，龙门在区块链上重生。不再是石头，而是代码。古老的神话，在数字时代觉醒。这不仅仅是一个表情包，它是文化，是历史，是<strong>时刻</strong>。</p>
+    <p><strong>你站在龙门之前。你会跃吗？</strong></p>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer fade-in">
+    <p>Join the legend. <a href="https://pump.fun" target="_blank">Buy on Pump.fun</a> | <a href="https://x.com/LongmenX" target="_blank">Follow us on X</a></p>
+  </div>
+
+  <!-- Scripts for animations -->
+  <script>
+    // Fade-in on scroll
+    const faders = document.querySelectorAll('.fade-in');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('show');
+        }
+      });
+    }, { threshold: 0.2 });
+
+    faders.forEach(fader => observer.observe(fader));
+
+    // Number counters
+    const counters = document.querySelectorAll('.stat-number');
+    const speed = 200; // lower = faster
+
+    const counterObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const updateCount = counter => {
+            const target = +counter.getAttribute('data-target');
+            const count = +counter.innerText;
+            const inc = Math.ceil(target / speed);
+            if (count < target) {
+              counter.innerText = count + inc;
+              setTimeout(() => updateCount(counter), 30);
+            } else {
+              counter.innerText = target.toLocaleString();
+            }
+          };
+          counters.forEach(counter => updateCount(counter));
+          counterObserver.disconnect();
+        }
+      });
+    }, { threshold: 0.4 });
+
+    counters.forEach(counter => counterObserver.observe(counter));
+  </script>
 </body>
 </html>

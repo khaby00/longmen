@@ -1,470 +1,400 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Longmen — The Leap of Longmen / 龙门一跃</title>
-
-  <!-- SEO -->
-  <meta name="description" content="Longmen: From Carp to Dragon — a cultural meme coin built to unite East & West. Token supply 888,888,888. 龙门：鲤鱼化龙——连接东西方的文化型 Meme 币，总量 888,888,888。" />
-  <meta property="og:title" content="Longmen — The Leap of Longmen / 龙门一跃" />
-  <meta property="og:description" content="From Carp to Dragon — a cultural meme coin built to unite East & West. 总量 888,888,888。" />
-  <meta property="og:image" content="https://i.postimg.cc/rm6H3TWf/carp-upscaled.jpg" />
-  <link rel="alternate" hrefLang="en" href="" />
-  <link rel="alternate" hrefLang="zh-CN" href="" />
-
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;900&family=Cinzel:wght@500;700&family=Noto+Serif+SC:wght@400;700&display=swap" rel="stylesheet">
-
-  <style>
-    :root{
-      --bg:#000;
-      --muted:#e6e6e6;
-      --gold:#ffd700;
-      --fire:#ff4500;
-      --jade:#00cc66;
-      --accent-red:#d32f2f;
-      --max-audio:0.30; /* final soft volume */
-      --pulse:2.6s;
-    }
-    *{box-sizing:border-box}
-    body{
-      margin:0; background:var(--bg); color:var(--muted);
-      font-family:'Cinzel',serif; -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
-      line-height:1.6;
-    }
-
-    /* Language toggle */
-    .lang-toggle{ position:fixed; top:14px; right:14px; z-index:9999; display:flex; gap:8px;
-      background:rgba(0,0,0,0.45); padding:6px 8px; border-radius:999px; border:1px solid rgba(255,215,0,0.06); align-items:center; }
-    .lang-btn{ display:flex; gap:8px; align-items:center; border:none; background:none; color:var(--muted);
-      cursor:pointer; padding:6px; border-radius:8px; font-family:'Orbitron',sans-serif; font-weight:700; font-size:14px; }
-    .lang-btn.active{ color:var(--gold); box-shadow:0 0 8px rgba(255,215,0,0.08); }
-
-    /* Music control */
-    #music-control{
-      position:fixed; left:16px; bottom:16px; z-index:9999; width:48px;height:48px;border-radius:50%;
-      display:flex;align-items:center;justify-content:center;background:linear-gradient(180deg, rgba(0,0,0,0.55), rgba(0,0,0,0.25));
-      border:1px solid rgba(255,215,0,0.08); cursor:pointer; color:var(--gold); font-size:20px; box-shadow:0 6px 18px rgba(0,0,0,0.5);
-      animation:glowPulse var(--pulse) infinite ease-in-out;
-    }
-
-    /* Hero */
-    .hero{ position:relative; min-height:86vh; display:flex; align-items:center; justify-content:center; text-align:center;
-      background: url("https://i.postimg.cc/rm6H3TWf/carp-upscaled.jpg") center/cover no-repeat fixed; }
-    .hero::before{ content:""; position:absolute; inset:0; background:linear-gradient(180deg, rgba(0,0,0,0.66), rgba(0,0,0,0.66)); z-index:0; }
-    .hero-inner{ position:relative; z-index:2; max-width:1100px; padding:28px; }
-
-    @keyframes glowPulse {
-      0% { transform:scale(1); text-shadow:0 0 8px rgba(255,215,0,0.6); }
-      50% { transform:scale(1.03); text-shadow:0 0 36px rgba(255,160,64,0.95); }
-      100% { transform:scale(1); text-shadow:0 0 8px rgba(255,215,0,0.6); }
-    }
-
-    .title { font-family:'Orbitron',sans-serif; font-size:3.4rem; margin:0 0 8px;
-      background:linear-gradient(90deg,var(--gold),var(--fire)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; animation:glowPulse var(--pulse) infinite ease-in-out; }
-    .title.lang-zh{ display:none; }
-
-    .subtitle { display:inline-block; font-size:1.15rem; color:rgba(255,235,205,0.95); margin-bottom:18px; position:relative; }
-    .subtitle::after{ content:""; position:absolute; left:0; bottom:-8px; height:3px; width:0%; background:linear-gradient(90deg,var(--gold),var(--fire)); box-shadow:0 0 10px var(--gold); transition:width .35s ease; }
-    .subtitle:hover{ color:var(--gold); } .subtitle:hover::after{ width:100%; }
-    .subtitle.lang-zh{ display:none; }
-
-    /* Typewriter caret (applies to active element while typing) */
-    .typewriter { border-right: .12em solid rgba(255,255,255,0.18); white-space:nowrap; overflow:hidden; }
-
-    /* CTA stack */
-    .cta-stack{ margin-top:20px; display:flex; flex-direction:column; gap:12px; align-items:center; }
-    .btn{ font-family:'Orbitron',sans-serif; text-transform:uppercase; font-weight:800; padding:12px 28px; border-radius:36px; border:none; cursor:pointer; text-decoration:none; display:inline-block; transition:transform .14s ease, box-shadow .14s ease; }
-    .btn-buy{ background:linear-gradient(90deg,var(--gold),#ff9800); color:#000; box-shadow:0 0 28px rgba(255,215,0,0.16); animation:glowPulse var(--pulse) infinite; }
-    .btn-buy:hover{ transform:translateY(-3px) scale(1.02); color:#fff; }
-    .btn-follow{ background:linear-gradient(90deg,#ff5a5a,var(--accent-red)); color:#fff; box-shadow:0 0 28px rgba(255,80,80,0.12); animation:glowPulse var(--pulse) infinite; }
-    .btn-follow:hover{ transform:translateY(-3px) scale(1.02); }
-
-    /* main / sections */
-    main{ padding:36px 20px 90px; max-width:1200px; margin:0 auto; }
-    .section{ margin:36px auto; padding:26px; border-radius:12px; background: linear-gradient(180deg, rgba(0,0,0,0.6), rgba(0,0,0,0.55)); border:1px solid rgba(255,215,0,0.05); box-shadow:0 10px 30px rgba(0,0,0,0.5); }
-    .section h2{ font-family:'Orbitron',sans-serif; font-size:1.85rem; margin:0 0 14px; color:var(--gold); display:inline-block; position:relative; }
-    .section h2::after{ content:""; position:absolute; left:0; bottom:-8px; height:4px; width:0; background: linear-gradient(90deg,var(--gold),var(--fire)); transition:width .3s ease; box-shadow:0 0 12px var(--gold); }
-    .section h2:hover::after{ width:100%; }
-
-    /* bilingual classes */
-    .lang-en{ display:block; }
-    .lang-zh{ display:none; font-family:'Noto Serif SC', serif; }
-
-    /* numbers */
-    .nums{ display:flex; gap:16px; flex-wrap:wrap; margin-top:14px; }
-    .numbox{ flex:1 1 260px; background:rgba(0,0,0,0.45); padding:16px; border-radius:10px; border:1px solid rgba(255,215,0,0.04); }
-    .num-value{ font-family:'Orbitron',sans-serif; font-size:2.1rem; color:var(--gold); font-weight:900; animation:glowPulse var(--pulse) infinite ease-in-out; text-shadow:0 0 12px var(--gold); }
-    .num-label{ color:#eae7df; margin-top:6px; font-size:0.95rem; }
-
-    /* reasons */
-    .reasons ul{ list-style:none; padding-left:0; margin:0; }
-    .reasons li{ margin:12px 0; font-size:1.05rem; line-height:1.6; }
-
-    /* fade-in */
-    .fade-in{ opacity:0; transform:translateY(18px); transition:opacity .9s ease, transform .9s ease; }
-    .fade-in.visible{ opacity:1; transform:translateY(0); }
-
-    /* footer */
-    footer{ text-align:center; color:#bfbfbf; margin:36px 0 90px; font-family:'Orbitron',sans-serif; }
-    footer a{ color:var(--jade); text-decoration:none; font-weight:700; }
-    footer a:hover{ color:var(--gold); }
-
-    @media (max-width:760px){
-      .title{ font-size:2.2rem; }
-      .numbox{ flex:1 1 100%; }
-      .hero{ min-height:72vh; }
-      .lang-toggle{ right:8px; top:8px; padding:6px; }
-    }
-  </style>
-</head>
-<body>
-
-  <!-- audio: Pixabay "All For You - Traditional Chinese Style Instrumental" (royalty-free) -->
-  <audio id="bg-music" loop preload="auto" muted>
-    <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_fa1e8f5b13.mp3?filename=all-for-you-traditional-chinese-style-instrumental-129216.mp3" type="audio/mpeg">
-    <!-- fallback -->
-  </audio>
-
-  <!-- language toggle -->
-  <div class="lang-toggle" role="navigation" aria-label="Language switch">
-    <button id="btn-en" class="lang-btn" aria-label="English (show English)" onclick="setLang('en')">
-      <img src="https://flagcdn.com/w20/gb.png" alt="EN" style="width:20px;height:auto"> EN
-    </button>
-    <button id="btn-zh" class="lang-btn" aria-label="中文 (显示中文)" onclick="setLang('zh')">
-      <img src="https://flagcdn.com/w20/cn.png" alt="中文" style="width:20px;height:auto"> 中文
-    </button>
-  </div>
-
-  <!-- music control -->
-  <div id="music-control" role="button" aria-label="Toggle background music" title="Toggle music">🔇</div>
-
-  <!-- HERO -->
-  <header class="hero" role="banner">
-    <div class="hero-inner">
-      <!-- titles -->
-      <h1 class="title lang-en">The Leap of Longmen</h1>
-      <h1 class="title lang-zh">龙门一跃</h1>
-
-      <!-- subtitle typewriter -->
-      <div class="subtitle lang-en"><span id="type-en" class="typewriter"></span></div>
-      <div class="subtitle lang-zh"><span id="type-zh" class="typewriter"></span></div>
-
-      <!-- CTAs -->
-      <div class="cta-stack" aria-hidden="false">
-        <a id="buy-btn" class="btn btn-buy" href="https://pump.fun" target="_blank" rel="noopener">Buy on Pump.fun</a>
-        <a id="follow-btn" class="btn btn-follow" href="https://x.com/LongmenX" target="_blank" rel="noopener">Follow us on X</a>
-      </div>
-    </div>
-  </header>
-
-  <!-- MAIN -->
-  <main>
-
-    <!-- LEGEND -->
-    <section id="legend" class="section fade-in">
-      <h2 class="lang-en">The Legend</h2>
-      <h2 class="lang-zh">传说</h2>
-
-      <div class="lang-en">
-        <p>In the ancient land of China, the Yellow River wound through mountains and plains. Within its restless waters swam countless carps, their golden scales glinting like fragments of sunlight. Across generations they whispered a single destiny — the Leap of Longmen.</p>
-        <p>At Longmen, a thunderous waterfall roared. The legend said: any carp brave enough to leap those roaring gates would be transformed by heaven into a dragon — a creature of wisdom, power and majesty. Many tried; many failed. Still, hope prevailed.</p>
-        <p>Finally, one carp rose above the rest. Against the torrent it leapt, cut through spray and sky, and when the water fell away it no longer swam — it flew. The carp became a dragon, radiant and unstoppable.</p>
-        <p><strong>This transformation is our guide: together we leap, together we rise, together we become.</strong></p>
-      </div>
-
-      <div class="lang-zh" style="display:none">
-        <p>在古老的中华大地，黄河蜿蜒穿过群山与平原。在其奔涌的河水中，无数鲤鱼逆流而上，金色鳞片在阳光下闪耀。世代相承，它们低语着同一个命运——龙门一跃。</p>
-        <p>在龙门，瀑布雷鸣。传说说：凡有勇气跃过那轰鸣水幕的鲤鱼，将得天命，化为龙——智慧、力量与威严的化身。许多人尝试，许多人失败，但希望始终存在。</p>
-        <p>终于，一条鲤鱼超越群鳞。它逆流而上，一跃穿破水雾与长空；当波澜归于平静，它不再是水中的游者，而是腾空的龙。鲤鱼化为龙，光耀天地，势不可挡。</p>
-        <p><strong>此等蜕变正是我们的信念：我们一同跃起，我们一同崛起，我们一同化龙。</strong></p>
-      </div>
-    </section>
-
-    <!-- NUMBERS -->
-    <section id="numbers" class="section fade-in">
-      <h2 class="lang-en">Numbers That Impress</h2>
-      <h2 class="lang-zh">令人震撼的数字</h2>
-
-      <div class="nums" role="list">
-        <div class="numbox" role="listitem">
-          <div class="num-value" data-target="888888888">0</div>
-          <div class="num-label lang-en">Total supply — chosen for fortune & harmony</div>
-          <div class="num-label lang-zh" style="display:none">总供应量 — 象征幸运与和谐</div>
-        </div>
-
-        <div class="numbox" role="listitem">
-          <div class="num-value" data-target="1400000000">0</div>
-          <div class="num-label lang-en">Potential audience (people in China)</div>
-          <div class="num-label lang-zh" style="display:none">潜在受众（中国人口）</div>
-        </div>
-
-        <div class="numbox" role="listitem">
-          <div class="num-value" data-target="50000000000">0</div>
-          <div class="num-label lang-en">Global meme views daily</div>
-          <div class="num-label lang-zh" style="display:none">每日全球表情包浏览量</div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ROADMAP -->
-    <section id="roadmap" class="section fade-in">
-      <h2 class="lang-en">Roadmap</h2>
-      <h2 class="lang-zh">路线图</h2>
-
-      <div class="lang-en">
-        <p><strong>Phase I — The Carp:</strong> Launch on Pump.fun, assemble early believers, tell the story.</p>
-        <p><strong>Phase II — The Leap:</strong> Influencer pushes, social virality, first listings.</p>
-        <p><strong>Phase III — The Dragon:</strong> Cultural adoption, partnerships, mainstream recognition.</p>
-        <p><strong>Phase IV — The Meme Empire:</strong> Longmen stands among global meme icons.</p>
-      </div>
-
-      <div class="lang-zh" style="display:none">
-        <p><strong>第一阶段 — 鲤鱼：</strong>在 Pump.fun 上线，集结早期信徒，讲述传奇。</p>
-        <p><strong>第二阶段 — 一跃：</strong>发动影响者推广，社交病毒式传播，完成首轮曝光与上线。</p>
-        <p><strong>第三阶段 — 化龙：</strong>推动文化采纳，建立合作伙伴关系，获得主流认可。</p>
-        <p><strong>第四阶段 — Meme 帝国：</strong>龙门跻身全球表情包文化行列。</p>
-      </div>
-    </section>
-
-    <!-- WHY NOW -->
-    <section id="whynow" class="section fade-in">
-      <h2 class="lang-en">Why Now?</h2>
-      <h2 class="lang-zh">为什么是现在？</h2>
-      <p class="lang-en">Doge and Pepe captured the West — now the East has a story of its own. Longmen combines cultural depth with meme momentum; the timing and the audience are aligned.</p>
-      <p class="lang-zh" style="display:none">Doge 与 Pepe 曾席卷西方，如今东方也拥有可被传扬的传奇。龙门将文化深度与表情包传播势能结合，时机与受众俱佳。</p>
-    </section>
-
-    <!-- WHY BUY -->
-    <section id="whybuy" class="section fade-in">
-      <h2 class="lang-en">Why Buy Longmen?</h2>
-      <h2 class="lang-zh">为什么购买龙门？</h2>
-
-      <div class="reasons lang-en">
-        <ul>
-          <li>🐉 <strong>Cultural Power:</strong> A story every Chinese person knows — not just a meme, but heritage.</li>
-          <li>🌍 <strong>Untapped Market:</strong> Doge and Pepe dominated the West. The East needs its own cultural meme coin.</li>
-          <li>💎 <strong>Scarcity & Symbolism:</strong> Fixed supply: <strong>888,888,888</strong>.</li>
-          <li>🚀 <strong>Meme Magnet:</strong> Billions of daily meme views = huge viral potential.</li>
-          <li>🔥 <strong>Community Spirit:</strong> Holders are the carps — together they make the leap into dragonhood.</li>
-        </ul>
-      </div>
-
-      <div class="reasons lang-zh" style="display:none">
-        <ul>
-          <li>🐉 <strong>文化力：</strong>这是每位中国人熟悉的故事——不仅是表情包，而是文化与传承。</li>
-          <li>🌍 <strong>未被开发的市场：</strong>Doge 与 Pepe 主导了西方，东方亟需自己的文化型 Meme 币。</li>
-          <li>💎 <strong>稀缺与象征：</strong>固定总量：<strong>888,888,888</strong>。</li>
-          <li>🚀 <strong>表情包引力：</strong>每天数十亿次的展示意味着巨大的病毒式传播潜力。</li>
-          <li>🔥 <strong>社区精神：</strong>持有者即鲤鱼——团结一心，共同跃向化龙之路。</li>
-        </ul>
-      </div>
-    </section>
-
-  </main>
-
-  <!-- footer -->
-  <footer>
-    <p class="lang-en">Join the legend — <a id="buy-footer" href="https://pump.fun" target="_blank">Buy on Pump.fun</a> | <a id="follow-footer" href="https://x.com/LongmenX" target="_blank">Follow us on X</a></p>
-    <p class="lang-zh" style="display:none">加入传奇 — <a id="buy-footer-zh" href="https://pump.fun" target="_blank">在 Pump.fun 上购买</a> | <a id="follow-footer-zh" href="https://x.com/LongmenX" target="_blank">关注我们的 X</a></p>
-  </footer>
-
-  <script>
-  /****************************
-   * Language: auto-detect + toggle + remember
-   ****************************/
-  (function(){
-    const saved = localStorage.getItem('longmen_lang');
-    const nav = (navigator.language || navigator.userLanguage || 'en').toLowerCase();
-    const initial = saved || (nav.startsWith('zh') ? 'zh' : 'en');
-
-    function showLang(lang) {
-      const enVisible = lang === 'en';
-      document.querySelectorAll('.lang-en').forEach(el => el.style.display = enVisible ? '' : 'none');
-      document.querySelectorAll('.lang-zh').forEach(el => el.style.display = enVisible ? 'none' : '');
-      document.getElementById('btn-en').classList.toggle('active', enVisible);
-      document.getElementById('btn-zh').classList.toggle('active', !enVisible);
-
-      // update CTAs
-      document.getElementById('buy-btn').textContent = enVisible ? 'Buy on Pump.fun' : '在 Pump.fun 上购买';
-      document.getElementById('follow-btn').textContent = enVisible ? 'Follow us on X' : '关注我们的 X';
-      document.getElementById('buy-footer').textContent = enVisible ? 'Buy on Pump.fun' : '在 Pump.fun 上购买';
-      document.getElementById('follow-footer').textContent = enVisible ? 'Follow us on X' : '关注我们的 X';
-
-      // run typewriter for visible subtitle
-      if (enVisible) { runTypewriter('en'); } else { runTypewriter('zh'); }
-      localStorage.setItem('longmen_lang', enVisible ? 'en' : 'zh');
-    }
-
-    window.setLang = function(l) {
-      showLang(l === 'zh' ? 'zh' : 'en');
-    };
-    window.setLang(initial);
-  })();
-
-  /****************************
-   * Typewriter effect for hero subtitle
-   ****************************/
-  function runTypewriter(lang) {
-    const texts = {
-      en: "From Carp to Dragon — A Legend Reborn on Chain",
-      zh: "鲤鱼化龙 — 链上的传奇新生"
-    };
-    const elId = lang === 'en' ? 'type-en' : 'type-zh';
-    const visibleEn = document.querySelector('.lang-en').style.display !== 'none';
-    // ensure only active subtitle visible: show both containers but only content in current will display
-    document.querySelectorAll('.subtitle.lang-en').forEach(e => e.style.display = (lang === 'en') ? '' : 'none');
-    document.querySelectorAll('.subtitle.lang-zh').forEach(e => e.style.display = (lang === 'zh') ? '' : 'none');
-
-    const el = document.getElementById(elId);
-    if (!el) return;
-    const full = texts[lang];
-    el.classList.add('typewriter');
-    el.textContent = "";
-    let i = 0;
-    const speed = 20;
-    const run = () => {
-      if (i <= full.length) {
-        el.textContent = full.slice(0, i);
-        i++;
-        setTimeout(run, speed);
-      } else {
-        el.classList.remove('typewriter');
-      }
-    };
-    run();
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Longmen — The Leap of Longmen / 龙门一跃</title>
+<meta name="description" content="Longmen — From Carp to Dragon. Token supply 888,888,888. 龙门 — 鲤鱼化龙。总量 888,888,888。" />
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;900&family=Cinzel:wght@500;700&family=Noto+Serif+SC:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#000;
+    --muted:#e6e6e6;
+    --gold:#ffd700;
+    --fire:#ff4500;
+    --accent-red:#d32f2f;
+    --max-audio:0.30;
+    --pulse:2.6s;
+  }
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{
+    margin:0; background:var(--bg); color:var(--muted);
+    font-family:'Cinzel',serif; -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale; line-height:1.6;
   }
 
-  /****************************
-   * Fade-in IntersectionObserver
-   ****************************/
-  (function(){
-    const obs = new IntersectionObserver((entries, o) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          o.unobserve(entry.target);
-        }
-      });
-    }, {threshold:0.16, rootMargin:'0px 0px -40px 0px' });
-    document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
-  })();
+  /* show/hide by body[data-lang] -> robust and avoids inline styles */
+  .lang-en, .lang-zh { display:none; }
+  body[data-lang="en"] .lang-en { display:block; }
+  body[data-lang="en"] .lang-zh { display:none; }
+  body[data-lang="zh"] .lang-zh { display:block; }
+  body[data-lang="zh"] .lang-en { display:none; }
 
-  /****************************
-   * Count-up numbers
-   ****************************/
-  (function(){
-    const easeOutCubic = t => (--t)*t*t+1;
-    const format = n => n.toLocaleString();
-    function animate(el, target){
-      let start = null;
-      const duration = 1400 + Math.min(2200, Math.round(target/500000));
-      const step = ts => {
-        if (!start) start = ts;
-        const elapsed = ts - start;
-        const progress = Math.min(1, elapsed / duration);
-        const eased = easeOutCubic(progress);
-        const value = Math.floor(target * eased);
-        el.textContent = format(value);
-        if (progress < 1) requestAnimationFrame(step);
-        else el.textContent = format(target);
-      };
-      requestAnimationFrame(step);
+  /* language toggle */
+  .lang-toggle{ position:fixed; top:12px; right:12px; z-index:9999; display:flex; gap:8px;
+    background:rgba(0,0,0,0.45); padding:6px 8px; border-radius:999px; border:1px solid rgba(255,215,0,0.06); }
+  .lang-btn{ background:none; border:none; padding:6px 8px; cursor:pointer; color:var(--muted); font-weight:700; font-family:Orbitron, sans-serif; }
+  .lang-btn.active{ color:var(--gold); box-shadow:0 0 8px rgba(255,215,0,0.08); }
+
+  /* music control */
+  #music-control{ position:fixed; left:12px; bottom:12px; z-index:9999; width:46px; height:46px; border-radius:50%;
+    display:flex; align-items:center; justify-content:center; background:linear-gradient(180deg, rgba(0,0,0,0.55), rgba(0,0,0,0.25));
+    border:1px solid rgba(255,215,0,0.08); cursor:pointer; color:var(--gold); font-size:18px; box-shadow:0 6px 18px rgba(0,0,0,0.5);
+    animation:glowPulse var(--pulse) infinite ease-in-out; }
+
+  /* hero */
+  .hero{ position:relative; min-height:86vh; display:flex; align-items:center; justify-content:center; text-align:center;
+    background: url("https://i.postimg.cc/rm6H3TWf/carp-upscaled.jpg") center/cover no-repeat fixed; }
+  .hero::before{ content:""; position:absolute; inset:0; background:linear-gradient(180deg, rgba(0,0,0,0.66), rgba(0,0,0,0.66)); z-index:0; }
+  .hero-inner{ position:relative; z-index:2; max-width:1100px; padding:28px; }
+
+  @keyframes glowPulse { 0%{transform:scale(1);text-shadow:0 0 8px rgba(255,215,0,0.6)} 50%{transform:scale(1.03);text-shadow:0 0 36px rgba(255,160,64,0.95)} 100%{transform:scale(1); text-shadow:0 0 8px rgba(255,215,0,0.6)} }
+  .title{ font-family:'Orbitron',sans-serif; font-size:3.4rem; margin:0 0 8px;
+    background:linear-gradient(90deg,var(--gold),var(--fire)); -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+    animation:glowPulse var(--pulse) infinite ease-in-out; }
+
+  .subtitle{ display:inline-block; font-size:1.15rem; color:rgba(255,235,205,0.95); margin-bottom:18px; position:relative; }
+  .subtitle::after{ content:""; position:absolute; left:0; bottom:-8px; height:3px; width:0%; background:linear-gradient(90deg,var(--gold),var(--fire)); box-shadow:0 0 10px var(--gold); transition:width .35s ease; }
+  .subtitle:hover{ color:var(--gold) } .subtitle:hover::after{ width:100% }
+
+  /* typewriter caret class will be applied during typing */
+  .typewriter { border-right: .12em solid rgba(255,255,255,0.15); white-space: nowrap; overflow: hidden; }
+
+  /* CTA buttons */
+  .cta-stack{ margin-top:18px; display:flex; flex-direction:column; gap:10px; align-items:center; }
+  .btn { font-family:'Orbitron',sans-serif; text-transform:uppercase; font-weight:800; padding:12px 28px; border-radius:36px; border:none; cursor:pointer; text-decoration:none; display:inline-block; transition:transform .14s ease, box-shadow .14s ease; }
+  .btn-buy{ background: linear-gradient(90deg,var(--gold), #ff9800); color:#000; box-shadow:0 0 28px rgba(255,215,0,0.16); }
+  .btn-follow{ background: linear-gradient(90deg,#ff5a5a,var(--accent-red)); color:#fff; box-shadow:0 0 24px rgba(255,80,80,0.12); }
+
+  /* main sections */
+  main{ padding:32px 20px 90px; max-width:1200px; margin:0 auto; }
+  .section{ margin:34px auto; padding:24px; border-radius:12px; background: linear-gradient(180deg, rgba(0,0,0,0.6), rgba(0,0,0,0.55)); border:1px solid rgba(255,215,0,0.05); box-shadow:0 10px 30px rgba(0,0,0,0.5); }
+  .section h2{ font-family:'Orbitron',sans-serif; font-size:1.85rem; margin:0 0 14px; color:var(--gold); display:inline-block; position:relative; }
+  .section h2::after{ content:""; position:absolute; left:0; bottom:-8px; height:4px; width:0; background: linear-gradient(90deg,var(--gold),var(--fire)); transition:width .3s ease; box-shadow:0 0 12px var(--gold); }
+  .section h2:hover::after{ width:100%; }
+
+  /* numbers */
+  .nums{ display:flex; gap:14px; flex-wrap:wrap; margin-top:12px; }
+  .numbox{ flex:1 1 260px; background:rgba(0,0,0,0.45); padding:14px; border-radius:10px; border:1px solid rgba(255,215,0,0.04); }
+  .num-value{ font-family:'Orbitron',sans-serif; font-size:2.1rem; color:var(--gold); font-weight:900; text-shadow:0 0 12px var(--gold); }
+  .num-label{ color:#eae7df; margin-top:6px; font-size:0.95rem; }
+
+  /* fade-in */
+  .fade-in{ opacity:0; transform:translateY(12px); transition:opacity .9s ease, transform .9s ease; }
+  .fade-in.visible{ opacity:1; transform:translateY(0); }
+
+  footer{ text-align:center; color:#bfbfbf; margin:36px 0 80px; font-family:'Orbitron',sans-serif; }
+  footer a{ color:var(--gold); text-decoration:none; font-weight:700; }
+  footer a:hover{ color:#fff; }
+
+  @media (max-width:760px){
+    .title{ font-size:2.2rem; }
+    .numbox{ flex:1 1 100%; }
+    .hero{ min-height:72vh; }
+    .lang-toggle{ right:8px; top:8px; padding:6px; }
+  }
+</style>
+</head>
+<body data-lang="en">
+
+<!-- Background audio (Pixabay track) -->
+<audio id="bg-music" loop preload="auto" muted>
+  <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_fa1e8f5b13.mp3?filename=all-for-you-traditional-chinese-style-instrumental-129216.mp3" type="audio/mpeg">
+  <!-- fallback -->
+</audio>
+
+<!-- language toggle -->
+<div class="lang-toggle" role="navigation" aria-label="language">
+  <button id="lang-en" class="lang-btn" aria-label="English" title="English"> <img src="https://flagcdn.com/w20/gb.png" alt="EN" style="width:18px;height:auto"> EN</button>
+  <button id="lang-zh" class="lang-btn" aria-label="中文" title="中文"> <img src="https://flagcdn.com/w20/cn.png" alt="中文" style="width:18px;height:auto"> 中文</button>
+</div>
+
+<!-- music control -->
+<div id="music-control" aria-label="toggle music" title="Toggle music">🔇</div>
+
+<!-- HERO -->
+<header class="hero" role="banner">
+  <div class="hero-inner">
+    <h1 class="title lang-en">The Leap of Longmen</h1>
+    <h1 class="title lang-zh">龙门一跃</h1>
+
+    <div class="subtitle lang-en"><span id="type-en" class="typewriter"></span></div>
+    <div class="subtitle lang-zh"><span id="type-zh" class="typewriter"></span></div>
+
+    <div class="cta-stack" aria-hidden="false">
+      <a id="buy" class="btn btn-buy lang-en" href="https://pump.fun" target="_blank" rel="noopener">Buy on Pump.fun</a>
+      <a id="buy-zh" class="btn btn-buy lang-zh" href="https://pump.fun" target="_blank" rel="noopener">在 Pump.fun 上购买</a>
+
+      <a id="follow" class="btn btn-follow lang-en" href="https://x.com/LongmenX" target="_blank" rel="noopener">Follow us on X</a>
+      <a id="follow-zh" class="btn btn-follow lang-zh" href="https://x.com/LongmenX" target="_blank" rel="noopener">关注我们的 X</a>
+    </div>
+  </div>
+</header>
+
+<main>
+  <!-- Legend -->
+  <section class="section fade-in">
+    <h2 class="lang-en">The Legend</h2>
+    <h2 class="lang-zh">传说</h2>
+
+    <div class="lang-en">
+      <p>In the ancient land of China, the Yellow River wound through mountains and plains. Within its restless waters swam countless carps, their golden scales glinting like fragments of sunlight. Across generations they whispered a single destiny — the Leap of Longmen.</p>
+      <p>At Longmen, a thunderous waterfall roared. The legend said: any carp brave enough to leap those roaring gates would be transformed by heaven into a dragon — a creature of wisdom, power and majesty. Many tried; many failed. Still, hope prevailed.</p>
+      <p>Finally, one carp rose above the rest. Against the torrent it leapt, cut through spray and sky, and when the water fell away it no longer swam — it flew. The carp became a dragon, radiant and unstoppable.</p>
+      <p><strong>This transformation is our guide: together we leap, together we rise, together we become.</strong></p>
+    </div>
+
+    <div class="lang-zh">
+      <p>在古老的中华大地，黄河蜿蜒穿过群山与平原。在其奔涌的河水中，无数鲤鱼逆流而上，金色鳞片在阳光下闪耀。世代相承，它们低语着同一个命运——龙门一跃。</p>
+      <p>在龙门，瀑布雷鸣。传说说：凡有勇气跃过那轰鸣水幕的鲤鱼，将得天命，化为龙——智慧、力量与威严的化身。许多人尝试，许多人失败，但希望始终存在。</p>
+      <p>终于，一条鲤鱼超越群鳞。它逆流而上，一跃穿破水雾与长空；当波澜归于平静，它不再是水中的游者，而是腾空的龙。鲤鱼化为龙，光耀天地，势不可挡。</p>
+      <p><strong>此等蜕变正是我们的信念：我们一同跃起，我们一同崛起，我们一同化龙。</strong></p>
+    </div>
+  </section>
+
+  <!-- Numbers -->
+  <section class="section fade-in">
+    <h2 class="lang-en">Numbers That Impress</h2>
+    <h2 class="lang-zh">令人震撼的数字</h2>
+
+    <div class="nums" role="list">
+      <div class="numbox" role="listitem">
+        <div class="num-value" data-target="888888888">0</div>
+        <div class="num-label lang-en">Total supply — chosen for fortune & harmony</div>
+        <div class="num-label lang-zh">总供应量 — 象征幸运与和谐</div>
+      </div>
+
+      <div class="numbox" role="listitem">
+        <div class="num-value" data-target="1400000000">0</div>
+        <div class="num-label lang-en">Potential audience (people in China)</div>
+        <div class="num-label lang-zh">潜在受众（中国人口）</div>
+      </div>
+
+      <div class="numbox" role="listitem">
+        <div class="num-value" data-target="50000000000">0</div>
+        <div class="num-label lang-en">Global meme views daily</div>
+        <div class="num-label lang-zh">每日全球表情包浏览量</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Roadmap -->
+  <section class="section fade-in">
+    <h2 class="lang-en">Roadmap</h2>
+    <h2 class="lang-zh">路线图</h2>
+
+    <div class="lang-en">
+      <p><strong>Phase I — The Carp:</strong> Launch on Pump.fun, assemble early believers, tell the story.</p>
+      <p><strong>Phase II — The Leap:</strong> Influencer pushes, social virality, first listings.</p>
+      <p><strong>Phase III — The Dragon:</strong> Cultural adoption, partnerships, mainstream recognition.</p>
+      <p><strong>Phase IV — The Meme Empire:</strong> Longmen stands among global meme icons.</p>
+    </div>
+
+    <div class="lang-zh">
+      <p><strong>第一阶段 — 鲤鱼：</strong>在 Pump.fun 上线，集结早期信徒，讲述传奇。</p>
+      <p><strong>第二阶段 — 一跃：</strong>发动影响者推广，社交平台病毒式传播，完成首轮曝光与上线。</p>
+      <p><strong>第三阶段 — 化龙：</strong>推动文化采纳，建立合作伙伴关系，获得主流认可。</p>
+      <p><strong>第四阶段 — Meme 帝国：</strong>龙门跻身全球表情包文化行列。</p>
+    </div>
+  </section>
+
+  <!-- Why Now / Why Buy -->
+  <section class="section fade-in">
+    <h2 class="lang-en">Why Now?</h2>
+    <h2 class="lang-zh">为什么是现在？</h2>
+    <p class="lang-en">Doge and Pepe captured the West — now the East has a story of its own. Longmen combines cultural depth with meme momentum; the timing and the audience are aligned.</p>
+    <p class="lang-zh">Doge 与 Pepe 曾席卷西方，如今东方也拥有可被传扬的传奇。龙门将文化深度与表情包传播势能结合，时机与受众俱佳。</p>
+
+    <h2 class="lang-en">Why Buy Longmen?</h2>
+    <h2 class="lang-zh">为什么购买龙门？</h2>
+
+    <div class="reasons lang-en">
+      <ul>
+        <li>🐉 <strong>Cultural Power:</strong> A story every Chinese person knows — not just a meme, but heritage.</li>
+        <li>🌍 <strong>Untapped Market:</strong> Doge and Pepe dominated the West. The East needs its own cultural meme coin.</li>
+        <li>💎 <strong>Scarcity & Symbolism:</strong> Fixed supply: <strong>888,888,888</strong>.</li>
+        <li>🚀 <strong>Meme Magnet:</strong> Billions of daily meme views = huge viral potential.</li>
+        <li>🔥 <strong>Community Spirit:</strong> Holders are the carps — together they make the leap into dragonhood.</li>
+      </ul>
+    </div>
+
+    <div class="reasons lang-zh">
+      <ul>
+        <li>🐉 <strong>文化力：</strong>这是每位中国人熟悉的故事——不仅是表情包，而是文化与传承。</li>
+        <li>🌍 <strong>未被开发的市场：</strong>Doge 与 Pepe 主导了西方，东方亟需自己的文化型 Meme 币。</li>
+        <li>💎 <strong>稀缺与象征：</strong>固定总量：<strong>888,888,888</strong>。</li>
+        <li>🚀 <strong>表情包引力：</strong>每天数十亿次的展示意味着巨大的病毒式传播潜力。</li>
+        <li>🔥 <strong>社区精神：</strong>持有者即鲤鱼——团结一心，共同跃向化龙之路。</li>
+      </ul>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <p class="lang-en">Join the legend — <a id="buy-foot" href="https://pump.fun" target="_blank" rel="noopener">Buy on Pump.fun</a> | <a id="follow-foot" href="https://x.com/LongmenX" target="_blank" rel="noopener">Follow us on X</a></p>
+  <p class="lang-zh">加入传奇 — <a id="buy-foot-zh" href="https://pump.fun" target="_blank" rel="noopener">在 Pump.fun 上购买</a> | <a id="follow-foot-zh" href="https://x.com/LongmenX" target="_blank" rel="noopener">关注我们的 X</a></p>
+</footer>
+
+<script>
+/* ---------- Robust language handling ---------- */
+(function(){
+  const saved = localStorage.getItem('longmen_lang');
+  const nav = (navigator.language || navigator.userLanguage || 'en').toLowerCase();
+  const initial = saved || (nav.startsWith('zh') ? 'zh' : 'en');
+
+  function setBodyLang(lang) {
+    document.body.setAttribute('data-lang', lang === 'zh' ? 'zh' : 'en');
+    document.documentElement.lang = (lang === 'zh' ? 'zh-CN' : 'en');
+    // active button visuals
+    document.getElementById('lang-en').classList.toggle('active', lang !== 'zh');
+    document.getElementById('lang-zh').classList.toggle('active', lang === 'zh');
+    // run typewriter for visible one
+    runTypewriter(lang === 'zh' ? 'zh' : 'en');
+    localStorage.setItem('longmen_lang', lang === 'zh' ? 'zh' : 'en');
+  }
+
+  document.getElementById('lang-en').addEventListener('click', () => setBodyLang('en'));
+  document.getElementById('lang-zh').addEventListener('click', () => setBodyLang('zh'));
+
+  // initial set
+  setBodyLang(initial);
+})();
+
+/* ---------- Typewriter effect (runs for selected subtitle only) ---------- */
+function runTypewriter(lang) {
+  const texts = {
+    en: "From Carp to Dragon — A Legend Reborn on Chain",
+    zh: "鲤鱼化龙 — 链上的传奇新生"
+  };
+  const id = lang === 'zh' ? 'type-zh' : 'type-en';
+  // Hide the other subtitle(s) (CSS already does this), but only type into active span
+  const el = document.getElementById(id);
+  if (!el) return;
+  el.classList.add('typewriter');
+  el.textContent = "";
+  let i = 0;
+  const speed = 20;
+  function step(){
+    if (i <= texts[lang].length) {
+      el.textContent = texts[lang].slice(0,i);
+      i++;
+      setTimeout(step, speed);
+    } else {
+      el.classList.remove('typewriter');
     }
+  }
+  step();
+}
 
-    const obs = new IntersectionObserver((entries, o) => {
-      entries.forEach(en => {
-        if (!en.isIntersecting) return;
-        const el = en.target;
-        const t = parseInt(el.getAttribute('data-target'), 10) || 0;
-        animate(el, t);
-        o.unobserve(el);
-      });
-    }, {threshold:0.5});
-
-    document.querySelectorAll('.num-value').forEach(el => obs.observe(el));
-  })();
-
-  /****************************
-   * Background audio: attempt autoplay + fade-in; fallback to muted if blocked
-   ****************************/
-  (function(){
-    const audio = document.getElementById('bg-music');
-    const ctl = document.getElementById('music-control');
-    let isPlaying = false;
-    audio.volume = 0.0;
-    audio.muted = true; // start muted to satisfy autoplay rules
-
-    // attempt to unmute & play and fade up
-    function tryPlayAndFade() {
-      audio.muted = false;
-      const playPromise = audio.play();
-      if (playPromise !== undefined) {
-        playPromise.then(() => {
-          // fade in to target volume
-          let vol = 0.0;
-          const target = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--max-audio')) || 0.3;
-          const step = 0.01;
-          const interval = setInterval(() => {
-            vol = Math.min(target, vol + step);
-            audio.volume = vol;
-            if (vol >= target) {
-              clearInterval(interval);
-              isPlaying = true;
-              ctl.textContent = '🔊';
-            }
-          }, 180); // ~ 5-6 seconds fade
-        }).catch(() => {
-          // autoplay prevented — keep muted and set control to muted icon
-          audio.muted = true;
-          audio.volume = 0;
-          ctl.textContent = '🔇';
-          isPlaying = false;
-        });
-      }
-    }
-
-    // run on interaction or load: many browsers allow unmute after a user gesture
-    window.addEventListener('load', () => {
-      tryPlayAndFade();
+/* ---------- IntersectionObserver fade-in ---------- */
+(function(){
+  const obs = new IntersectionObserver((entries, o) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); o.unobserve(e.target); }
     });
+  }, {threshold:0.15});
+  document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
+})();
 
-    // control toggle: explicit user gesture will definitely unmute/play
-    ctl.addEventListener('click', () => {
-      if (audio.muted || audio.paused) {
-        audio.muted = false;
-        audio.play().then(() => {
-          // fade to target
-          let vol = audio.volume || 0;
-          const target = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--max-audio')) || 0.3;
-          const interval = setInterval(() => {
-            vol = Math.min(target, vol + 0.02);
-            audio.volume = vol;
-            if (vol >= target) {
-              clearInterval(interval);
-              ctl.textContent = '🔊';
-            } else {
-              ctl.textContent = '🔊';
-            }
-          }, 120);
-        }).catch(() => {
-          audio.muted = true;
-          ctl.textContent = '🔇';
-        });
-      } else {
-        // mute the audio
+/* ---------- Count-up animation for numbers ---------- */
+(function(){
+  const ease = t => (--t)*t*t+1;
+  function animate(el, target) {
+    let start = null;
+    const dur = 1400 + Math.min(2200, Math.round(target/500000));
+    function tick(ts){
+      if (!start) start = ts;
+      const p = Math.min(1, (ts - start)/dur);
+      const v = Math.floor(target * ease(p));
+      el.textContent = v.toLocaleString();
+      if (p < 1) requestAnimationFrame(tick); else el.textContent = target.toLocaleString();
+    }
+    requestAnimationFrame(tick);
+  }
+  const obs = new IntersectionObserver((entries, o) => {
+    entries.forEach(en => {
+      if (!en.isIntersecting) return;
+      const el = en.target;
+      const t = parseInt(el.getAttribute('data-target'), 10) || 0;
+      animate(el, t);
+      o.unobserve(el);
+    });
+  }, {threshold:0.5});
+  document.querySelectorAll('.num-value').forEach(el => obs.observe(el));
+})();
+
+/* ---------- Audio: muted autoplay attempt + fade-in; music control toggles ---------- */
+(function(){
+  const audio = document.getElementById('bg-music');
+  const ctl = document.getElementById('music-control');
+  let playing = false;
+  audio.muted = true;
+  audio.volume = 0;
+
+  function fadeTo(target, stepMs = 150) {
+    let vol = audio.volume || 0;
+    const delta = 0.02;
+    const id = setInterval(() => {
+      vol = Math.min(target, vol + delta);
+      audio.volume = vol;
+      if (Math.abs(vol - target) < 0.001 || vol >= target) {
+        clearInterval(id);
+      }
+    }, stepMs);
+  }
+
+  function attemptPlay() {
+    audio.muted = false;
+    const p = audio.play();
+    if (p && p.then) {
+      p.then(() => {
+        // play allowed -> fade to target
+        fadeTo(parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--max-audio')) || 0.30, 120);
+        ctl.textContent = '🔊';
+        playing = true;
+      }).catch(() => {
+        // play blocked -> remain muted; user must click
         audio.muted = true;
-        audio.pause();
+        audio.volume = 0;
         ctl.textContent = '🔇';
-      }
-    });
-  })();
+        playing = false;
+      });
+    } else {
+      // older browsers: assume playing
+      fadeTo(parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--max-audio')) || 0.30, 120);
+      ctl.textContent = '🔊';
+      playing = true;
+    }
+  }
 
-  // Ensure external links use noopener
-  document.addEventListener('DOMContentLoaded', function(){
-    document.querySelectorAll('a[target="_blank"]').forEach(a => a.setAttribute('rel','noopener'));
+  // run attempt on load (may be blocked)
+  window.addEventListener('load', () => {
+    attemptPlay();
   });
-  </script>
+
+  // explicit control click (user gesture) toggles play/mute
+  ctl.addEventListener('click', () => {
+    if (!playing || audio.muted) {
+      audio.muted = false;
+      audio.play().then(() => {
+        fadeTo(parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--max-audio')) || 0.30, 120);
+        ctl.textContent = '🔊'; playing = true;
+      }).catch(() => {
+        audio.muted = true; audio.volume = 0; ctl.textContent = '🔇'; playing = false;
+      });
+    } else {
+      // mute + pause
+      audio.pause();
+      audio.muted = true;
+      ctl.textContent = '🔇';
+      playing = false;
+    }
+  });
+})();
+
+/* ensure external links noopener */
+document.addEventListener('DOMContentLoaded', () => document.querySelectorAll('a[target="_blank"]').forEach(a => a.setAttribute('rel','noopener')));
+</script>
 </body>
 </html>

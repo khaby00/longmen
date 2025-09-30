@@ -1,10 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>The Leap of Longmen</title>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;900&family=Cinzel:wght@500;700&display=swap" rel="stylesheet">
   <style>
     body {
       margin: 0;
@@ -13,9 +12,10 @@
       background: #000;
       color: #e0e0e0;
       text-align: center;
+      overflow-x: hidden;
     }
 
-    /* HERO */
+    /* Background Hero */
     .hero {
       position: relative;
       width: 100%;
@@ -25,13 +25,12 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      text-align: center;
     }
     .hero::before {
       content: "";
       position: absolute;
       top: 0; left: 0; right: 0; bottom: 0;
-      background: rgba(0, 0, 0, 0.65);
+      background: rgba(0, 0, 0, 0.6);
     }
     .hero-content {
       position: relative;
@@ -39,163 +38,106 @@
       color: #fff;
     }
     .hero h1 {
-      font-family: 'Orbitron', sans-serif;
       font-size: 3.5rem;
       font-weight: 900;
       background: linear-gradient(90deg, #ffd700, #ff4500);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      text-shadow: 0 0 20px rgba(255, 128, 0, 0.8);
-      margin: 0 0 15px;
+      text-shadow: 0 0 25px rgba(255, 128, 0, 0.9);
     }
-    .subtitle {
+    .hero .subtitle {
       font-size: 1.3rem;
-      margin-bottom: 30px;
-      color: #e0e0e0;
-      position: relative;
-      display: inline-block;
-      cursor: default;
-      transition: all 0.3s ease;
-    }
-    .subtitle::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      bottom: -5px;
-      width: 0%;
-      height: 2px;
-      background: linear-gradient(90deg, #ffd700, #ff4500);
-      box-shadow: 0 0 10px #ffd700, 0 0 20px #ff4500;
-      transition: width 0.4s ease;
-    }
-    .subtitle:hover {
       color: #ffd700;
-      text-shadow: 0 0 10px #ffd700, 0 0 20px #ff4500;
-    }
-    .subtitle:hover::after {
-      width: 100%;
+      margin: 15px 0 30px;
+      text-shadow: 0 0 20px rgba(255, 215, 0, 0.9);
     }
 
-    /* BUTTONS */
+    /* Buttons */
     .cta {
-      display: block;
-      margin: 15px auto;
+      display: inline-block;
+      margin: 12px auto;
       padding: 14px 28px;
       border-radius: 40px;
       font-size: 1.2rem;
+      font-weight: 700;
       font-family: 'Orbitron', sans-serif;
       text-transform: uppercase;
-      font-weight: 700;
+      color: #fff;
+      background: linear-gradient(90deg, #28a745, #00c853);
       text-decoration: none;
+      box-shadow: 0 0 20px rgba(40, 200, 80, 0.8);
       transition: transform 0.2s, box-shadow 0.2s;
     }
-    .buy {
-      background: linear-gradient(90deg, #00ff99, #00cc66);
-      color: black;
-      box-shadow: 0 0 20px rgba(0, 255, 153, 0.8);
-    }
-    .buy:hover {
+    .cta:hover {
       transform: scale(1.08);
-      box-shadow: 0 0 30px rgba(0, 255, 153, 1);
-      color: white;
+      box-shadow: 0 0 30px rgba(40, 200, 80, 1);
     }
-    .follow {
-      background: linear-gradient(90deg, #ffd700, #ff4500);
-      color: black;
-      box-shadow: 0 0 20px rgba(255, 215, 0, 0.8);
-    }
-    .follow:hover {
-      transform: scale(1.08);
-      box-shadow: 0 0 30px rgba(255, 215, 0, 1);
-      color: white;
+    .cta.secondary {
+      background: linear-gradient(90deg, #0077ff, #00e5ff);
+      box-shadow: 0 0 20px rgba(0, 150, 255, 0.8);
     }
 
-    /* STORY */
-    .story {
+    /* Sections */
+    section {
       max-width: 900px;
       margin: 60px auto;
       padding: 30px;
-      border: 2px solid rgba(255, 204, 0, 0.7);
-      border-radius: 20px;
       background: rgba(0, 0, 0, 0.7);
-      box-shadow: 0 0 25px rgba(255, 102, 0, 0.6);
-      font-size: 1.1rem;
-      line-height: 1.7;
-      text-align: justify;
-      color: #f5f5f5;
+      border: 1px solid rgba(255, 215, 0, 0.6);
+      border-radius: 20px;
+      box-shadow: 0 0 25px rgba(255, 215, 0, 0.4);
+      text-align: left;
     }
-
-    /* TITLES */
-    h2 {
-      font-family: 'Orbitron', sans-serif;
-      font-size: 2.2rem;
-      margin-bottom: 25px;
-      color: #e0e0e0;
-      position: relative;
+    section h2 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      color: #ffd700;
+      border-bottom: 2px solid #ff4500;
       display: inline-block;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      cursor: default;
-      transition: all 0.3s ease;
-    }
-    h2::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      bottom: -8px;
-      width: 0%;
-      height: 3px;
-      background: linear-gradient(90deg, #ffd700, #ff4500);
-      box-shadow: 0 0 10px #ffd700, 0 0 20px #ff4500;
-      transition: width 0.4s ease;
-    }
-    h2:hover {
-      color: #ffd700;
-      text-shadow: 0 0 10px #ffd700, 0 0 20px #ff4500;
-    }
-    h2:hover::after {
-      width: 100%;
+      padding-bottom: 5px;
     }
 
-    /* NUMBERS */
     .number {
-      font-family: 'Orbitron', sans-serif;
-      font-size: 3rem;
-      font-weight: 900;
-      color: #ffd700;
-      text-shadow: 0 0 15px #ffd700, 0 0 30px #ff4500;
-      animation: pulseGlow 2.5s infinite ease-in-out;
-      margin: 20px 0;
+      font-size: 2rem;
+      font-weight: bold;
+      color: #00ffae;
+      text-shadow: 0 0 15px #00ffaa;
+      animation: pulse 2s infinite;
     }
-    @keyframes pulseGlow {
-      0% { text-shadow: 0 0 10px #ffd700, 0 0 20px #ff4500; transform: scale(1); }
-      50% { text-shadow: 0 0 25px #ffd700, 0 0 50px #ff4500; transform: scale(1.08); }
-      100% { text-shadow: 0 0 10px #ffd700, 0 0 20px #ff4500; transform: scale(1); }
+    @keyframes pulse {
+      0% { text-shadow: 0 0 5px #00ffaa; }
+      50% { text-shadow: 0 0 25px #00ffaa; }
+      100% { text-shadow: 0 0 5px #00ffaa; }
     }
 
-    /* FADE-IN */
-    .fade-in {
-      opacity: 0;
-      transform: translateY(30px);
-      transition: opacity 1s ease, transform 1s ease;
+    /* Language Toggle */
+    .lang-toggle {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 999;
+      display: flex;
+      align-items: center;
+      gap: 10px;
     }
-    .fade-in.visible {
-      opacity: 1;
-      transform: translateY(0);
+    .lang-toggle img {
+      width: 28px;
+      height: 20px;
+      cursor: pointer;
+      border: 1px solid #fff;
     }
 
-    /* FOOTER */
+    /* Footer */
     .footer {
-      margin: 60px 0 30px;
+      margin: 40px 0 20px;
       font-size: 1rem;
       color: #bbb;
-      font-family: 'Orbitron', sans-serif;
+      text-align: center;
     }
     .footer a {
       color: #00e5ff;
       text-decoration: none;
       font-weight: bold;
-      text-shadow: 0 0 10px rgba(0, 229, 255, 0.9);
     }
     .footer a:hover {
       color: #fff;
@@ -204,69 +146,74 @@
 </head>
 <body>
 
+  <!-- Language Toggle -->
+  <div class="lang-toggle">
+    <img src="https://flagcdn.com/w20/gb.png" alt="English" onclick="switchLang('en')">
+    <img src="https://flagcdn.com/w20/cn.png" alt="中文" onclick="switchLang('zh')">
+  </div>
+
   <!-- HERO -->
   <section class="hero">
     <div class="hero-content">
-      <h1>The Leap of Longmen</h1>
-      <div class="subtitle">From Carp to Dragon — A Legend Reborn on Chain</div>
-      <a href="https://pump.fun" target="_blank" class="cta buy">Buy on Pump.fun</a>
-      <a href="https://x.com/LongmenX" target="_blank" class="cta follow">Follow us on X</a>
+      <h1 id="title">The Leap of Longmen</h1>
+      <div class="subtitle" id="subtitle">From Carp to Dragon — A Legend Reborn on Chain</div>
+      <a href="https://pump.fun" target="_blank" class="cta" id="buyBtn">Buy on Pump.fun</a><br>
+      <a href="https://x.com/LongmenX" target="_blank" class="cta secondary" id="followBtn">Follow us on X</a>
     </div>
   </section>
 
   <!-- LEGEND -->
-  <section class="fade-in">
-    <h2>The Legend</h2>
-    <div class="story">
-      <p>In the ancient land of China, where mountains touched the heavens and rivers carried the whispers of time, there flowed the mighty Yellow River. Within its restless waters swam countless carps, their golden scales shimmering like shards of the sun. For generations, these carps dreamed of a single destiny — the Leap of Longmen.</p>
-      <p>At the gates of Longmen stood a roaring waterfall, a challenge whispered across centuries. Legends told that any carp brave enough to leap its thundering waters would be transformed by heaven’s will into a soaring dragon — a creature of majesty, wisdom, and boundless power. Many tried. Many failed. Yet still they leapt, driven by courage, hope, and the fire of transformation.</p>
-      <p>Today, the legend stirs once more. Longmen rises not in stone, but on the chain. From carp to dragon, from dream to destiny, we bring rebirth in the digital age. This is not only a story of the past — it is the future of community, growth, and unstoppable transformation.</p>
-      <p><strong>You stand at the gates of Longmen. Together, we leap. Together, we rise. Together, we become dragons.</strong></p>
-    </div>
+  <section>
+    <h2 id="legendTitle">The Legend</h2>
+    <p id="legendTextEn">
+      In ancient China, carps swam the mighty Yellow River, shimmering gold beneath the sun. Legends said that those bold enough to leap the raging waterfall at Longmen would be transformed into dragons — creatures of power, wisdom, and majesty.
+      For centuries, countless carps tried. Few succeeded. Yet the legend endured, fueling dreams of transformation and greatness. 
+      Today, this legend is reborn — not in stone, but on chain. Longmen is more than a coin; it is destiny, a leap into a future where culture and crypto unite.
+    </p>
+    <p id="legendTextZh" style="display:none;">
+      在古代中国，鲤鱼游弋于滔滔黄河，金鳞在阳光下闪耀。传说中，凡是勇敢跃过龙门瀑布的鲤鱼，都会化身为龙——象征力量、智慧与尊贵。
+      千百年来，无数鲤鱼奋勇一跃，极少成功，但这个传说却代代相传，点燃了无数人的梦想与希望。
+      今天，这个传说重生了——不在石壁之间，而是在链上。龙门不仅是一枚代币，更是一种宿命，一次从鲤鱼到真龙的飞跃。
+    </p>
   </section>
 
   <!-- NUMBERS -->
-  <section class="fade-in">
-    <h2>Numbers That Impress</h2>
-    <p class="number">888,888,888</p>
-    <p>Total supply, chosen for luck and fortune.</p>
-    <p class="number">1,400,000,000</p>
-    <p>People in China who know the legend of Longmen.</p>
-    <p class="number">50,000,000,000</p>
-    <p>Memes viewed daily — and not a single carp-to-dragon among them.</p>
+  <section>
+    <h2 id="numbersTitle">Numbers That Impress</h2>
+    <p><span class="number">888,888,888</span> — Total Supply (symbol of fortune)</p>
+    <p><span class="number">1,400,000,000+</span> — People who know the legend</p>
+    <p><span class="number">50,000,000,000+</span> — Memes viewed daily worldwide</p>
   </section>
 
   <!-- ROADMAP -->
-  <section class="fade-in">
-    <h2>Roadmap</h2>
-    <div class="story">
-      <p><strong>Phase I — The Carp:</strong> Build the foundation, spread the story, awaken the community.</p>
-      <p><strong>Phase II — The Leap:</strong> Listings, recognition, and first waves of global attention.</p>
-      <p><strong>Phase III — The Dragon:</strong> Cultural dominance, mainstream adoption, the legend made reality.</p>
-      <p><strong>Phase IV — The Meme Empire:</strong> Longmen becomes the symbol of Eastern strength in the meme coin world.</p>
-    </div>
+  <section>
+    <h2 id="roadmapTitle">Roadmap</h2>
+    <p><strong>Phase 1:</strong> The Leap — Launch, community formation, story spreads.</p>
+    <p><strong>Phase 2:</strong> The Rise — Growing recognition, influencer partnerships, cultural momentum.</p>
+    <p><strong>Phase 3:</strong> The Dragon — Global meme status, Longmen becomes the East’s answer to Doge and Pepe.</p>
   </section>
 
   <!-- WHY NOW -->
-  <section class="fade-in">
-    <h2>Why Now?</h2>
-    <div class="story">
-      <p>Doge and Shiba ruled their time. Pepe rose from the West. But in the East, where stories are older than empires, there has been no champion — until now. The legend of Longmen is known by over a billion people. The timing is not luck; it is destiny. The world is waiting for the dragon to rise.</p>
-    </div>
+  <section>
+    <h2 id="whyNowTitle">Why Now?</h2>
+    <p id="whyNowTextEn">
+      The world is watching as memes reshape culture and markets. Yet China, with its billion-strong population and rich heritage, has no global meme coin. Doge and Pepe captured the West. Longmen is here to give the East its own legend on chain.
+    </p>
+    <p id="whyNowTextZh" style="display:none;">
+      当今世界，迷因正在重塑文化与市场。然而拥有十几亿人口和悠久文化的中国，却还没有属于自己的全球级迷因代币。Doge 和 Pepe 席卷了西方，而龙门将成为东方的链上传奇。
+    </p>
   </section>
 
   <!-- WHY BUY -->
-  <section class="fade-in">
-    <h2>Why Buy Longmen?</h2>
-    <div class="story">
-      <ul style="list-style:none; padding:0; text-align:left; font-size:1.2rem; line-height:1.8;">
-        <li>🐉 <strong>Cultural Power:</strong> Every child in China knows the Carp-to-Dragon legend — it’s not just a meme, it’s heritage.</li>
-        <li>🌍 <strong>Untapped Market:</strong> Doge and Pepe dominate the West. China deserves its own legendary meme coin.</li>
-        <li>💎 <strong>Scarcity & Symbolism:</strong> Fixed supply of <span class="number">888,888,888</span> — the luckiest number in Chinese culture.</li>
-        <li>🚀 <strong>Meme Magnet:</strong> Over <span class="number">50,000,000,000</span> memes are viewed daily. Longmen is built to ride this wave.</li>
-        <li>🔥 <strong>Community Spirit:</strong> Just like the carps leaping together, every holder fuels the transformation into the Dragon.</li>
-      </ul>
-    </div>
+  <section>
+    <h2 id="whyBuyTitle">Why Buy Longmen?</h2>
+    <ul style="list-style:none; padding:0; font-size:1.2rem; line-height:1.8;">
+      <li>🐉 <strong>Cultural Power:</strong> Every child in China knows the Carp-to-Dragon legend — it’s heritage, not just a meme.</li>
+      <li>🌍 <strong>Untapped Market:</strong> Doge and Pepe dominate the West. China deserves its own legendary meme coin.</li>
+      <li>💎 <strong>Scarcity & Symbolism:</strong> Fixed supply of <span class="number">888,888,888</span> — the luckiest number in Chinese culture.</li>
+      <li>🚀 <strong>Meme Magnet:</strong> Over <span class="number">50,000,000,000</span> memes are viewed daily. Longmen is built to ride this wave.</li>
+      <li>🔥 <strong>Community Spirit:</strong> Just like the carps leaping together, every holder fuels the transformation into the Dragon.</li>
+    </ul>
   </section>
 
   <!-- FOOTER -->
@@ -274,18 +221,34 @@
     <p>Join the legend. <a href="https://pump.fun" target="_blank">Buy on Pump.fun</a> | <a href="https://x.com/LongmenX" target="_blank">Follow us on X</a></p>
   </div>
 
-  <!-- SCROLL SCRIPT -->
   <script>
-    const faders = document.querySelectorAll('.fade-in');
-    const appearOptions = { threshold: 0.2, rootMargin: "0px 0px -50px 0px" };
-    const appearOnScroll = new IntersectionObserver(function(entries, observer) {
-      entries.forEach(entry => {
-        if (!entry.isIntersecting) return;
-        entry.target.classList.add("visible");
-        observer.unobserve(entry.target);
-      });
-    }, appearOptions);
-    faders.forEach(fader => { appearOnScroll.observe(fader); });
+    // Auto-detect browser language
+    window.addEventListener("load", () => {
+      const userLang = navigator.language || navigator.userLanguage;
+      if (userLang.startsWith("zh")) {
+        switchLang("zh");
+      } else {
+        switchLang("en");
+      }
+    });
+
+    function switchLang(lang) {
+      const enVisible = (lang === "en");
+      document.getElementById("title").innerText = enVisible ? "The Leap of Longmen" : "龙门一跃";
+      document.getElementById("subtitle").innerText = enVisible ? "From Carp to Dragon — A Legend Reborn on Chain" : "鲤跃成龙 —— 链上传奇新生";
+      document.getElementById("buyBtn").innerText = enVisible ? "Buy on Pump.fun" : "在 Pump.fun 上购买";
+      document.getElementById("followBtn").innerText = enVisible ? "Follow us on X" : "关注我们的 X";
+      document.getElementById("legendTitle").innerText = enVisible ? "The Legend" : "传说";
+      document.getElementById("legendTextEn").style.display = enVisible ? "block" : "none";
+      document.getElementById("legendTextZh").style.display = enVisible ? "none" : "block";
+      document.getElementById("numbersTitle").innerText = enVisible ? "Numbers That Impress" : "令人震撼的数字";
+      document.getElementById("roadmapTitle").innerText = enVisible ? "Roadmap" : "路线图";
+      document.getElementById("whyNowTitle").innerText = enVisible ? "Why Now?" : "为何是现在？";
+      document.getElementById("whyNowTextEn").style.display = enVisible ? "block" : "none";
+      document.getElementById("whyNowTextZh").style.display = enVisible ? "none" : "block";
+      document.getElementById("whyBuyTitle").innerText = enVisible ? "Why Buy Longmen?" : "为什么买龙门？";
+    }
   </script>
+
 </body>
 </html>

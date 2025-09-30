@@ -4,14 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>The Leap of Longmen</title>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;900&family=Cinzel:wght@500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;900&family=Cinzel:wght@500;700&family=Noto+Serif+SC:wght@500;700&display=swap" rel="stylesheet">
   <style>
     body {
       margin: 0;
       font-family: 'Cinzel', serif;
       background: #000;
-      color: #e0e0e0;
-      text-align: center;
+      color: #e5e5e5;
     }
 
     /* HERO */
@@ -22,33 +21,36 @@
       display: flex;
       justify-content: center;
       align-items: center;
+      text-align: center;
     }
     .hero::before {
       content: "";
       position: absolute;
       top: 0; left: 0; right: 0; bottom: 0;
-      background: rgba(0,0,0,0.6);
+      background: rgba(0,0,0,0.65);
     }
     .hero-content {
       position: relative;
       z-index: 1;
+      max-width: 900px;
+      padding: 20px;
       color: #fff;
     }
     .hero h1 {
       font-family: 'Orbitron', sans-serif;
       font-size: 4rem;
       font-weight: 900;
-      background: linear-gradient(90deg, #00ff88, #00e5ff);
+      background: linear-gradient(90deg, #d4af37, #00cc88);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      text-shadow: 0 0 25px rgba(0, 255, 128, 0.8);
-      margin: 0 0 20px;
+      text-shadow: 0 0 30px rgba(212, 175, 55, 0.8);
+      margin-bottom: 20px;
     }
     .subtitle {
       font-size: 1.5rem;
-      color: #00ffcc;
+      color: #d4af37;
+      font-family: 'Noto Serif SC', serif;
       margin-bottom: 30px;
-      font-family: 'Orbitron', sans-serif;
     }
     .cta {
       display: inline-block;
@@ -57,51 +59,53 @@
       border-radius: 40px;
       font-size: 1.1rem;
       font-family: 'Orbitron', sans-serif;
-      text-transform: uppercase;
       font-weight: 700;
-      color: #fff;
-      background: linear-gradient(90deg, #00ff88, #00bbff);
+      text-transform: uppercase;
+      color: #000;
+      background: linear-gradient(90deg, #d4af37, #00cc88);
       text-decoration: none;
-      box-shadow: 0 0 20px rgba(0, 200, 255, 0.8);
+      box-shadow: 0 0 20px rgba(212, 175, 55, 0.6);
       transition: 0.2s;
     }
     .cta:hover {
       transform: scale(1.08);
-      box-shadow: 0 0 30px rgba(0, 200, 255, 1);
+      box-shadow: 0 0 35px rgba(212, 175, 55, 0.9);
     }
 
     /* CONTENT SECTIONS */
     .section {
       max-width: 1000px;
-      margin: 60px auto;
-      padding: 30px;
-      background: rgba(0,0,0,0.7);
+      margin: 70px auto;
+      padding: 40px;
+      background: rgba(0,0,0,0.75);
       border-radius: 20px;
-      box-shadow: 0 0 25px rgba(0, 255, 128, 0.4);
-      text-align: left;
+      border: 1px solid rgba(212,175,55,0.6);
+      box-shadow: 0 0 25px rgba(0,204,136,0.3);
     }
     .section h2 {
       font-family: 'Orbitron', sans-serif;
       font-size: 2rem;
       margin-bottom: 20px;
-      color: #00ffcc;
+      color: #d4af37;
+      text-align: center;
     }
     .section p {
-      font-size: 1.1rem;
-      line-height: 1.7;
-      margin-bottom: 15px;
-      color: #f5f5f5;
+      font-size: 1.15rem;
+      line-height: 1.8;
+      margin-bottom: 20px;
+      color: #f0f0f0;
     }
 
     /* FOOTER */
     .footer {
       margin: 60px 0 30px;
-      font-size: 0.9rem;
+      text-align: center;
+      font-size: 0.95rem;
       color: #bbb;
       font-family: 'Orbitron', sans-serif;
     }
     .footer a {
-      color: #00ffcc;
+      color: #00cc88;
       text-decoration: none;
       font-weight: bold;
     }
@@ -116,9 +120,10 @@
       border: none;
       border-radius: 20px;
       cursor: pointer;
-      background: linear-gradient(90deg, #00ff88, #00bbff);
+      background: linear-gradient(90deg, #d4af37, #00cc88);
       color: #000;
       font-weight: bold;
+      z-index: 10;
     }
   </style>
 </head>
@@ -128,8 +133,7 @@
   <section class="hero">
     <div class="hero-content">
       <h1 data-en="The Leap of Longmen" data-zh="龙门一跃">The Leap of Longmen</h1>
-      <div class="subtitle" data-en="From Carp to Dragon — A Legend Reborn on the Blockchain" 
-           data-zh="鲤鱼化龙 —— 区块链上的新生传奇">
+      <div class="subtitle" data-en="From Carp to Dragon — A Legend Reborn on the Blockchain" data-zh="鲤鱼化龙 —— 区块链上的新生传奇">
         From Carp to Dragon — A Legend Reborn on the Blockchain
       </div>
       <a href="https://pump.fun" target="_blank" class="cta">Buy on Pump.fun</a>
@@ -140,60 +144,60 @@
   <!-- THE LEGEND -->
   <section class="section">
     <h2 data-en="The Legend" data-zh="传说">The Legend</h2>
-    <p data-en="In the ancient land of China, the mighty Yellow River carved its way through mountains and valleys. Within its restless waters swam countless golden carps, each shimmering like a fragment of sunlight." 
-       data-zh="在古老的中国，黄河奔腾不息，穿越群山与山谷。在这不安的流水中，无数金色鲤鱼游弋，它们的鳞片闪耀着阳光的光芒。">
-       In the ancient land of China, the mighty Yellow River carved its way through mountains and valleys. Within its restless waters swam countless golden carps, each shimmering like a fragment of sunlight.
+    <p data-en="For thousands of years, the story of the carp at Longmen has been told across China. It is not merely a tale, but a teaching: persistence, courage, and transformation in the face of impossible odds." 
+       data-zh="几千年来，鲤鱼跃龙门的故事在中国广为流传。这不仅仅是一个传说，而是一种教诲：面对艰难险阻，坚持、勇气与蜕变。">
+       For thousands of years, the story of the carp at Longmen has been told across China. It is not merely a tale, but a teaching: persistence, courage, and transformation in the face of impossible odds.
     </p>
-    <p data-en="At Longmen, a thundering waterfall roared. The legend said: any carp brave enough to leap over these roaring gates would be transformed into a dragon — a creature of power, majesty, and destiny." 
-       data-zh="在龙门，一道轰鸣的瀑布咆哮奔腾。传说说：任何一条勇敢跃过龙门的鲤鱼，都将化为龙——力量、威严与命运的化身。">
-       At Longmen, a thundering waterfall roared. The legend said: any carp brave enough to leap over these roaring gates would be transformed into a dragon — a creature of power, majesty, and destiny.
+    <p data-en="At the roaring falls of Longmen, countless carps swam against the current, each daring to leap. Those who fell were carried back by the torrent. But those who succeeded transcended their form — no longer fish, but dragons soaring to the heavens." 
+       data-zh="在龙门瀑布的轰鸣声中，无数鲤鱼逆流而上，勇敢跃起。失败者被洪流冲下，而成功者则超越自我——不再是鱼，而是化为腾空而起的龙。">
+       At the roaring falls of Longmen, countless carps swam against the current, each daring to leap. Those who fell were carried back by the torrent. But those who succeeded transcended their form — no longer fish, but dragons soaring to the heavens.
     </p>
-    <p data-en="For centuries, this story has symbolized ambition, transformation, and greatness. Today, it is reborn — not in rivers, but on the blockchain." 
-       data-zh="几个世纪以来，这个故事象征着雄心、蜕变与伟大。今天，它重生了——不在河流中，而是在区块链上。">
-       For centuries, this story has symbolized ambition, transformation, and greatness. Today, it is reborn — not in rivers, but on the blockchain.
+    <p data-en="This myth has inspired emperors, poets, and generations of dreamers. Today, we bring it into the digital age — a legend reborn, a symbol for those who dare to leap into the future." 
+       data-zh="这个传说曾激励过帝王、诗人，以及一代又一代的梦想者。今天，我们将它带入数字时代——一个重生的传奇，一个敢于跃向未来的象征。">
+       This myth has inspired emperors, poets, and generations of dreamers. Today, we bring it into the digital age — a legend reborn, a symbol for those who dare to leap into the future.
     </p>
   </section>
 
   <!-- NUMBERS THAT IMPRESS -->
   <section class="section">
     <h2 data-en="Numbers That Impress" data-zh="令人震撼的数字">Numbers That Impress</h2>
-    <p data-en="888,888,888 — Total supply. An auspicious number of fortune and balance." 
-       data-zh="888,888,888 —— 总供应量。象征着幸运与平衡的吉祥数字。">
-       888,888,888 — Total supply. An auspicious number of fortune and balance.
+    <p data-en="888,888,888 — The total supply. A number chosen for fortune, prosperity, and harmony." 
+       data-zh="888,888,888 —— 总供应量。寓意吉祥、繁荣与和谐的数字。">
+       888,888,888 — The total supply. A number chosen for fortune, prosperity, and harmony.
     </p>
-    <p data-en="1,400,000,000+ — The people of China, guardians of the legend, waiting for their first true cultural meme coin." 
-       data-zh="14亿+ —— 中国人民，传说的守护者，正在等待他们的第一个真正的文化类 Meme 币。">
-       1,400,000,000+ — The people of China, guardians of the legend, waiting for their first true cultural meme coin.
+    <p data-en="1,400,000,000+ — The people of China, heirs to this legend. A cultural audience waiting for their first true meme coin." 
+       data-zh="14亿+ —— 中国人民，这个传说的继承者。一个等待第一个真正文化类 Meme 币的庞大群体。">
+       1,400,000,000+ — The people of China, heirs to this legend. A cultural audience waiting for their first true meme coin.
     </p>
-    <p data-en="50,000,000,000+ — The global memecoin market cap. Yet not a single carp. Not a single dragon. Until now." 
-       data-zh="500亿+ —— 全球 Meme 币市值。然而没有一条鲤鱼，没有一条龙。直到现在。">
-       50,000,000,000+ — The global memecoin market cap. Yet not a single carp. Not a single dragon. Until now.
+    <p data-en="50,000,000,000+ — The size of the global memecoin market. Doge and Pepe are known worldwide. But no carp, no dragon… until now." 
+       data-zh="500亿+ —— 全球 Meme 币市值。Doge 与 Pepe 风靡全球。但从未有鲤鱼，从未有龙……直到现在。">
+       50,000,000,000+ — The size of the global memecoin market. Doge and Pepe are known worldwide. But no carp, no dragon… until now.
     </p>
   </section>
 
   <!-- ROADMAP -->
   <section class="section">
     <h2 data-en="Roadmap" data-zh="路线图">Roadmap</h2>
-    <p data-en="Phase I: The Leap — Launch on Pump.fun, ignite the legend, and awaken the community." 
-       data-zh="第一阶段：一跃而上 —— 在 Pump.fun 上发布，点燃传说，唤醒社区。">
-       Phase I: The Leap — Launch on Pump.fun, ignite the legend, and awaken the community.
+    <p data-en="Phase I: The Leap — Launch, ignite the legend, awaken the community." 
+       data-zh="第一阶段：一跃而上 —— 启动，点燃传说，唤醒社区。">
+       Phase I: The Leap — Launch, ignite the legend, awaken the community.
     </p>
-    <p data-en="Phase II: The Rise — Expand awareness through influencers, memes, and culture." 
-       data-zh="第二阶段：腾飞 —— 通过意见领袖、表情包和文化扩大影响力。">
-       Phase II: The Rise — Expand awareness through influencers, memes, and culture.
+    <p data-en="Phase II: The Rise — Spread across communities, influencers, and cultural channels." 
+       data-zh="第二阶段：腾飞 —— 通过社区、意见领袖和文化渠道扩大影响力。">
+       Phase II: The Rise — Spread across communities, influencers, and cultural channels.
     </p>
-    <p data-en="Phase III: The Dragon — Reach global audiences, partnerships, and true memetic dominance." 
-       data-zh="第三阶段：化龙 —— 走向全球观众，建立合作伙伴关系，实现真正的 Meme 霸主地位。">
-       Phase III: The Dragon — Reach global audiences, partnerships, and true memetic dominance.
+    <p data-en="Phase III: The Dragon — Recognition worldwide. The first great cultural meme coin from China." 
+       data-zh="第三阶段：化龙 —— 获得全球认可。中国第一个伟大的文化类 Meme 币。">
+       Phase III: The Dragon — Recognition worldwide. The first great cultural meme coin from China.
     </p>
   </section>
 
   <!-- WHY NOW -->
   <section class="section">
     <h2 data-en="Why Now?" data-zh="为什么是现在？">Why Now?</h2>
-    <p data-en="There is Doge. There is Pepe. But China has yet to see its legend on-chain. The timing is perfect: a billion voices ready, a story known for centuries, and a market hungry for the next great meme." 
-       data-zh="有 Doge，有 Pepe。但中国尚未在链上看到属于他们的传说。时机已至：十几亿人的声音，一个流传了数百年的故事，以及一个渴望下一个伟大 Meme 的市场。">
-       There is Doge. There is Pepe. But China has yet to see its legend on-chain. The timing is perfect: a billion voices ready, a story known for centuries, and a market hungry for the next great meme.
+    <p data-en="Memes move markets. Doge captured hearts with humor. Pepe spread with simplicity. But China, with its billion-strong cultural heritage, has yet to see its great legend represented in crypto. The time is ripe. The leap awaits." 
+       data-zh="Meme 币能够推动市场。Doge 以幽默赢得人心，Pepe 以简洁广为流传。但中国，拥有十几亿人口和深厚的文化传承，却尚未在加密世界中展现其伟大的传说。时机已至，龙门在前。">
+       Memes move markets. Doge captured hearts with humor. Pepe spread with simplicity. But China, with its billion-strong cultural heritage, has yet to see its great legend represented in crypto. The time is ripe. The leap awaits.
     </p>
   </section>
 

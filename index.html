@@ -3,229 +3,218 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Longmen - The Carp Becomes the Dragon</title>
+  <title>The Leap of Longmen</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;900&family=Cinzel:wght@500;700&display=swap" rel="stylesheet">
   <style>
     body {
       margin: 0;
-      font-family: "Poppins", sans-serif;
-      background: black;
-      color: #f5f5f5;
-      overflow-x: hidden;
+      font-family: 'Cinzel', serif;
+      background: #000;
+      color: #e0e0e0;
+      text-align: center;
     }
 
-    /* Hero */
+    /* HERO */
     .hero {
+      position: relative;
       height: 100vh;
       background: url("https://i.postimg.cc/rm6H3TWf/carp-upscaled.jpg") no-repeat center center/cover;
       display: flex;
       justify-content: center;
       align-items: center;
-      text-align: center;
-      color: gold;
-      position: relative;
     }
-
-    .hero::after {
+    .hero::before {
       content: "";
       position: absolute;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.5);
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.6);
     }
-
     .hero-content {
       position: relative;
-      z-index: 2;
+      z-index: 1;
+      color: #fff;
     }
-
-    h1 {
-      font-size: 3.5rem;
-      margin: 0;
-      color: gold;
+    .hero h1 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 4rem;
+      font-weight: 900;
+      background: linear-gradient(90deg, #00ff88, #00e5ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 0 25px rgba(0, 255, 128, 0.8);
+      margin: 0 0 20px;
     }
-
-    h2 {
-      color: #00ff99;
+    .subtitle {
+      font-size: 1.5rem;
+      color: #00ffcc;
+      margin-bottom: 30px;
+      font-family: 'Orbitron', sans-serif;
     }
-
-    .section {
-      max-width: 900px;
-      margin: 4rem auto;
-      padding: 0 1rem;
-      opacity: 0;
-      transform: translateY(50px);
-      transition: all 1s ease-out;
-    }
-
-    .section.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .stats {
-      display: flex;
-      justify-content: space-around;
-      flex-wrap: wrap;
-      margin-top: 2rem;
-    }
-
-    .stat {
-      font-size: 2rem;
-      color: #00ff99;
-    }
-
-    .roadmap {
-      margin-top: 2rem;
-    }
-
-    .roadmap p {
-      margin: 0.5rem 0;
-    }
-
     .cta {
-      text-align: center;
-      margin: 4rem 0;
+      display: inline-block;
+      margin: 10px;
+      padding: 14px 28px;
+      border-radius: 40px;
+      font-size: 1.1rem;
+      font-family: 'Orbitron', sans-serif;
+      text-transform: uppercase;
+      font-weight: 700;
+      color: #fff;
+      background: linear-gradient(90deg, #00ff88, #00bbff);
+      text-decoration: none;
+      box-shadow: 0 0 20px rgba(0, 200, 255, 0.8);
+      transition: 0.2s;
+    }
+    .cta:hover {
+      transform: scale(1.08);
+      box-shadow: 0 0 30px rgba(0, 200, 255, 1);
     }
 
-    .cta a {
-      display: inline-block;
-      margin: 0.5rem;
-      padding: 0.75rem 1.5rem;
-      background: gold;
-      color: black;
+    /* CONTENT SECTIONS */
+    .section {
+      max-width: 1000px;
+      margin: 60px auto;
+      padding: 30px;
+      background: rgba(0,0,0,0.7);
+      border-radius: 20px;
+      box-shadow: 0 0 25px rgba(0, 255, 128, 0.4);
+      text-align: left;
+    }
+    .section h2 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 2rem;
+      margin-bottom: 20px;
+      color: #00ffcc;
+    }
+    .section p {
+      font-size: 1.1rem;
+      line-height: 1.7;
+      margin-bottom: 15px;
+      color: #f5f5f5;
+    }
+
+    /* FOOTER */
+    .footer {
+      margin: 60px 0 30px;
+      font-size: 0.9rem;
+      color: #bbb;
+      font-family: 'Orbitron', sans-serif;
+    }
+    .footer a {
+      color: #00ffcc;
       text-decoration: none;
       font-weight: bold;
-      border-radius: 8px;
-      transition: 0.3s;
     }
 
-    .cta a:hover {
-      background: #00ff99;
-      color: black;
-    }
-
-    /* Language Toggle */
+    /* LANGUAGE SWITCH */
     .lang-toggle {
       position: fixed;
-      top: 1rem;
-      right: 1rem;
-      background: rgba(255, 215, 0, 0.8);
-      padding: 0.5rem 1rem;
-      border-radius: 8px;
+      top: 20px;
+      right: 20px;
+      padding: 8px 16px;
+      font-family: 'Orbitron', sans-serif;
+      border: none;
+      border-radius: 20px;
       cursor: pointer;
+      background: linear-gradient(90deg, #00ff88, #00bbff);
+      color: #000;
       font-weight: bold;
-      z-index: 1000;
     }
   </style>
 </head>
 <body>
-  <div class="lang-toggle" onclick="toggleLang()">中文</div>
 
+  <!-- HERO -->
   <section class="hero">
     <div class="hero-content">
-      <h1 data-en="Longmen" data-zh="龙门">Longmen</h1>
-      <p data-en="The Carp Becomes the Dragon" data-zh="鲤鱼跃龙门">The Carp Becomes the Dragon</p>
+      <h1 data-en="The Leap of Longmen" data-zh="龙门一跃">The Leap of Longmen</h1>
+      <div class="subtitle" data-en="From Carp to Dragon — A Legend Reborn on the Blockchain" 
+           data-zh="鲤鱼化龙 —— 区块链上的新生传奇">
+        From Carp to Dragon — A Legend Reborn on the Blockchain
+      </div>
+      <a href="https://pump.fun" target="_blank" class="cta">Buy on Pump.fun</a>
+      <a href="https://x.com/LongmenX" target="_blank" class="cta">Follow us on X</a>
     </div>
   </section>
 
-  <!-- Legendary Story -->
+  <!-- THE LEGEND -->
   <section class="section">
     <h2 data-en="The Legend" data-zh="传说">The Legend</h2>
-    <p data-en="In the ancient land of China, the Yellow River flowed with endless strength. Its waters carried countless carps, their golden scales glinting like fragments of sunlight. Yet their destiny was not to remain in the current. For at Longmen, the Dragon Gate, a mighty waterfall roared — a gate between the mortal and the divine." 
-       data-zh="在古老的中国，黄河奔腾不息。无数鲤鱼随波逐流，它们的金色鳞片犹如破碎的阳光闪耀。然而，它们的命运并非永远停留在水流中。因为在龙门——那咆哮的瀑布前，存在着凡人与神明之间的界门。"></p>
-    <p data-en="Legends told that any carp bold enough to challenge the current, to leap against the crashing water, and to reach the top of Longmen, would be transformed by the heavens into a dragon — a being of power, wisdom, and eternity. Many tried. Many failed. But each leap carried with it faith, struggle, and hope." 
-       data-zh="传说中，任何一条勇于挑战水流、逆瀑而上的鲤鱼，只要跃过龙门，便会受到天命的赐福，化身为龙——拥有力量、智慧与永恒。许多尝试，许多失败。但每一次跃起，都承载着信念、奋斗与希望。"></p>
-    <p data-en="This was not only a story of fish and rivers. It was a story of ambition. A story of transformation. A story that echoed through centuries of Chinese culture, reminding all who heard it: greatness demands the courage to leap." 
-       data-zh="这不仅仅是关于鱼儿与河流的故事。这是关于雄心的故事，是关于蜕变的故事。它穿越了数千年的中国文化，提醒着所有听到它的人：伟大需要勇气去跃起。"></p>
-    <p data-en="Today, the legend stirs once more. Longmen rises not from stone, but on the chain. The carp is no longer a dream — it is you, it is us, it is a movement. Together, we stand at the gates of destiny. Together, we leap." 
-       data-zh="今天，这一传说再次苏醒。龙门不再屹立于山川，而是在链上崛起。鲤鱼不再只是梦想——它是你，是我们，是一场运动。我们一同站在命运的门前，我们一同跃起。"></p>
+    <p data-en="In the ancient land of China, the mighty Yellow River carved its way through mountains and valleys. Within its restless waters swam countless golden carps, each shimmering like a fragment of sunlight." 
+       data-zh="在古老的中国，黄河奔腾不息，穿越群山与山谷。在这不安的流水中，无数金色鲤鱼游弋，它们的鳞片闪耀着阳光的光芒。">
+       In the ancient land of China, the mighty Yellow River carved its way through mountains and valleys. Within its restless waters swam countless golden carps, each shimmering like a fragment of sunlight.
+    </p>
+    <p data-en="At Longmen, a thundering waterfall roared. The legend said: any carp brave enough to leap over these roaring gates would be transformed into a dragon — a creature of power, majesty, and destiny." 
+       data-zh="在龙门，一道轰鸣的瀑布咆哮奔腾。传说说：任何一条勇敢跃过龙门的鲤鱼，都将化为龙——力量、威严与命运的化身。">
+       At Longmen, a thundering waterfall roared. The legend said: any carp brave enough to leap over these roaring gates would be transformed into a dragon — a creature of power, majesty, and destiny.
+    </p>
+    <p data-en="For centuries, this story has symbolized ambition, transformation, and greatness. Today, it is reborn — not in rivers, but on the blockchain." 
+       data-zh="几个世纪以来，这个故事象征着雄心、蜕变与伟大。今天，它重生了——不在河流中，而是在区块链上。">
+       For centuries, this story has symbolized ambition, transformation, and greatness. Today, it is reborn — not in rivers, but on the blockchain.
+    </p>
   </section>
 
-  <!-- Numbers -->
+  <!-- NUMBERS THAT IMPRESS -->
   <section class="section">
     <h2 data-en="Numbers That Impress" data-zh="令人震撼的数字">Numbers That Impress</h2>
-    <div class="stats">
-      <div class="stat" data-target="888888888">0</div>
-      <div class="stat" data-target="1400000000">0</div>
-      <div class="stat" data-target="50000000000">0</div>
-    </div>
-    <p data-en="888,888,888 Supply. A sacred number of fortune and eternity in Chinese culture. 1.4 Billion Chinese people. A $50 Billion+ meme coin market. And yet — no great Chinese meme coin. The leap is inevitable." 
-       data-zh="888,888,888 的总供应量，这是中国文化中象征财富与永恒的神圣数字。14 亿中国人。500 亿美元以上的 Meme 市场。然而，中国还没有属于自己的伟大 Meme 币。跃龙门已是必然。"></p>
+    <p data-en="888,888,888 — Total supply. An auspicious number of fortune and balance." 
+       data-zh="888,888,888 —— 总供应量。象征着幸运与平衡的吉祥数字。">
+       888,888,888 — Total supply. An auspicious number of fortune and balance.
+    </p>
+    <p data-en="1,400,000,000+ — The people of China, guardians of the legend, waiting for their first true cultural meme coin." 
+       data-zh="14亿+ —— 中国人民，传说的守护者，正在等待他们的第一个真正的文化类 Meme 币。">
+       1,400,000,000+ — The people of China, guardians of the legend, waiting for their first true cultural meme coin.
+    </p>
+    <p data-en="50,000,000,000+ — The global memecoin market cap. Yet not a single carp. Not a single dragon. Until now." 
+       data-zh="500亿+ —— 全球 Meme 币市值。然而没有一条鲤鱼，没有一条龙。直到现在。">
+       50,000,000,000+ — The global memecoin market cap. Yet not a single carp. Not a single dragon. Until now.
+    </p>
   </section>
 
-  <!-- Roadmap -->
+  <!-- ROADMAP -->
   <section class="section">
     <h2 data-en="Roadmap" data-zh="路线图">Roadmap</h2>
-    <div class="roadmap">
-      <p data-en="Phase 1: Birth of the Carp – The launch, the first believers, the beginning of community." 
-         data-zh="阶段一：鲤鱼诞生 – 上线，第一批信仰者，社区的起点。"></p>
-      <p data-en="Phase 2: The Leap – Growth, listings, influencers spreading the legend." 
-         data-zh="阶段二：鲤鱼跃龙门 – 增长、上所、影响力传播传说。"></p>
-      <p data-en="Phase 3: The Dragon Awakens – From token to cultural movement, embraced in China and beyond." 
-         data-zh="阶段三：龙之觉醒 – 从代币到文化运动，中国与世界共同接受。"></p>
-      <p data-en="Phase 4: Meme Empire – Longmen stands with Doge, Pepe, and Shiba as a global giant." 
-         data-zh="阶段四：Meme 帝国 – Longmen 与 Doge、Pepe、Shiba 并肩，成为全球巨擘。"></p>
-    </div>
+    <p data-en="Phase I: The Leap — Launch on Pump.fun, ignite the legend, and awaken the community." 
+       data-zh="第一阶段：一跃而上 —— 在 Pump.fun 上发布，点燃传说，唤醒社区。">
+       Phase I: The Leap — Launch on Pump.fun, ignite the legend, and awaken the community.
+    </p>
+    <p data-en="Phase II: The Rise — Expand awareness through influencers, memes, and culture." 
+       data-zh="第二阶段：腾飞 —— 通过意见领袖、表情包和文化扩大影响力。">
+       Phase II: The Rise — Expand awareness through influencers, memes, and culture.
+    </p>
+    <p data-en="Phase III: The Dragon — Reach global audiences, partnerships, and true memetic dominance." 
+       data-zh="第三阶段：化龙 —— 走向全球观众，建立合作伙伴关系，实现真正的 Meme 霸主地位。">
+       Phase III: The Dragon — Reach global audiences, partnerships, and true memetic dominance.
+    </p>
   </section>
 
-  <!-- Why Now -->
+  <!-- WHY NOW -->
   <section class="section">
-    <h2 data-en="Why Now?" data-zh="为何是现在？">Why Now?</h2>
-    <p data-en="Doge was the Dog 🐶. Shiba was the Dog 🐕. Pepe was the Frog 🐸. They became billion-dollar legends. But China — with 1.4 billion people — has no great meme coin. Longmen is the first cultural meme coin of China, destined to rise." 
-       data-zh="Doge 是狗 🐶。Shiba 是狗 🐕。Pepe 是青蛙 🐸。它们成为了市值数十亿美元的传奇。但中国——拥有 14 亿人口——还没有属于自己的伟大 Meme 币。Longmen 是中国第一个文化 Meme 币，注定崛起。"></p>
+    <h2 data-en="Why Now?" data-zh="为什么是现在？">Why Now?</h2>
+    <p data-en="There is Doge. There is Pepe. But China has yet to see its legend on-chain. The timing is perfect: a billion voices ready, a story known for centuries, and a market hungry for the next great meme." 
+       data-zh="有 Doge，有 Pepe。但中国尚未在链上看到属于他们的传说。时机已至：十几亿人的声音，一个流传了数百年的故事，以及一个渴望下一个伟大 Meme 的市场。">
+       There is Doge. There is Pepe. But China has yet to see its legend on-chain. The timing is perfect: a billion voices ready, a story known for centuries, and a market hungry for the next great meme.
+    </p>
   </section>
 
-  <!-- Call to Action -->
-  <section class="cta section">
-    <h2 data-en="Join the Leap" data-zh="加入跃龙门">Join the Leap</h2>
-    <p data-en="The leap cannot happen without you. Together, we are the carp — and together, we become the dragon." 
-       data-zh="没有你，跃龙门无法实现。我们共同是鲤鱼——一起化身为龙。"></p>
-    <a href="https://pump.fun" target="_blank">Buy on Pump.fun</a>
-    <a href="https://x.com" target="_blank">Follow on X</a>
-  </section>
+  <!-- FOOTER -->
+  <div class="footer">
+    <p data-en="Join the legend." data-zh="加入传奇。">
+      Join the legend. <a href="https://pump.fun" target="_blank">Buy on Pump.fun</a> | 
+      <a href="https://x.com/LongmenX" target="_blank">Follow us on X</a>
+    </p>
+  </div>
+
+  <!-- LANGUAGE SWITCH BUTTON -->
+  <button class="lang-toggle" onclick="toggleLang()">中文 / EN</button>
 
   <script>
-    // Fade-in effect
-    const sections = document.querySelectorAll('.section');
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) entry.target.classList.add('visible');
-      });
-    }, { threshold: 0.2 });
-    sections.forEach(section => observer.observe(section));
-
-    // Number counters
-    const stats = document.querySelectorAll('.stat');
-    const statObserver = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          const stat = entry.target;
-          const target = +stat.getAttribute('data-target');
-          let count = 0;
-          const increment = target / 200;
-          const update = () => {
-            count += increment;
-            if (count < target) {
-              stat.textContent = Math.floor(count).toLocaleString();
-              requestAnimationFrame(update);
-            } else {
-              stat.textContent = target.toLocaleString();
-            }
-          };
-          update();
-          statObserver.unobserve(stat);
-        }
-      });
-    }, { threshold: 0.6 });
-    stats.forEach(stat => statObserver.observe(stat));
-
-    // Language toggle
-    let currentLang = "en";
+    let currentLang = 'en';
     function toggleLang() {
-      currentLang = currentLang === "en" ? "zh" : "en";
-      document.querySelectorAll("[data-en]").forEach(el => {
+      currentLang = currentLang === 'en' ? 'zh' : 'en';
+      document.querySelectorAll('[data-en]').forEach(el => {
         el.textContent = el.getAttribute(`data-${currentLang}`);
       });
-      document.querySelector(".lang-toggle").textContent = currentLang === "en" ? "中文" : "EN";
     }
   </script>
 </body>

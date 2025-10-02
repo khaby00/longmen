@@ -1,438 +1,334 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Longmen — 龙门 | From Carp to Dragon</title>
-  <meta name="description" content="Longmen — From Carp to Dragon. A cultural memecoin symbolizing perseverance and transformation. Total supply 1,000,000,000." />
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;900&family=Cinzel:wght@500;700&family=Noto+Serif+SC:wght@400;700&display=swap" rel="stylesheet">
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Longmen — From Carp to Dragon</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;900&family=Cinzel:wght@500;700&display=swap" rel="stylesheet">
   <style>
-    :root{
-      --bg:#000;
-      --muted:#e6e6e6;
-      --gold:#ffd700;
-      --red:#d84315;
-      --panel: rgba(0,0,0,0.78);
-      --cta-glow: 0 12px 40px rgba(255,200,0,0.12);
-      --pulse-duration: 2.6s;
-      --countup-target: 1800;
-    }
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{
-      margin:0; background:var(--bg); color:var(--muted);
-      font-family:'Cinzel',serif; -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
-      line-height:1.6;
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Cinzel', serif;
+      background: #000;
+      color: #f5f5f5;
+      text-align: center;
     }
 
-    /* language handling via body[data-lang] */
-    body[data-lang="en"] .lang-en{display:block} 
-    body[data-lang="en"] .lang-zh{display:none}
-    body[data-lang="zh"] .lang-zh{display:block}
-    body[data-lang="zh"] .lang-en{display:none}
-
-    /* top-right flags */
-    .lang-toggle{ position:fixed; top:12px; right:12px; z-index:9999; display:flex; gap:8px; align-items:center; background:rgba(0,0,0,0.45); padding:6px 8px; border-radius:999px; border:1px solid rgba(255,215,0,0.06); }
-    .lang-toggle button{ background:none; border:none; cursor:pointer; padding:6px; display:flex; gap:8px; align-items:center; color:var(--muted); font-family:'Orbitron',sans-serif; font-weight:700; font-size:13px; }
-    .lang-toggle img{ width:20px;height:auto; display:block; }
-    .lang-toggle button.active{ color:var(--gold); }
-
-    /* Hero */
-    .hero{ position:relative; min-height:86vh; display:flex; align-items:center; justify-content:center; text-align:center; background: url("https://i.postimg.cc/QCRLjSjR/longmen.jpg") center/cover no-repeat fixed; }
-    .hero::before{ content:""; position:absolute; inset:0; background: linear-gradient(180deg, rgba(0,0,0,0.78), rgba(0,0,0,0.78)); z-index:0; }
-    .hero-inner{ position:relative; z-index:2; max-width:1100px; padding:28px; }
-
-    @keyframes glowPulse {
-      0%{ transform:scale(1); text-shadow:0 0 8px rgba(255,215,0,0.6); }
-      50%{ transform:scale(1.03); text-shadow:0 0 36px rgba(255,160,64,0.95); }
-      100%{ transform:scale(1); text-shadow:0 0 8px rgba(255,215,0,0.6); }
+    /* --- HERO --- */
+    .hero {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      background: url("https://i.postimg.cc/QCRLjSjR/longmen.jpg") no-repeat center center/cover;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+    .hero::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0, 0, 0, 0.6);
+    }
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      color: #fff;
+    }
+    .hero h1 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 3.5rem;
+      font-weight: 900;
+      background: linear-gradient(90deg, #ffd700, #ff0000);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 0 25px rgba(255, 215, 0, 0.9);
+      margin: 0 0 20px;
+    }
+    .subtitle {
+      font-size: 1.4rem;
+      color: #ffd700;
+      margin-bottom: 30px;
+      text-shadow: 0 0 15px rgba(255, 0, 0, 0.7);
+      font-family: 'Orbitron', sans-serif;
     }
 
-    .title{ font-family:'Orbitron',sans-serif; font-size:3.6rem; margin:0 0 8px; background:linear-gradient(90deg,var(--gold),var(--red)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; animation:glowPulse var(--pulse-duration) infinite ease-in-out; }
-    .title.lang-zh{ font-family:'Noto Serif SC', serif; }
+    /* --- BUTTONS --- */
+    .cta {
+      display: inline-block;
+      margin: 12px 10px;
+      padding: 14px 32px;
+      border-radius: 40px;
+      font-size: 1.1rem;
+      font-family: 'Orbitron', sans-serif;
+      text-transform: uppercase;
+      font-weight: 700;
+      color: #000;
+      background: linear-gradient(90deg, #ffd700, #ff0000);
+      text-decoration: none;
+      box-shadow: 0 0 20px rgba(255, 215, 0, 0.8);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .cta:hover {
+      transform: scale(1.08);
+      box-shadow: 0 0 30px rgba(255, 50, 0, 1);
+    }
 
-    .subtitle{ font-size:1.15rem; color:rgba(255,235,205,0.95); margin-bottom:18px; }
-    .typewriter{ border-right: .12em solid rgba(255,255,255,0.15); white-space:nowrap; overflow:hidden; display:inline-block; }
+    /* --- CONTENT SECTIONS --- */
+    section {
+      max-width: 950px;
+      margin: 80px auto;
+      padding: 30px;
+      background: rgba(0, 0, 0, 0.7);
+      border: 2px solid rgba(255, 215, 0, 0.6);
+      border-radius: 20px;
+      box-shadow: 0 0 25px rgba(255, 0, 0, 0.5);
+      text-align: justify;
+      line-height: 1.7;
+      font-size: 1.1rem;
+      opacity: 0;               /* Start hidden */
+      transform: translateY(40px);
+      transition: all 1s ease;
+    }
+    section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
 
-    /* CTA */
-    .cta-stack{ margin-top:20px; display:flex; flex-direction:column; gap:12px; align-items:center; }
-    .btn{ font-family:'Orbitron',sans-serif; text-transform:uppercase; font-weight:800; padding:12px 34px; border-radius:40px; border:none; cursor:pointer; display:inline-block; transition:transform .14s ease, box-shadow .14s ease; text-decoration:none; }
-    .btn-buy{ background: linear-gradient(90deg,var(--gold), #ff8a00); color:#000; box-shadow:var(--cta-glow); animation:glowPulse var(--pulse-duration) infinite ease-in-out; }
-    .btn-buy:hover{ transform:translateY(-4px) scale(1.02); color:#fff; box-shadow:0 18px 60px rgba(255,200,0,0.22); }
-    .btn-follow{ background: linear-gradient(90deg,#120000,var(--red)); color:#fff; box-shadow:0 8px 30px rgba(200,50,40,0.12); }
-    .btn-follow:hover{ transform:translateY(-4px) scale(1.02); }
+    section h2 {
+      font-size: 2rem;
+      font-family: 'Orbitron', sans-serif;
+      text-align: center;
+      background: linear-gradient(90deg, #ffd700, #ff0000);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 20px;
+    }
 
-    /* main sections */
-    main{ padding:36px 20px 90px; max-width:1200px; margin:0 auto; }
-    .section{ margin:36px auto; padding:28px; border-radius:12px; background:var(--panel); border:1px solid rgba(255,215,0,0.05); box-shadow:0 10px 30px rgba(0,0,0,0.5); }
-    .section h2{ font-family:'Orbitron',sans-serif; font-size:1.9rem; margin:0 0 18px; color:var(--gold); display:inline-block; position:relative; }
-    .section h2::after{ content:""; position:absolute; left:0; bottom:-10px; height:4px; width:0; background: linear-gradient(90deg,var(--gold),var(--red)); transition:width .3s ease; box-shadow:0 0 12px var(--gold); }
-    .section h2:hover::after{ width:100%; }
+    /* --- NUMBERS --- */
+    .numbers {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+    }
+    .number-box {
+      margin: 20px;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 2rem;
+      color: #ffd700;
+      text-shadow: 0 0 15px rgba(255, 0, 0, 0.8);
+    }
 
-    /* numbers */
-    .nums{ display:flex; gap:16px; flex-wrap:wrap; margin-top:12px; justify-content:center; }
-    .numbox{ flex:1 1 260px; max-width:320px; background:rgba(0,0,0,0.35); padding:20px; border-radius:12px; border:1px solid rgba(255,215,0,0.04); text-align:center; }
-    .num-value{ font-family:'Orbitron',sans-serif; font-size:2.2rem; color:var(--gold); font-weight:900; text-shadow:0 0 12px var(--gold); }
-    .num-label{ color:#eae7df; margin-top:8px; font-size:0.95rem; }
+    /* --- FOOTER --- */
+    footer {
+      margin: 60px 0 30px;
+      font-size: 1rem;
+      color: #bbb;
+      font-family: 'Orbitron', sans-serif;
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 1s ease;
+    }
+    footer.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    footer a {
+      color: #ffd700;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    footer a:hover {
+      color: #fff;
+    }
 
-    /* reasons list */
-    .reasons ul{ list-style:none; padding-left:0; margin:0; }
-    .reasons li{ margin:12px 0; font-size:1.05rem; line-height:1.6; }
+    /* --- FLAGS --- */
+    .lang-toggle {
+      position: absolute;
+      top: 15px;
+      right: 20px;
+      z-index: 10;
+    }
+    .lang-toggle button {
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      margin: 0 5px;
+    }
 
-    /* contract box */
-    .contract{ max-width:900px; margin:28px auto; padding:18px; border-radius:10px; background:rgba(0,0,0,0.6); border:1px solid rgba(255,215,0,0.06); display:flex; gap:12px; align-items:center; justify-content:center; flex-wrap:wrap; }
-    .contract .label{ color:#eae7df; font-weight:700; margin-right:8px; }
-    .contract .address{ font-family:monospace; color:var(--gold); background:#0b0b0b; padding:8px 12px; border-radius:8px; word-break:break-all; }
-    .copy-btn{ background:var(--gold); color:#000; border:none; padding:8px 12px; border-radius:8px; cursor:pointer; font-weight:800; box-shadow:0 6px 18px rgba(255,200,0,0.08); }
-    .copy-tooltip{ margin-left:8px; font-size:0.9rem; color:#bfbfbf; min-width:90px; text-align:center; }
-
-    /* fade-in animation */
-    .fade-in{ opacity:0; transform:translateY(12px); transition:opacity .85s ease, transform .85s ease; }
-    .fade-in.visible{ opacity:1; transform:translateY(0); }
-
-    footer{ text-align:center; color:#bfbfbf; margin:36px 0 80px; font-family:'Orbitron',sans-serif; }
-
-    @media (max-width:760px){
-      .title{ font-size:2.4rem; }
-      .numbox{ flex:1 1 100%; }
-      .hero{ min-height:66vh; }
-      .lang-toggle{ right:8px; top:8px; padding:6px; }
-      .contract{ flex-direction:column; gap:8px; text-align:center; }
+    /* --- COPY CONTRACT --- */
+    .contract-box {
+      text-align: center;
+      margin-top: 20px;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1rem;
+      color: #ffd700;
+    }
+    .copy-btn {
+      background: #ff0000;
+      border: none;
+      color: #fff;
+      padding: 6px 10px;
+      margin-left: 10px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 0.9rem;
     }
   </style>
 </head>
-<body data-lang="en">
-
-  <!-- language toggle (flags) -->
-  <div class="lang-toggle" role="navigation" aria-label="Language switch">
-    <button id="btn-en" aria-pressed="true" title="English">
-      <img src="https://flagcdn.com/w20/gb.png" alt="EN"> EN
-    </button>
-    <button id="btn-zh" aria-pressed="false" title="中文 (简体)">
-      <img src="https://flagcdn.com/w20/cn.png" alt="中文"> 中文
-    </button>
+<body>
+  <!-- LANGUAGE TOGGLE -->
+  <div class="lang-toggle">
+    <button onclick="setLanguage('en')">🇬🇧</button>
+    <button onclick="setLanguage('zh')">🇨🇳</button>
   </div>
 
   <!-- HERO -->
-  <header class="hero" role="banner">
-    <div class="hero-inner">
-      <h1 class="title lang-en">Longmen — The Gateway of Transformation</h1>
-      <h1 class="title lang-zh">龍門 — 蜕变之门</h1>
-
-      <div class="subtitle lang-en"><span id="type-en" class="typewriter"></span></div>
-      <div class="subtitle lang-zh"><span id="type-zh" class="typewriter"></span></div>
-
-      <div class="cta-stack" role="region" aria-label="Primary calls to action">
-        <a id="buy-link" class="btn btn-buy" href="https://pump.fun/coin/HQW7SFWtbqsXCcvbdBtXC2YQGsbfLse2sfP1aFYLpump" target="_blank" rel="noopener">
-          <span class="lang-en">Buy on Pump.fun</span><span class="lang-zh">在 Pump.fun 上购买</span>
-        </a>
-
-        <a id="follow-tg" class="btn btn-follow" href="https://t.me/longmencoin" target="_blank" rel="noopener">
-          <span class="lang-en">Join our Telegram</span><span class="lang-zh">加入我们的 Telegram</span>
-        </a>
-
-        <a id="follow-x" class="btn btn-follow" href="https://x.com/LongmenX" target="_blank" rel="noopener">
-          <span class="lang-en">Follow us on X</span><span class="lang-zh">在 X 上关注我们</span>
-        </a>
+  <section class="hero visible">
+    <div class="hero-content">
+      <h1 id="title">Longmen</h1>
+      <div class="subtitle" id="subtitle">From Carp to Dragon — The Leap Beyond</div>
+      <a href="https://pump.fun/coin/HQW7SFWtbqsXCcvbdBtXC2YQGsbfLse2sfP1aFYLpump" target="_blank" class="cta" id="buy-btn">Buy on Pump.fun</a>
+      <br>
+      <a href="https://x.com/LongmenX" target="_blank" class="cta" id="x-btn">Follow us on X</a>
+      <a href="https://t.me/longmencoin" target="_blank" class="cta" id="tg-btn">Join Telegram</a>
+      <div class="contract-box">
+        <span id="contract-label">Contract:</span> 
+        <span id="contract">HQW7SFWtbqsXCcvbdBtXC2YQGsbfLse2sfP1aFYLpump</span>
+        <button class="copy-btn" onclick="copyContract()">Copy</button>
       </div>
     </div>
-  </header>
+  </section>
 
-  <main>
-    <!-- ABOUT -->
-    <section class="section fade-in" id="about">
-      <h2 class="lang-en">What is Longmen?</h2>
-      <h2 class="lang-zh">什么是龍門？</h2>
+  <!-- ABOUT -->
+  <section id="about">
+    <h2>What is Longmen?</h2>
+    <p id="about-text">
+      Longmen is more than a token — it is a legend reborn. Named after the Dragon Gate, Longmen represents the eternal transformation: the humble carp that dares to leap becomes the dragon. Our mascot embodies this spirit — bold, unstoppable, and destined for greatness.
+    </p>
+  </section>
 
-      <div class="lang-en">
-        <p>Longmen is a cultural memecoin built around one timeless idea: transformation. It represents perseverance, community, and destiny. Named after the Dragon Gate, Longmen celebrates the moment when effort meets opportunity — when the ordinary becomes extraordinary.</p>
-        <p>Longmen is not just a token. It is a narrative engine for creators, a symbol for communities who believe in growth, and a brand built for virality and cultural resonance.</p>
-      </div>
+  <!-- LEGEND -->
+  <section id="legend">
+    <h2>The Legend</h2>
+    <p id="legend-text">
+      In ancient China, along the Yellow River, carps swam tirelessly against the current. They dreamed of reaching Longmen — the Dragon Gate. Legends said that any carp strong enough to leap the roaring waterfall would be transformed by the heavens into a dragon: a creature of wisdom, power, and majesty. 
+      Many tried. Many failed. But those who leapt, who never gave up, became more than fish — they became legend. Today, this story is our spirit. Longmen is the leap — from carp to dragon, from meme to movement, from dream to destiny.
+    </p>
+  </section>
 
-      <div class="lang-zh">
-        <p>龍門是一枚植根于文化的迷因币，围绕一个恒久的主题：蜕变。它象征着坚韧、社区与命运。以“龙门”命名，龍門赞颂那一刻——努力遇见机遇，平凡成就非凡。</p>
-        <p>龍門不仅是一枚代币，更是创作者的叙事引擎，是信仰成长的社区的象征，也是为病毒式传播与文化共鸣而生的品牌。</p>
-      </div>
-    </section>
-
-    <!-- MASCOT -->
-    <section class="section fade-in" id="mascot">
-      <h2 class="lang-en">Our Mascot — Longmen</h2>
-      <h2 class="lang-zh">我们的吉祥物 — 龍門</h2>
-
-      <div class="lang-en">
-        <p>Our mascot is the carp that successfully transformed into a dragon. We call the mascot Longmen, named after the Dragon Gate itself. The image of the carp leaping and becoming a dragon is our central symbol — one fish, one leap, one destiny.</p>
-        <p>The mascot embodies courage, focus, and metamorphosis. It is the face of our community and the visual story that influencers can use to tell why they believe in Longmen.</p>
-      </div>
-
-      <div class="lang-zh">
-        <p>我们的吉祥物是一条成功化龙的鲤鱼。我们称它为“龍門”，以龙门之名命名。鲤鱼跃起化为龙的画面，是我们的核心象征——一跃成命运。</p>
-        <p>吉祥物体现了勇气、专注与蜕变。它是社区的象征，也是内容创作者讲述为何相信龍門时最直观的视觉素材。</p>
-      </div>
-    </section>
-
-    <!-- LEGEND -->
-    <section class="section fade-in" id="legend">
-      <h2 class="lang-en">The Legend</h2>
-      <h2 class="lang-zh">传说</h2>
-
-      <div class="lang-en">
-        <p>In ancient China, the Yellow River carved its way through mountains and plains. Among its restless currents swam countless carps, their scales flashing like sunlight. For generations they whispered a single dream: the Leap of Longmen.</p>
-        <p>At the Dragon Gate, a thunderous waterfall roared. The legend said that any carp brave enough to leap those gates would be transformed by heaven into a dragon — a creature of wisdom, strength, and freedom. Many attempted the leap; many failed. Yet hope endured, and brave souls kept trying.</p>
-        <p>One day, against all odds, a carp rose above the torrent. It cut through spray and sky, and when the water fell away it no longer swam but flew. The carp had become a dragon, radiant and unstoppable.</p>
-        <p><strong>This metamorphosis is our guiding story: together we leap, together we rise, together we become.</strong></p>
-      </div>
-
-      <div class="lang-zh">
-        <p>古时，黄河穿行于群山与平原。无数鲤鱼在激流中穿梭，鳞光如日。世代相传，它们心中怀有同一个梦想：龙门一跃。</p>
-        <p>在龙门处，瀑布雷鸣。传说中，凡有勇气跃过龙门的鲤鱼，将得天命，化为龙——拥有智慧、力量与自由。许多鲤鱼尝试，许多失败，但希望不灭，勇者不断尝试。</p>
-        <p>终于，有鲤鱼凌驾激流，穿破水雾与长空；当波澜散去，它不再游动，而是腾空飞翔。鲤鱼化为龙，光华耀目，势不可挡。</p>
-        <p><strong>这一蜕变是我们的信念指引：我们一同跃起，我们一同崛起，我们一同化龙。</strong></p>
-      </div>
-    </section>
-
-    <!-- NUMBERS -->
-    <section class="section fade-in" id="numbers">
-      <h2 class="lang-en">Numbers That Impress</h2>
-      <h2 class="lang-zh">震撼的数字</h2>
-
-      <div class="nums" role="list">
-        <div class="numbox" role="listitem">
-          <div class="num-value num-value-1" data-target="1000000000">0</div>
-          <div class="num-label lang-en">Total supply — Pump.fun standard</div>
-          <div class="num-label lang-zh">总供应量 — Pump.fun 标准</div>
-        </div>
-
-        <div class="numbox" role="listitem">
-          <div class="num-value num-value-2" data-target="1400000000">0</div>
-          <div class="num-label lang-en">Potential cultural audience (China)</div>
-          <div class="num-label lang-zh">潜在文化受众（中国）</div>
-        </div>
-
-        <div class="numbox" role="listitem">
-          <div class="num-value num-value-3" data-target="50000000000">0</div>
-          <div class="num-label lang-en">Global memecoin market scale (approx)</div>
-          <div class="num-label lang-zh">全球迷因币市场规模（约）</div>
-        </div>
-      </div>
-    </section>
-
-    <!-- WHY BUY -->
-    <section class="section fade-in" id="whybuy">
-      <h2 class="lang-en">Why Buy Longmen?</h2>
-      <h2 class="lang-zh">为什么选择龍門？</h2>
-
-      <div class="reasons lang-en">
-        <ul>
-          <li><strong>Cultural resonance:</strong> rooted in a story known across generations.</li>
-          <li><strong>First mover advantage:</strong> no dominant carp/dragon meme yet.</li>
-          <li><strong>Large audience:</strong> deep ties to a billion+ cultural audience.</li>
-          <li><strong>Influencer-ready:</strong> ready-made narrative for content and virality.</li>
-          <li><strong>Community symbolism:</strong> holders are the carps — together they form the dragon.</li>
-        </ul>
-      </div>
-
-      <div class="reasons lang-zh">
-        <ul>
-          <li><strong>文化共鸣：</strong>源于代代相传的故事，易于共情。</li>
-          <li><strong>先发优势：</strong>目前尚无主导的鲤鱼/化龙迷因。</li>
-          <li><strong>巨大受众：</strong>与十亿级文化受众深度相关联。</li>
-          <li><strong>适合意见领袖：</strong>现成叙事，利于内容传播与病毒式扩散。</li>
-          <li><strong>社区象征：</strong>持币者为鲤鱼，团结则化为巨龙。</li>
-        </ul>
-      </div>
-    </section>
-
-    <!-- ROADMAP -->
-    <section class="section fade-in" id="roadmap">
-      <h2 class="lang-en">Roadmap</h2>
-      <h2 class="lang-zh">路线图</h2>
-
-      <div class="lang-en">
-        <p><strong>Phase 1 — The Leap:</strong> Launch on Pump.fun, assemble the initial community, begin storytelling.</p>
-        <p><strong>Phase 2 — The Rise:</strong> Activate influencers, social campaigns, first listings and visibility.</p>
-        <p><strong>Phase 3 — The Dragon:</strong> Cultural adoption, partnerships, and recognition beyond niche channels.</p>
-      </div>
-
-      <div class="lang-zh">
-        <p><strong>第一阶段 — 一跃：</strong>在 Pump.fun 上线，汇集首批社区成员，启动传奇传播。</p>
-        <p><strong>第二阶段 — 崛起：</strong>启动意见领袖与社交传播，完成首轮曝光与上线。</p>
-        <p><strong>第三阶段 — 化龙：</strong>推动文化采纳，建立合作，获得更广泛的认知与认可。</p>
-      </div>
-    </section>
-
-    <!-- WHY NOW -->
-    <section class="section fade-in" id="whynow">
-      <h2 class="lang-en">Why Now?</h2>
-      <h2 class="lang-zh">为什么是现在？</h2>
-
-      <div class="lang-en">
-        <p>Doge and Pepe defined the West — the East deserves its own cultural icon. With a vast audience familiar with the Dragon Gate myth and a hungry creator economy, Longmen is positioned to become that icon.</p>
-      </div>
-      <div class="lang-zh">
-        <p>Doge 与 Pepe 定义了西方的迷因文化，而东方同样值得拥有自己的文化图腾。拥有熟悉龙门传说的庞大受众与蓬勃的创作者生态，龍門处于成为这一图腾的有利位置。</p>
-      </div>
-    </section>
-
-    <!-- CONTRACT + COPY -->
-    <div class="contract fade-in" id="contractBox" role="region" aria-label="Contract address">
-      <div class="label lang-en">Contract Address:</div>
-      <div class="label lang-zh">合约地址：</div>
-      <div class="address address-text address-mono address-el" id="contractAddress">HQW7SFWtbqsXCcvbdBtXC2YQGsbfLse2sfP1aFYLpump</div>
-      <button class="copy-btn" id="copyBtn" aria-label="Copy contract address" title="Copy contract address">Copy</button>
-      <div class="copy-tooltip" id="copyTooltip" aria-hidden="true"></div>
+  <!-- NUMBERS -->
+  <section>
+    <h2>Numbers That Impress</h2>
+    <div class="numbers">
+      <div class="number-box"><span id="num1">1,000,000,000</span><br> Fixed Supply</div>
+      <div class="number-box"><span id="num2">1,400,000,000</span><br> People of China</div>
+      <div class="number-box"><span id="num3">50,000,000,000+</span><br> Global Memecoin Market</div>
     </div>
+  </section>
 
-  </main>
+  <!-- WHY BUY -->
+  <section id="why-buy">
+    <h2>Why Buy Longmen?</h2>
+    <ul style="line-height:1.8;">
+      <li id="why1">A cultural legend never before brought to crypto.</li>
+      <li id="why2">No existing carp-to-dragon meme — first of its kind.</li>
+      <li id="why3">Resonates with 1.4B people and beyond.</li>
+      <li id="why4">Simple to buy via Pump.fun or Phantom wallet swap.</li>
+      <li id="why5">The leap of Longmen is about community — when many leap, one becomes dragon.</li>
+    </ul>
+  </section>
 
+  <!-- ROADMAP -->
+  <section>
+    <h2>Roadmap</h2>
+    <p><strong>Phase 1 — The Leap:</strong> Launch and ignite the legend.</p>
+    <p><strong>Phase 2 — The Rise:</strong> Growth of global community, influencers, and partnerships.</p>
+    <p><strong>Phase 3 — The Dragon:</strong> Longmen becomes more than a meme — it becomes a movement.</p>
+  </section>
+
+  <!-- FOOTER -->
   <footer>
-    <p class="lang-en">Join the legend. <a href="https://pump.fun/coin/HQW7SFWtbqsXCcvbdBtXC2YQGsbfLse2sfP1aFYLpump" target="_blank" rel="noopener">Buy on Pump.fun</a> | <a href="https://t.me/longmencoin" target="_blank" rel="noopener">Telegram</a> | <a href="https://x.com/LongmenX" target="_blank" rel="noopener">X</a></p>
-    <p class="lang-zh">加入传奇。<a href="https://pump.fun/coin/HQW7SFWtbqsXCcvbdBtXC2YQGsbfLse2sfP1aFYLpump" target="_blank" rel="noopener">在 Pump.fun 上购买</a> | <a href="https://t.me/longmencoin" target="_blank" rel="noopener">Telegram</a> | <a href="https://x.com/LongmenX" target="_blank" rel="noopener">在 X 上关注我们</a></p>
+    <p>© 2025 Longmen. <span id="footer-text">Join the legend.</span></p>
   </footer>
 
-<script>
-/* ---------- Language: auto-detect + toggle + remember ---------- */
-(function(){
-  const saved = localStorage.getItem('longmen_lang');
-  const nav = (navigator.language || navigator.userLanguage || 'en').toLowerCase();
-  const initial = saved || (nav.startsWith('zh') ? 'zh' : 'en');
+  <script>
+    /* --- TRANSLATIONS --- */
+    const translations = {
+      en: {
+        title: "Longmen",
+        subtitle: "From Carp to Dragon — The Leap Beyond",
+        "buy-btn": "Buy on Pump.fun",
+        "x-btn": "Follow us on X",
+        "tg-btn": "Join Telegram",
+        "contract-label": "Contract:",
+        "about-text": "Longmen is more than a token — it is a legend reborn. Named after the Dragon Gate, Longmen represents the eternal transformation: the humble carp that dares to leap becomes the dragon. Our mascot embodies this spirit — bold, unstoppable, and destined for greatness.",
+        "legend-text": "In ancient China, along the Yellow River, carps swam tirelessly against the current. They dreamed of reaching Longmen — the Dragon Gate. Legends said that any carp strong enough to leap the roaring waterfall would be transformed by the heavens into a dragon: a creature of wisdom, power, and majesty. Many tried. Many failed. But those who leapt, who never gave up, became more than fish — they became legend. Today, this story is our spirit. Longmen is the leap — from carp to dragon, from meme to movement, from dream to destiny.",
+        why1: "A cultural legend never before brought to crypto.",
+        why2: "No existing carp-to-dragon meme — first of its kind.",
+        why3: "Resonates with 1.4B people and beyond.",
+        why4: "Simple to buy via Pump.fun or Phantom wallet swap.",
+        why5: "The leap of Longmen is about community — when many leap, one becomes dragon.",
+        "footer-text": "Join the legend."
+      },
+      zh: {
+        title: "龙门",
+        subtitle: "从鲤鱼到龙 — 超越之跃",
+        "buy-btn": "在 Pump.fun 上购买",
+        "x-btn": "关注我们的X",
+        "tg-btn": "加入Telegram",
+        "contract-label": "合约地址：",
+        "about-text": "龙门不仅仅是一个代币——它是一段重生的传奇。名字源自龙门大关，龙门代表永恒的蜕变：敢于跃起的鲤鱼终成真龙。我们的吉祥物正是这种精神的象征——勇敢、不可阻挡，注定辉煌。",
+        "legend-text": "在古代中国，黄河滔滔，鲤鱼们逆流而上，梦想着到达龙门——龙门大关。传说中，任何一条能够跃过激流瀑布的鲤鱼，都会被天意点化，化为智慧与力量并存的神龙。无数尝试，无数失败，但那些勇敢跃起的，不再是鱼，而是传奇。今天，这个故事就是我们的精神。龙门，就是这一次飞跃——从鲤鱼到神龙，从梗到传奇，从梦想到命运。",
+        why1: "一个从未被带入加密世界的文化传奇。",
+        why2: "没有现存的鲤鱼化龙梗——首创。",
+        why3: "与14亿人及全球产生共鸣。",
+        why4: "可通过 Pump.fun 或 Phantom 钱包直接购买。",
+        why5: "龙门之跃关乎社区——众人齐跃，方能化龙。",
+        "footer-text": "加入传奇。"
+      }
+    };
 
-  function applyLang(lang){
-    document.body.setAttribute('data-lang', lang === 'zh' ? 'zh' : 'en');
-    document.documentElement.lang = (lang === 'zh' ? 'zh-CN' : 'en');
-    localStorage.setItem('longmen_lang', lang === 'zh' ? 'zh' : 'en');
-    document.getElementById('btn-en').classList.toggle('active', lang !== 'zh');
-    document.getElementById('btn-zh').classList.toggle('active', lang === 'zh');
-    // update copy button label & tooltip language
-    updateCopyButton(lang);
-  }
+    function setLanguage(lang) {
+      for (const key in translations[lang]) {
+        const el = document.getElementById(key);
+        if (el) el.innerHTML = translations[lang][key];
+      }
+    }
 
-  document.getElementById('btn-en').addEventListener('click', () => applyLang('en'));
-  document.getElementById('btn-zh').addEventListener('click', () => applyLang('zh'));
-  applyLang(initial);
-})();
-
-/* ---------- Typewriter effect for subtitle ---------- */
-(function(){
-  const texts = { en: "From Carp to Dragon — A Legend Reborn", zh: "鲤鱼化龙 —— 传奇重生" };
-  function type(id, text, speed=18){
-    const el = document.getElementById(id);
-    if(!el) return;
-    el.classList.add('typewriter');
-    el.textContent = "";
-    let i = 0;
-    (function loop(){
-      if (i <= text.length) {
-        el.textContent = text.slice(0,i);
-        i++;
-        setTimeout(loop, speed);
+    function detectLanguage() {
+      const userLang = navigator.language || navigator.userLanguage;
+      if (userLang.startsWith("zh")) {
+        setLanguage("zh");
       } else {
-        el.classList.remove('typewriter');
+        setLanguage("en");
       }
-    })();
-  }
-  window.addEventListener('DOMContentLoaded', () => {
-    setTimeout(() => {
-      const lang = document.body.getAttribute('data-lang') === 'zh' ? 'zh' : 'en';
-      if(lang === 'en') type('type-en', texts.en, 16);
-      else type('type-zh', texts.zh, 16);
-    }, 120);
-    // rerun when toggling
-    document.getElementById('btn-en').addEventListener('click', () => setTimeout(()=>type('type-en', texts.en,16),120));
-    document.getElementById('btn-zh').addEventListener('click', () => setTimeout(()=>type('type-zh', texts.zh,16),120));
-  });
-})();
-
-/* ---------- Fade-in on scroll ---------- */
-(function(){
-  const obs = new IntersectionObserver((entries, o) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.classList.add('visible');
-        o.unobserve(e.target);
-      }
-    });
-  }, {threshold:0.16, rootMargin:'0px 0px -40px 0px'});
-  document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
-})();
-
-/* ---------- Count-up numbers when in view ---------- */
-(function(){
-  const easeOutCubic = t => (--t)*t*t + 1;
-  function animate(el, target){
-    let start = null;
-    const duration = Math.max(900, Math.min(2800, Math.round(target/60000)));
-    function step(ts){
-      if(!start) start = ts;
-      const p = Math.min(1, (ts-start)/duration);
-      const v = Math.floor(target * easeOutCubic(p));
-      el.textContent = v.toLocaleString();
-      if(p < 1) requestAnimationFrame(step);
-      else el.textContent = target.toLocaleString();
     }
-    requestAnimationFrame(step);
-  }
-  const observer = new IntersectionObserver((entries, o) => {
-    entries.forEach(en => {
-      if(!en.isIntersecting) return;
-      const el = en.target;
-      const t = parseInt(el.getAttribute('data-target'),10) || 0;
-      animate(el, t);
-      o.unobserve(el);
-    });
-  }, {threshold:0.5});
-  document.querySelectorAll('.num-value').forEach(el => observer.observe(el));
-})();
 
-/* ---------- Copy-to-clipboard with localized tooltip ---------- */
-(function(){
-  const contractEl = document.getElementById('contractAddress');
-  const copyBtn = document.getElementById('copyBtn');
-  const tooltip = document.getElementById('copyTooltip');
-
-  function showTooltip(msg){
-    tooltip.textContent = msg;
-    tooltip.setAttribute('aria-hidden','false');
-    tooltip.style.opacity = '1';
-    setTimeout(()=>{ tooltip.style.opacity = '0'; tooltip.setAttribute('aria-hidden','true'); }, 1800);
-  }
-
-  function updateCopyButton(lang){
-    if(!copyBtn) return;
-    copyBtn.textContent = (lang === 'zh') ? '复制' : 'Copy';
-    tooltip.textContent = '';
-  }
-
-  copyBtn.addEventListener('click', async () => {
-    const text = contractEl.textContent.trim();
-    try {
-      await navigator.clipboard.writeText(text);
-      const lang = document.body.getAttribute('data-lang') === 'zh' ? 'zh' : 'en';
-      showTooltip(lang === 'zh' ? '已复制合约地址！' : 'Contract address copied!');
-    } catch (e) {
-      // fallback
-      const range = document.createRange();
-      range.selectNode(contractEl);
-      window.getSelection().removeAllRanges();
-      window.getSelection().addRange(range);
-      try {
-        document.execCommand('copy');
-        const lang = document.body.getAttribute('data-lang') === 'zh' ? 'zh' : 'en';
-        showTooltip(lang === 'zh' ? '已复制合约地址！' : 'Contract address copied!');
-      } catch (err) {
-        alert((document.body.getAttribute('data-lang') === 'zh') ? '复制失败，请手动复制合约地址。' : 'Copy failed — please copy the address manually.');
-      }
-      window.getSelection().removeAllRanges();
+    function copyContract() {
+      const contract = document.getElementById("contract").innerText;
+      navigator.clipboard.writeText(contract);
+      alert("Contract address copied!");
     }
-  });
 
-  // ensure tooltip hidden initially
-  tooltip.style.opacity = '0'; tooltip.style.transition = 'opacity .2s ease';
-})();
+    /* --- FADE-IN ANIMATION --- */
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+        }
+      });
+    }, { threshold: 0.2 });
 
-/* ensure external links noopener */
-document.addEventListener('DOMContentLoaded', function(){ document.querySelectorAll('a[target="_blank"]').forEach(a => a.setAttribute('rel','noopener')); });
-</script>
+    document.querySelectorAll("section, footer").forEach(sec => {
+      observer.observe(sec);
+    });
+
+    detectLanguage();
+  </script>
 </body>
 </html>

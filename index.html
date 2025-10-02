@@ -169,7 +169,7 @@
       </div>
     </section>
 
-    <!-- Why Buy -->
+    <!-- WHY BUY (new request: placed before roadmap) -->
     <section class="section fade-in" id="whybuy">
       <h2 id="why-title">Why Buy Longmen?</h2>
       <ul id="why-list" style="margin-top:12px;"></ul>
@@ -187,12 +187,15 @@
       <div id="whynow-para"></div>
     </section>
 
-    <!-- Contract (copy) -->
+    <!-- Contract (copy) & Phantom instructions -->
     <div class="contract fade-in" id="contractBox" role="region" aria-label="Contract address">
       <div class="label" id="contract-label">Contract Address:</div>
       <div class="address" id="contractAddress">HQW7SFWtbqsXCcvbdBtXC2YQGsbfLse2sfP1aFYLpump</div>
       <button class="copy-btn" id="copyBtn" aria-label="Copy contract address">Copy</button>
       <div id="copyTooltip" style="min-width:130px; text-align:center; color:#bfbfbf; font-size:0.95rem;"></div>
+
+      <!-- Phantom Swap Instructions (localized below via JS) -->
+      <div id="phantom-instructions" style="width:100%; max-width:900px; text-align:left; margin-top:18px;"></div>
     </div>
 
   </main>
@@ -241,6 +244,15 @@ const content = {
     ],
     whyNowTitle: "Why Now?",
     whyNowPara: "<p>Doge and Pepe defined the West — the East deserves its own cultural icon. With a vast audience familiar with the Dragon Gate myth and a hungry creator economy, Longmen is positioned to become that icon.</p>",
+    phantomInstructionsTitle: "Buy on Phantom (step-by-step)",
+    phantomInstructions: [
+      "Open Phantom and tap on Swap.",
+      "Under 'You Receive', tap to change (you may see USDC there).",
+      "Ensure the chain is set to Solana.",
+      "Copy and paste the contract address above.",
+      "You will find LONGMEN.",
+      "Tap 'I UNDERSTAND' and swap!"
+    ],
     footer: 'Join the legend. <a href="https://pump.fun/coin/HQW7SFWtbqsXCcvbdBtXC2YQGsbfLse2sfP1aFYLpump" target="_blank" rel="noopener">Buy on Pump.fun</a> | <a href="https://t.me/longmencoin" target="_blank" rel="noopener">Telegram</a> | <a href="https://x.com/LongmenX" target="_blank" rel="noopener">X</a>'
   },
 
@@ -281,6 +293,15 @@ const content = {
     ],
     whyNowTitle: "为什么是现在？",
     whyNowPara: "<p>Doge 与 Pepe 定义了西方的迷因文化，而东方同样值得拥有自己的文化图腾。拥有熟悉龙门传说的庞大受众与蓬勃的创作者生态，龍門处于成为这一图腾的有利位置。</p>",
+    phantomInstructionsTitle: "在 Phantom 上兑换（步骤）",
+    phantomInstructions: [
+      "打开 Phantom，并点击“Swap（兑换）”。",
+      "在“您收到（You Receive）”一栏，点击更改（可能会看到 USDC）。",
+      "确保链（Chain）选择为 Solana。",
+      "复制并粘贴上方的合约地址。",
+      "您会看到 LONGMEN。",
+      "点击“我明白了（I UNDERSTAND）”，然后兑换！"
+    ],
     footer: '加入传奇。<a href="https://pump.fun/coin/HQW7SFWtbqsXCcvbdBtXC2YQGsbfLse2sfP1aFYLpump" target="_blank" rel="noopener">在 Pump.fun 上购买</a> | <a href="https://t.me/longmencoin" target="_blank" rel="noopener">Telegram</a> | <a href="https://x.com/LongmenX" target="_blank" rel="noopener">在 X 上关注我们</a>'
   }
 };
@@ -325,13 +346,21 @@ function applyLanguage(lang){
   document.getElementById('whynow-title').textContent = c.whyNowTitle;
   document.getElementById('whynow-para').innerHTML = c.whyNowPara;
 
+  // Phantom instructions
+  const instrEl = document.getElementById('phantom-instructions'); instrEl.innerHTML = '';
+  const instrTitle = document.createElement('div'); instrTitle.style.marginTop='12px'; instrTitle.style.fontWeight='700'; instrTitle.style.color='var(--gold)'; instrTitle.textContent = c.phantomInstructionsTitle;
+  instrEl.appendChild(instrTitle);
+  const ul = document.createElement('ul'); ul.style.margin='10px 0 0 18px';
+  c.phantomInstructions.forEach(step => { const li = document.createElement('li'); li.textContent = step; ul.appendChild(li); });
+  instrEl.appendChild(ul);
+
   document.getElementById('footer-text').innerHTML = c.footer;
   document.getElementById('contract-label').textContent = lang === 'zh' ? '合约地址：' : 'Contract Address:';
   // Copy tooltip cleared
   document.getElementById('copyTooltip').textContent = '';
 }
 
-// Auto-detect and initialize
+/* Auto-detect and initialize with saved preference */
 (function initLang(){
   const saved = localStorage.getItem('longmen_lang');
   const nav = (navigator.language || navigator.userLanguage || 'en').toLowerCase();
@@ -346,7 +375,6 @@ function applyLanguage(lang){
 function runTypewriter(text){
   const el = document.getElementById('subtitle-type');
   el.classList.remove('typewriter'); el.textContent = '';
-  // small delay to allow CSS removal
   setTimeout(()=>{
     el.classList.add('typewriter');
     let i=0;

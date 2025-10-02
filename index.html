@@ -4,138 +4,74 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Longmen — 龙门 | From Carp to Dragon</title>
-
-  <!-- SEO -->
   <meta name="description" content="Longmen — From Carp to Dragon. A cultural memecoin symbolizing perseverance and transformation. Total supply 1,000,000,000." />
-  <meta name="keywords" content="Longmen, 龙门, memecoin, carp to dragon, pump.fun" />
-  <meta property="og:title" content="Longmen — 龙门 | From Carp to Dragon" />
-  <meta property="og:description" content="Longmen — From Carp to Dragon. Total supply 1,000,000,000." />
-  <meta property="og:image" content="https://i.postimg.cc/QCRLjSjR/longmen.jpg" />
-  <link rel="alternate" hrefLang="en" href="" />
-  <link rel="alternate" hrefLang="zh-CN" href="" />
-
-  <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;900&family=Cinzel:wght@500;700&family=Noto+Serif+SC:wght@400;700&display=swap" rel="stylesheet">
 
   <style>
     :root{
-      --bg: #000;
-      --muted: #e6e6e6;
-      --gold: #ffd700;
-      --red: #d84315;
-      --accent-blue: #1da1f2;
-      --panel-bg: rgba(0,0,0,0.78);
+      --bg:#000;
+      --muted:#e6e6e6;
+      --gold:#ffd700;
+      --red:#d84315;
+      --panel: rgba(0,0,0,0.78);
+      --cta-glow: 0 12px 40px rgba(255,200,0,0.12);
       --pulse-duration: 2.6s;
-      --countup-duration: 1800;
+      --countup-target: 1800;
     }
     *{box-sizing:border-box}
     html,body{height:100%}
     body{
-      margin:0;
-      background:var(--bg);
-      color:var(--muted);
-      font-family:'Cinzel', serif;
-      -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
+      margin:0; background:var(--bg); color:var(--muted);
+      font-family:'Cinzel',serif; -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
       line-height:1.6;
     }
 
-    /* LANGUAGE: robust show/hide using data-lang */
+    /* language handling via body[data-lang] */
     body[data-lang="en"] .lang-en{display:block} 
     body[data-lang="en"] .lang-zh{display:none}
     body[data-lang="zh"] .lang-zh{display:block}
     body[data-lang="zh"] .lang-en{display:none}
 
-    /* HEADER / hero */
-    .hero{
-      position:relative;
-      min-height:86vh;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      text-align:center;
-      background: url("https://i.postimg.cc/QCRLjSjR/longmen.jpg") center/cover no-repeat fixed;
-    }
-    .hero::before{
-      content:"";
-      position:absolute; inset:0;
-      background: linear-gradient(180deg, rgba(0,0,0,0.78), rgba(0,0,0,0.78));
-      z-index:0;
-    }
+    /* top-right flags */
+    .lang-toggle{ position:fixed; top:12px; right:12px; z-index:9999; display:flex; gap:8px; align-items:center; background:rgba(0,0,0,0.45); padding:6px 8px; border-radius:999px; border:1px solid rgba(255,215,0,0.06); }
+    .lang-toggle button{ background:none; border:none; cursor:pointer; padding:6px; display:flex; gap:8px; align-items:center; color:var(--muted); font-family:'Orbitron',sans-serif; font-weight:700; font-size:13px; }
+    .lang-toggle img{ width:20px;height:auto; display:block; }
+    .lang-toggle button.active{ color:var(--gold); }
+
+    /* Hero */
+    .hero{ position:relative; min-height:86vh; display:flex; align-items:center; justify-content:center; text-align:center; background: url("https://i.postimg.cc/QCRLjSjR/longmen.jpg") center/cover no-repeat fixed; }
+    .hero::before{ content:""; position:absolute; inset:0; background: linear-gradient(180deg, rgba(0,0,0,0.78), rgba(0,0,0,0.78)); z-index:0; }
     .hero-inner{ position:relative; z-index:2; max-width:1100px; padding:28px; }
 
     @keyframes glowPulse {
-      0% { transform:scale(1); text-shadow:0 0 8px rgba(255,215,0,0.6); }
-      50% { transform:scale(1.03); text-shadow:0 0 36px rgba(255,160,64,0.95); }
-      100% { transform:scale(1); text-shadow:0 0 8px rgba(255,215,0,0.6); }
+      0%{ transform:scale(1); text-shadow:0 0 8px rgba(255,215,0,0.6); }
+      50%{ transform:scale(1.03); text-shadow:0 0 36px rgba(255,160,64,0.95); }
+      100%{ transform:scale(1); text-shadow:0 0 8px rgba(255,215,0,0.6); }
     }
 
-    .title{
-      font-family:'Orbitron', sans-serif;
-      font-size:3.8rem;
-      margin:0 0 12px;
-      background: linear-gradient(90deg, var(--gold), var(--red));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      animation: glowPulse var(--pulse-duration) infinite ease-in-out;
-    }
+    .title{ font-family:'Orbitron',sans-serif; font-size:3.6rem; margin:0 0 8px; background:linear-gradient(90deg,var(--gold),var(--red)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; animation:glowPulse var(--pulse-duration) infinite ease-in-out; }
     .title.lang-zh{ font-family:'Noto Serif SC', serif; }
 
-    .subtitle{
-      font-size:1.15rem;
-      color: rgba(255,235,205,0.95);
-      margin-bottom:20px;
-    }
+    .subtitle{ font-size:1.15rem; color:rgba(255,235,205,0.95); margin-bottom:18px; }
+    .typewriter{ border-right: .12em solid rgba(255,255,255,0.15); white-space:nowrap; overflow:hidden; display:inline-block; }
 
-    /* typewriter caret */
-    .typewriter { border-right: .12em solid rgba(255,255,255,0.16); white-space:nowrap; overflow:hidden; }
+    /* CTA */
+    .cta-stack{ margin-top:20px; display:flex; flex-direction:column; gap:12px; align-items:center; }
+    .btn{ font-family:'Orbitron',sans-serif; text-transform:uppercase; font-weight:800; padding:12px 34px; border-radius:40px; border:none; cursor:pointer; display:inline-block; transition:transform .14s ease, box-shadow .14s ease; text-decoration:none; }
+    .btn-buy{ background: linear-gradient(90deg,var(--gold), #ff8a00); color:#000; box-shadow:var(--cta-glow); animation:glowPulse var(--pulse-duration) infinite ease-in-out; }
+    .btn-buy:hover{ transform:translateY(-4px) scale(1.02); color:#fff; box-shadow:0 18px 60px rgba(255,200,0,0.22); }
+    .btn-follow{ background: linear-gradient(90deg,#120000,var(--red)); color:#fff; box-shadow:0 8px 30px rgba(200,50,40,0.12); }
+    .btn-follow:hover{ transform:translateY(-4px) scale(1.02); }
 
-    /* CTA buttons: Buy (gold), Follow (red/black) stacked */
-    .cta-stack{ margin-top:18px; display:flex; flex-direction:column; gap:12px; align-items:center; }
-    .btn{
-      font-family:'Orbitron',sans-serif;
-      text-transform:uppercase;
-      font-weight:800;
-      padding:12px 34px;
-      border-radius:40px;
-      border:none;
-      cursor:pointer;
-      display:inline-block;
-      transition: transform .14s ease, box-shadow .14s ease, color .14s ease;
-      text-decoration:none;
-    }
-    .btn-buy{
-      background: linear-gradient(90deg, var(--gold), #ff8a00);
-      color:#000;
-      box-shadow:0 8px 36px rgba(255,200,0,0.12);
-      animation: glowPulse var(--pulse-duration) infinite ease-in-out;
-    }
-    .btn-buy:hover{ transform:translateY(-4px) scale(1.02); color:#fff; box-shadow:0 12px 54px rgba(255,200,0,0.2); }
-    .btn-follow{
-      background: linear-gradient(90deg, #120000, var(--red));
-      color:#fff;
-      box-shadow:0 8px 36px rgba(200,50,40,0.08);
-      animation: glowPulse var(--pulse-duration) infinite ease-in-out;
-    }
-    .btn-follow:hover{ transform:translateY(-4px) scale(1.02); box-shadow:0 12px 54px rgba(200,50,40,0.18); }
-
-    /* Language toggle (flags + label) */
-    .lang-toggle{
-      position:fixed; top:14px; right:14px; z-index:9999;
-      display:flex; gap:8px; align-items:center; background:rgba(0,0,0,0.45); padding:6px 10px; border-radius:999px; border:1px solid rgba(255,215,0,0.06);
-    }
-    .lang-toggle button{ background:none; border:none; color:var(--muted); cursor:pointer; padding:6px; display:flex; gap:8px; align-items:center; font-weight:700; font-family:Orbitron, sans-serif; }
-    .lang-toggle img{ width:20px; height:auto; display:block; }
-
-    /* sections */
+    /* main sections */
     main{ padding:36px 20px 90px; max-width:1200px; margin:0 auto; }
-    .section{ margin:36px auto; padding:28px; border-radius:12px; background:var(--panel-bg); border:1px solid rgba(255,215,0,0.05); box-shadow:0 12px 40px rgba(0,0,0,0.6); }
+    .section{ margin:36px auto; padding:28px; border-radius:12px; background:var(--panel); border:1px solid rgba(255,215,0,0.05); box-shadow:0 10px 30px rgba(0,0,0,0.5); }
     .section h2{ font-family:'Orbitron',sans-serif; font-size:1.9rem; margin:0 0 18px; color:var(--gold); display:inline-block; position:relative; }
     .section h2::after{ content:""; position:absolute; left:0; bottom:-10px; height:4px; width:0; background: linear-gradient(90deg,var(--gold),var(--red)); transition:width .3s ease; box-shadow:0 0 12px var(--gold); }
     .section h2:hover::after{ width:100%; }
 
     /* numbers */
-    .nums{ display:flex; gap:16px; flex-wrap:wrap; margin-top:8px; justify-content:center; }
+    .nums{ display:flex; gap:16px; flex-wrap:wrap; margin-top:12px; justify-content:center; }
     .numbox{ flex:1 1 260px; max-width:320px; background:rgba(0,0,0,0.35); padding:20px; border-radius:12px; border:1px solid rgba(255,215,0,0.04); text-align:center; }
     .num-value{ font-family:'Orbitron',sans-serif; font-size:2.2rem; color:var(--gold); font-weight:900; text-shadow:0 0 12px var(--gold); }
     .num-label{ color:#eae7df; margin-top:8px; font-size:0.95rem; }
@@ -144,29 +80,36 @@
     .reasons ul{ list-style:none; padding-left:0; margin:0; }
     .reasons li{ margin:12px 0; font-size:1.05rem; line-height:1.6; }
 
-    /* fade-in */
-    .fade-in{ opacity:0; transform:translateY(18px); transition:opacity .9s ease, transform .9s ease; }
+    /* contract box */
+    .contract{ max-width:900px; margin:28px auto; padding:18px; border-radius:10px; background:rgba(0,0,0,0.6); border:1px solid rgba(255,215,0,0.06); display:flex; gap:12px; align-items:center; justify-content:center; flex-wrap:wrap; }
+    .contract .label{ color:#eae7df; font-weight:700; margin-right:8px; }
+    .contract .address{ font-family:monospace; color:var(--gold); background:#0b0b0b; padding:8px 12px; border-radius:8px; word-break:break-all; }
+    .copy-btn{ background:var(--gold); color:#000; border:none; padding:8px 12px; border-radius:8px; cursor:pointer; font-weight:800; box-shadow:0 6px 18px rgba(255,200,0,0.08); }
+    .copy-tooltip{ margin-left:8px; font-size:0.9rem; color:#bfbfbf; min-width:90px; text-align:center; }
+
+    /* fade-in animation */
+    .fade-in{ opacity:0; transform:translateY(12px); transition:opacity .85s ease, transform .85s ease; }
     .fade-in.visible{ opacity:1; transform:translateY(0); }
 
     footer{ text-align:center; color:#bfbfbf; margin:36px 0 80px; font-family:'Orbitron',sans-serif; }
-    footer a{ color:var(--gold); text-decoration:none; font-weight:700; }
-    footer a:hover{ color:#fff; }
 
     @media (max-width:760px){
       .title{ font-size:2.4rem; }
       .numbox{ flex:1 1 100%; }
       .hero{ min-height:66vh; }
       .lang-toggle{ right:8px; top:8px; padding:6px; }
+      .contract{ flex-direction:column; gap:8px; text-align:center; }
     }
   </style>
 </head>
 <body data-lang="en">
-  <!-- Language toggle -->
-  <div class="lang-toggle" role="navigation" aria-label="Language">
-    <button id="btn-en" title="English" aria-pressed="true">
+
+  <!-- language toggle (flags) -->
+  <div class="lang-toggle" role="navigation" aria-label="Language switch">
+    <button id="btn-en" aria-pressed="true" title="English">
       <img src="https://flagcdn.com/w20/gb.png" alt="EN"> EN
     </button>
-    <button id="btn-zh" title="中文 (简体)" aria-pressed="false">
+    <button id="btn-zh" aria-pressed="false" title="中文 (简体)">
       <img src="https://flagcdn.com/w20/cn.png" alt="中文"> 中文
     </button>
   </div>
@@ -181,17 +124,23 @@
       <div class="subtitle lang-zh"><span id="type-zh" class="typewriter"></span></div>
 
       <div class="cta-stack" role="region" aria-label="Primary calls to action">
-        <a id="buy-en" class="btn btn-buy lang-en" href="https://pump.fun" target="_blank" rel="noopener">Buy on Pump.fun</a>
-        <a id="buy-zh" class="btn btn-buy lang-zh" href="https://pump.fun" target="_blank" rel="noopener">在 Pump.fun 上购买</a>
+        <a id="buy-link" class="btn btn-buy" href="https://pump.fun/coin/HQW7SFWtbqsXCcvbdBtXC2YQGsbfLse2sfP1aFYLpump" target="_blank" rel="noopener">
+          <span class="lang-en">Buy on Pump.fun</span><span class="lang-zh">在 Pump.fun 上购买</span>
+        </a>
 
-        <a id="follow-en" class="btn btn-follow lang-en" href="https://x.com/LongmenX" target="_blank" rel="noopener">Follow us on X</a>
-        <a id="follow-zh" class="btn btn-follow lang-zh" href="https://x.com/LongmenX" target="_blank" rel="noopener">在 X 上关注我们</a>
+        <a id="follow-tg" class="btn btn-follow" href="https://t.me/longmencoin" target="_blank" rel="noopener">
+          <span class="lang-en">Join our Telegram</span><span class="lang-zh">加入我们的 Telegram</span>
+        </a>
+
+        <a id="follow-x" class="btn btn-follow" href="https://x.com/LongmenX" target="_blank" rel="noopener">
+          <span class="lang-en">Follow us on X</span><span class="lang-zh">在 X 上关注我们</span>
+        </a>
       </div>
     </div>
   </header>
 
   <main>
-    <!-- WHAT IS LONGMEN -->
+    <!-- ABOUT -->
     <section class="section fade-in" id="about">
       <h2 class="lang-en">What is Longmen?</h2>
       <h2 class="lang-zh">什么是龍門？</h2>
@@ -250,19 +199,19 @@
 
       <div class="nums" role="list">
         <div class="numbox" role="listitem">
-          <div class="num-value" data-target="1000000000">0</div>
+          <div class="num-value num-value-1" data-target="1000000000">0</div>
           <div class="num-label lang-en">Total supply — Pump.fun standard</div>
           <div class="num-label lang-zh">总供应量 — Pump.fun 标准</div>
         </div>
 
         <div class="numbox" role="listitem">
-          <div class="num-value" data-target="1400000000">0</div>
+          <div class="num-value num-value-2" data-target="1400000000">0</div>
           <div class="num-label lang-en">Potential cultural audience (China)</div>
           <div class="num-label lang-zh">潜在文化受众（中国）</div>
         </div>
 
         <div class="numbox" role="listitem">
-          <div class="num-value" data-target="50000000000">0</div>
+          <div class="num-value num-value-3" data-target="50000000000">0</div>
           <div class="num-label lang-en">Global memecoin market scale (approx)</div>
           <div class="num-label lang-zh">全球迷因币市场规模（约）</div>
         </div>
@@ -325,121 +274,165 @@
         <p>Doge 与 Pepe 定义了西方的迷因文化，而东方同样值得拥有自己的文化图腾。拥有熟悉龙门传说的庞大受众与蓬勃的创作者生态，龍門处于成为这一图腾的有利位置。</p>
       </div>
     </section>
+
+    <!-- CONTRACT + COPY -->
+    <div class="contract fade-in" id="contractBox" role="region" aria-label="Contract address">
+      <div class="label lang-en">Contract Address:</div>
+      <div class="label lang-zh">合约地址：</div>
+      <div class="address address-text address-mono address-el" id="contractAddress">HQW7SFWtbqsXCcvbdBtXC2YQGsbfLse2sfP1aFYLpump</div>
+      <button class="copy-btn" id="copyBtn" aria-label="Copy contract address" title="Copy contract address">Copy</button>
+      <div class="copy-tooltip" id="copyTooltip" aria-hidden="true"></div>
+    </div>
+
   </main>
 
   <footer>
-    <p class="lang-en">Join the legend. <a href="https://pump.fun" target="_blank" rel="noopener">Buy on Pump.fun</a> | <a href="https://x.com/LongmenX" target="_blank" rel="noopener">Follow us on X</a></p>
-    <p class="lang-zh">加入传奇。<a href="https://pump.fun" target="_blank" rel="noopener">在 Pump.fun 上购买</a> | <a href="https://x.com/LongmenX" target="_blank" rel="noopener">在 X 上关注我们</a></p>
+    <p class="lang-en">Join the legend. <a href="https://pump.fun/coin/HQW7SFWtbqsXCcvbdBtXC2YQGsbfLse2sfP1aFYLpump" target="_blank" rel="noopener">Buy on Pump.fun</a> | <a href="https://t.me/longmencoin" target="_blank" rel="noopener">Telegram</a> | <a href="https://x.com/LongmenX" target="_blank" rel="noopener">X</a></p>
+    <p class="lang-zh">加入传奇。<a href="https://pump.fun/coin/HQW7SFWtbqsXCcvbdBtXC2YQGsbfLse2sfP1aFYLpump" target="_blank" rel="noopener">在 Pump.fun 上购买</a> | <a href="https://t.me/longmencoin" target="_blank" rel="noopener">Telegram</a> | <a href="https://x.com/LongmenX" target="_blank" rel="noopener">在 X 上关注我们</a></p>
   </footer>
 
-  <script>
-    /* ---------- Language: auto-detect + toggle + remember (body[data-lang]) ---------- */
-    (function(){
-      const saved = localStorage.getItem('longmen_lang');
-      const nav = (navigator.language || navigator.userLanguage || 'en').toLowerCase();
-      const initial = saved || (nav.startsWith('zh') ? 'zh' : 'en');
-      function setLang(lang) {
-        document.body.setAttribute('data-lang', lang === 'zh' ? 'zh' : 'en');
-        document.documentElement.lang = (lang === 'zh' ? 'zh-CN' : 'en');
-        localStorage.setItem('longmen_lang', lang === 'zh' ? 'zh' : 'en');
-        document.getElementById('btn-en').setAttribute('aria-pressed', lang !== 'zh');
-        document.getElementById('btn-zh').setAttribute('aria-pressed', lang === 'zh');
+<script>
+/* ---------- Language: auto-detect + toggle + remember ---------- */
+(function(){
+  const saved = localStorage.getItem('longmen_lang');
+  const nav = (navigator.language || navigator.userLanguage || 'en').toLowerCase();
+  const initial = saved || (nav.startsWith('zh') ? 'zh' : 'en');
+
+  function applyLang(lang){
+    document.body.setAttribute('data-lang', lang === 'zh' ? 'zh' : 'en');
+    document.documentElement.lang = (lang === 'zh' ? 'zh-CN' : 'en');
+    localStorage.setItem('longmen_lang', lang === 'zh' ? 'zh' : 'en');
+    document.getElementById('btn-en').classList.toggle('active', lang !== 'zh');
+    document.getElementById('btn-zh').classList.toggle('active', lang === 'zh');
+    // update copy button label & tooltip language
+    updateCopyButton(lang);
+  }
+
+  document.getElementById('btn-en').addEventListener('click', () => applyLang('en'));
+  document.getElementById('btn-zh').addEventListener('click', () => applyLang('zh'));
+  applyLang(initial);
+})();
+
+/* ---------- Typewriter effect for subtitle ---------- */
+(function(){
+  const texts = { en: "From Carp to Dragon — A Legend Reborn", zh: "鲤鱼化龙 —— 传奇重生" };
+  function type(id, text, speed=18){
+    const el = document.getElementById(id);
+    if(!el) return;
+    el.classList.add('typewriter');
+    el.textContent = "";
+    let i = 0;
+    (function loop(){
+      if (i <= text.length) {
+        el.textContent = text.slice(0,i);
+        i++;
+        setTimeout(loop, speed);
+      } else {
+        el.classList.remove('typewriter');
       }
-      window.setLang = setLang;
-      document.getElementById('btn-en').addEventListener('click', () => setLang('en'));
-      document.getElementById('btn-zh').addEventListener('click', () => setLang('zh'));
-      // initial
-      setLang(initial);
     })();
+  }
+  window.addEventListener('DOMContentLoaded', () => {
+    setTimeout(() => {
+      const lang = document.body.getAttribute('data-lang') === 'zh' ? 'zh' : 'en';
+      if(lang === 'en') type('type-en', texts.en, 16);
+      else type('type-zh', texts.zh, 16);
+    }, 120);
+    // rerun when toggling
+    document.getElementById('btn-en').addEventListener('click', () => setTimeout(()=>type('type-en', texts.en,16),120));
+    document.getElementById('btn-zh').addEventListener('click', () => setTimeout(()=>type('type-zh', texts.zh,16),120));
+  });
+})();
 
-    /* ---------- Typewriter hero subtitle (runs when page loads and when language changes) ---------- */
-    (function(){
-      const texts = {
-        en: "From Carp to Dragon — A Legend Reborn",
-        zh: "鲤鱼化龙 —— 传奇重生"
-      };
-      const spanEn = document.getElementById('type-en');
-      const spanZh = document.getElementById('type-zh');
-
-      function type(el, text, speed=22){
-        el.classList.add('typewriter');
-        el.textContent = "";
-        let i=0;
-        (function run(){
-          if (i <= text.length) {
-            el.textContent = text.slice(0,i);
-            i++;
-            setTimeout(run, speed);
-          } else {
-            el.classList.remove('typewriter');
-          }
-        })();
+/* ---------- Fade-in on scroll ---------- */
+(function(){
+  const obs = new IntersectionObserver((entries, o) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        o.unobserve(e.target);
       }
-
-      // run typewriter after initial lang set
-      window.addEventListener('DOMContentLoaded', () => {
-        // small delay ensures lang has been applied
-        setTimeout(() => {
-          const lang = document.body.getAttribute('data-lang') === 'zh' ? 'zh' : 'en';
-          if (lang === 'en') type(spanEn, texts.en, 18);
-          else type(spanZh, texts.zh, 18);
-        }, 140);
-      });
-
-      // re-run when user switches language
-      document.getElementById('btn-en').addEventListener('click', () => { setTimeout(()=>type(spanEn, texts.en, 18), 140); });
-      document.getElementById('btn-zh').addEventListener('click', () => { setTimeout(()=>type(spanZh, texts.zh, 18), 140); });
-    })();
-
-    /* ---------- Fade-in on scroll (IntersectionObserver) ---------- */
-    (function(){
-      const obs = new IntersectionObserver((entries, o) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-            o.unobserve(entry.target);
-          }
-        });
-      }, {threshold:0.16, rootMargin:'0px 0px -40px 0px'});
-      document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
-    })();
-
-    /* ---------- Count-up numbers ---------- */
-    (function(){
-      const easeOutCubic = t => (--t)*t*t + 1;
-      const format = n => n.toLocaleString();
-      const animate = (el, target) => {
-        let start = null;
-        const duration = Math.max(900, Math.min(3000, Math.round(target / 50000))); // adaptive
-        const tick = ts => {
-          if (!start) start = ts;
-          const elapsed = ts - start;
-          const progress = Math.min(1, elapsed / duration);
-          const eased = easeOutCubic(progress);
-          const value = Math.floor(target * eased);
-          el.textContent = format(value);
-          if (progress < 1) requestAnimationFrame(tick);
-          else el.textContent = format(target);
-        };
-        requestAnimationFrame(tick);
-      };
-
-      const obs = new IntersectionObserver((entries, o) => {
-        entries.forEach(en => {
-          if (!en.isIntersecting) return;
-          const el = en.target;
-          const t = parseInt(el.getAttribute('data-target'), 10) || 0;
-          animate(el, t);
-          o.unobserve(el);
-        });
-      }, {threshold:0.5});
-      document.querySelectorAll('.num-value').forEach(el => obs.observe(el));
-    })();
-
-    /* ensure external links use noopener */
-    document.addEventListener('DOMContentLoaded', function(){
-      document.querySelectorAll('a[target="_blank"]').forEach(a => a.setAttribute('rel','noopener'));
     });
-  </script>
+  }, {threshold:0.16, rootMargin:'0px 0px -40px 0px'});
+  document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
+})();
+
+/* ---------- Count-up numbers when in view ---------- */
+(function(){
+  const easeOutCubic = t => (--t)*t*t + 1;
+  function animate(el, target){
+    let start = null;
+    const duration = Math.max(900, Math.min(2800, Math.round(target/60000)));
+    function step(ts){
+      if(!start) start = ts;
+      const p = Math.min(1, (ts-start)/duration);
+      const v = Math.floor(target * easeOutCubic(p));
+      el.textContent = v.toLocaleString();
+      if(p < 1) requestAnimationFrame(step);
+      else el.textContent = target.toLocaleString();
+    }
+    requestAnimationFrame(step);
+  }
+  const observer = new IntersectionObserver((entries, o) => {
+    entries.forEach(en => {
+      if(!en.isIntersecting) return;
+      const el = en.target;
+      const t = parseInt(el.getAttribute('data-target'),10) || 0;
+      animate(el, t);
+      o.unobserve(el);
+    });
+  }, {threshold:0.5});
+  document.querySelectorAll('.num-value').forEach(el => observer.observe(el));
+})();
+
+/* ---------- Copy-to-clipboard with localized tooltip ---------- */
+(function(){
+  const contractEl = document.getElementById('contractAddress');
+  const copyBtn = document.getElementById('copyBtn');
+  const tooltip = document.getElementById('copyTooltip');
+
+  function showTooltip(msg){
+    tooltip.textContent = msg;
+    tooltip.setAttribute('aria-hidden','false');
+    tooltip.style.opacity = '1';
+    setTimeout(()=>{ tooltip.style.opacity = '0'; tooltip.setAttribute('aria-hidden','true'); }, 1800);
+  }
+
+  function updateCopyButton(lang){
+    if(!copyBtn) return;
+    copyBtn.textContent = (lang === 'zh') ? '复制' : 'Copy';
+    tooltip.textContent = '';
+  }
+
+  copyBtn.addEventListener('click', async () => {
+    const text = contractEl.textContent.trim();
+    try {
+      await navigator.clipboard.writeText(text);
+      const lang = document.body.getAttribute('data-lang') === 'zh' ? 'zh' : 'en';
+      showTooltip(lang === 'zh' ? '已复制合约地址！' : 'Contract address copied!');
+    } catch (e) {
+      // fallback
+      const range = document.createRange();
+      range.selectNode(contractEl);
+      window.getSelection().removeAllRanges();
+      window.getSelection().addRange(range);
+      try {
+        document.execCommand('copy');
+        const lang = document.body.getAttribute('data-lang') === 'zh' ? 'zh' : 'en';
+        showTooltip(lang === 'zh' ? '已复制合约地址！' : 'Contract address copied!');
+      } catch (err) {
+        alert((document.body.getAttribute('data-lang') === 'zh') ? '复制失败，请手动复制合约地址。' : 'Copy failed — please copy the address manually.');
+      }
+      window.getSelection().removeAllRanges();
+    }
+  });
+
+  // ensure tooltip hidden initially
+  tooltip.style.opacity = '0'; tooltip.style.transition = 'opacity .2s ease';
+})();
+
+/* ensure external links noopener */
+document.addEventListener('DOMContentLoaded', function(){ document.querySelectorAll('a[target="_blank"]').forEach(a => a.setAttribute('rel','noopener')); });
+</script>
 </body>
 </html>
